@@ -3,6 +3,7 @@ package com.huozige.lab.container.webview;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.net.http.SslError;
 
 import com.elvishew.xlog.XLog;
@@ -24,9 +25,11 @@ import com.huozige.lab.container.platform.AbstractStaticFilesCacheFilter;
 import com.huozige.lab.container.proxy.support.pdf.PDFPreviewActivity;
 import com.huozige.lab.container.utilities.StringConvertUtility;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 
 /**
  * 处理页面的事件，实现异常处理等功能
@@ -189,6 +192,24 @@ public class HACWebViewClient extends WebViewClient {
     public void onPageFinished(WebView view, String url) {
         super.onPageFinished(view, url);
         XLog.v("页面加载完成：" + url);
+
+        try {
+            BufferedReader reader = new BufferedReader(
+                    new InputStreamReader(this._context.getAssets().open("inject.js")));
+            StringBuilder sb = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                sb.append(line).append("\n");
+            }
+            reader.close();
+
+            String jsCode = sb.toString();
+            view.post(() -> view.evaluateJavascript(jsCode, null));
+        } catch (IOException e) {
+
+            e.printStackTrace();
+        }
+
     }
 
     @Override
@@ -247,5 +268,9 @@ public class HACWebViewClient extends WebViewClient {
 
     public void setStaticFilesCacheFilter(AbstractStaticFilesCacheFilter cacheFilter) {
         this.cacheFilter = cacheFilter;
+    }
+
+    private void injectJSFromFile() {
+
     }
 }

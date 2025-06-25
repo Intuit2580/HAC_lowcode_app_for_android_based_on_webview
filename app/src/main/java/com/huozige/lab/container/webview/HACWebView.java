@@ -15,6 +15,7 @@ import com.hjq.permissions.Permission;
 import com.huozige.lab.container.utilities.ConfigManager;
 import com.huozige.lab.container.utilities.EventUtility;
 import com.huozige.lab.container.utilities.DeviceUtility;
+import com.huozige.lab.container.utilities.JsBridgeInterface;
 import com.huozige.lab.container.utilities.PermissionsUtility;
 
 /**
@@ -90,6 +91,8 @@ public class HACWebView extends WebView {
         String versionName = DeviceUtility.getPackageVersionName();
         String ua = settings.getUserAgentString();//原来获取的UA
         settings.setUserAgentString(ua + " HAC/" + versionName);
+
+        this.addJavascriptInterface(new JsBridgeInterface(this), "NativeBridge");
 
         if (ConfigManager.getInstance().getBOR()) {
             PermissionsUtility.asyncRequirePermissions(_context, new String[]{
