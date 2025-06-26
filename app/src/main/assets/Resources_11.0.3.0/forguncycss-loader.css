@@ -1,0 +1,834 @@
+﻿@media screen and (max-width: 800px) {
+    #pageLoadingCover {
+        font-size: 2vw;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    #pageLoadingCover {
+        font-size: 16px;
+    }
+}
+
+.fgc-loader {
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    text-indent: -9999em;
+    -webkit-animation: load5 1.1s infinite ease;
+    animation: load5 1.1s infinite ease;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    margin-bottom: 2.6em;
+}
+
+[fgc-uielement="listview"] .fgc-loader {
+    -webkit-animation: listview-load5 1.1s infinite ease;
+    animation: listview-load5 1.1s infinite ease;
+}
+
+
+.fgc-loader-image {
+    max-width: 12rem;
+    max-height: 12rem;
+}
+
+
+.fgc-loader-text {
+    margin-top: 1.25em;
+    white-space: pre;
+    font-size: 16px;
+}
+
+/* layout */
+[layout] {
+    display: -ms-flexbox;
+    display: flex;
+}
+
+[layout*="row"],
+[layout*="column"] {
+    width: 100%;
+    max-width: 100%;
+}
+
+[layout^="row"] {
+    -ms-flex-direction: row;
+    flex-direction: row;
+}
+
+[layout^="column"] {
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+[layout*="rows"],
+[layout*="columns"] {
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+
+[layout~="centered"],
+[layout*="column"][layout*="center-"],
+[layout*="row"][layout*="-center"] {
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+[layout~="centered"],
+[layout*="column"][layout*="-center"],
+[layout*="row"][layout*="center-"] {
+    -ms-flex-align: center;
+    -ms-grid-row-align: center;
+    align-items: center;
+}
+
+
+[layout*="rows"][layout*="center-"],
+[layout*="columns"][layout*="-center"] {
+    -ms-flex-line-pack: center;
+    align-content: center;
+}
+
+/* mask */
+
+#pageLoadingCover {
+    position: fixed; /* Stay in place */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    z-index: 2147483647;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    transition: opacity 0.3s;
+}
+
+
+/* flower */
+.flower-spinner, .flower-spinner * {
+    box-sizing: border-box;
+}
+
+.flower-spinner {
+    height: 4.375em;
+    width: 4.375em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.flower-spinner .dots-container {
+    height: calc(4.375em / 7);
+    width: calc(4.375em / 7);
+}
+
+.flower-spinner .smaller-dot {
+    background: currentColor;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    animation: flower-spinner-smaller-dot-animation 2.5s 0s infinite both;
+}
+
+.flower-spinner .bigger-dot {
+    background: currentColor;
+    height: 100%;
+    width: 100%;
+    padding: 10%;
+    border-radius: 50%;
+    animation: flower-spinner-bigger-dot-animation 2.5s 0s infinite both;
+}
+
+[fgc-uielement="listview"] .flower-spinner .bigger-dot {
+    animation: listview-flower-spinner-bigger-dot-animation 2.5s 0s infinite both;
+}
+
+[fgc-uielement="listview"] .flower-spinner .smaller-dot {
+    animation: listview-flower-spinner-smaller-dot-animation 2.5s 0s infinite both;
+}
+
+
+
+/* pixel */
+
+.pixel-spinner, .pixel-spinner * {
+    box-sizing: border-box;
+}
+
+.pixel-spinner {
+    height: 4.375em;
+    width: 4.375em;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.pixel-spinner .pixel-spinner-inner {
+    width: calc(4.375em / 7);
+    height: calc(4.375em / 7);
+    box-shadow: calc(4.375em / 7 * 1.5) calc(4.375em / 7 * 1.5) 0 0, calc(4.375em / 7 * -1.5) calc(4.375em / 7 * -1.5) 0 0, calc(4.375em / 7 * 1.5) calc(4.375em / 7 * -1.5) 0 0, calc(4.375em / 7 * -1.5) calc(4.375em / 7 * 1.5) 0 0, 0 calc(4.375em / 7 * 1.5) 0 0, calc(4.375em / 7 * 1.5) 0 0 0, calc(4.375em / 7 * -1.5) 0 0 0, 0 calc(4.375em / 7 * -1.5) 0 0;
+    animation: pixel-spinner-animation 2000ms linear infinite;
+}
+
+@keyframes pixel-spinner-animation {
+    50% {
+        box-shadow: calc(4.375em / 7 * 2) calc(4.375em / 7 * 2) 0 0, calc(4.375em / 7 * -2) calc(4.375em / 7 * -2) 0 0, calc(4.375em / 7 * 2) calc(4.375em / 7 * -2) 0 0, calc(4.375em / 7 * -2) calc(4.375em / 7 * 2) 0 0, 0 calc(4.375em / 7) 0 0, calc(4.375em / 7) 0 0 0, calc(4.375em / 7 * -1) 0 0 0, 0 calc(4.375em / 7 * -1) 0 0;
+    }
+
+    75% {
+        box-shadow: calc(4.375em / 7 * 2) calc(4.375em / 7 * 2) 0 0, calc(4.375em / 7 * -2) calc(4.375em / 7 * -2) 0 0, calc(4.375em / 7 * 2) calc(4.375em / 7 * -2) 0 0, calc(4.375em / 7 * -2) calc(4.375em / 7 * 2) 0 0, 0 calc(4.375em / 7) 0 0, calc(4.375em / 7) 0 0 0, calc(4.375em / 7 * -1) 0 0 0, 0 calc(4.375em / 7 * -1) 0 0;
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* orbit */
+
+.orbit-spinner,
+.orbit-spinner * {
+    box-sizing: border-box;
+}
+
+.orbit-spinner {
+    height: 3.4375em;
+    width: 3.4375em;
+    border-radius: 50%;
+    perspective: 50em;
+}
+
+.orbit-spinner .orbit {
+    position: absolute;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.orbit-spinner .orbit:nth-child(1) {
+    left: 0%;
+    top: 0%;
+    animation: orbit-spinner-orbit-one-animation 1200ms linear infinite;
+    border-bottom: 0.1875em solid currentColor;
+}
+
+.orbit-spinner .orbit:nth-child(2) {
+    right: 0%;
+    top: 0%;
+    animation: orbit-spinner-orbit-two-animation 1200ms linear infinite;
+    border-right: 0.1875em solid currentColor;
+}
+
+.orbit-spinner .orbit:nth-child(3) {
+    right: 0%;
+    bottom: 0%;
+    animation: orbit-spinner-orbit-three-animation 1200ms linear infinite;
+    border-top: 0.1875em solid currentColor;
+}
+
+@keyframes orbit-spinner-orbit-one-animation {
+    0% {
+        transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+    }
+    100% {
+        transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+    }
+}
+
+@keyframes orbit-spinner-orbit-two-animation {
+    0% {
+        transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+    }
+    100% {
+        transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+    }
+}
+
+@keyframes orbit-spinner-orbit-three-animation {
+    0% {
+        transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+    }
+    100% {
+        transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+    }
+}
+
+/* radar */
+
+.radar-spinner, .radar-spinner * {
+    box-sizing: border-box;
+}
+
+.radar-spinner {
+    height: 3.75em;
+    width: 3.75em;
+    position: relative;
+}
+
+.radar-spinner .circle {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    animation: radar-spinner-animation 2s infinite;
+}
+
+.radar-spinner .circle:nth-child(1) {
+    padding: calc(3.75em * 5 * 2 * 0 / 110);
+    animation-delay: 300ms;
+}
+
+.radar-spinner .circle:nth-child(2) {
+    padding: calc(3.75em * 5 * 2 * 1 / 110);
+    animation-delay: 300ms;
+}
+
+.radar-spinner .circle:nth-child(3) {
+    padding: calc(3.75em * 5 * 2 * 2 / 110);
+    animation-delay: 300ms;
+}
+
+.radar-spinner .circle:nth-child(4) {
+    padding: calc(3.75em * 5 * 2 * 3 / 110);
+    animation-delay: 0ms;
+}
+
+.radar-spinner .circle-inner,
+.radar-spinner .circle-inner-container {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    border: calc(3.75em * 5 / 110) solid transparent;
+}
+
+.radar-spinner .circle-inner {
+    border-left-color: currentColor;
+    border-right-color: currentColor;
+}
+
+@keyframes radar-spinner-animation {
+    50% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+/* half-circle */
+
+.half-circle-spinner,
+.half-circle-spinner * {
+    box-sizing: border-box;
+}
+
+.half-circle-spinner {
+    width: 3.75em;
+    height: 3.75em;
+    border-radius: 100%;
+    position: relative;
+}
+
+.half-circle-spinner .circle {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    border: calc(3.75em / 10) solid transparent;
+}
+
+.half-circle-spinner .circle.circle-1 {
+    border-top-color: currentColor;
+    animation: half-circle-spinner-animation 1s infinite;
+}
+
+.half-circle-spinner .circle.circle-2 {
+    border-bottom-color: currentColor;
+    animation: half-circle-spinner-animation 1s infinite alternate;
+}
+
+@keyframes half-circle-spinner-animation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+
+/* fulfilling-square */
+
+.fulfilling-square-spinner,
+.fulfilling-square-spinner * {
+    box-sizing: border-box;
+}
+
+.fulfilling-square-spinner {
+    height: 3.125em;
+    width: 3.125em;
+    position: relative;
+    border: 0.25em solid currentColor;
+    animation: fulfilling-square-spinner-animation 4s infinite ease;
+}
+
+.fulfilling-square-spinner .spinner-inner {
+    vertical-align: top;
+    display: inline-block;
+    background-color: currentColor;
+    width: 100%;
+    opacity: 1;
+    animation: fulfilling-square-spinner-inner-animation 4s infinite ease-in;
+}
+
+@keyframes fulfilling-square-spinner-animation {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(180deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    75% {
+        transform: rotate(360deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fulfilling-square-spinner-inner-animation {
+    0% {
+        height: 0%;
+    }
+    25% {
+        height: 0%;
+    }
+    50% {
+        height: 100%;
+    }
+    75% {
+        height: 100%;
+    }
+    100% {
+        height: 0%;
+    }
+}
+
+
+/* swapping-squares */
+
+.swapping-squares-spinner,
+.swapping-squares-spinner * {
+    box-sizing: border-box;
+}
+
+.swapping-squares-spinner {
+    height: 4.0625em;
+    width: 4.0625em;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.swapping-squares-spinner .square {
+    height: calc(4.0625em * 0.25 / 1.3);
+    width: calc(4.0625em * 0.25 / 1.3);
+    animation-duration: 1000ms;
+    border: calc(4.0625em * 0.04 / 1.3) solid currentColor;
+    margin-right: auto;
+    margin-left: auto;
+    position: absolute;
+    animation-iteration-count: infinite;
+}
+
+.swapping-squares-spinner .square:nth-child(1) {
+    animation-name: swapping-squares-animation-child-1;
+    animation-delay: 500ms;
+}
+
+.swapping-squares-spinner .square:nth-child(2) {
+    animation-name: swapping-squares-animation-child-2;
+    animation-delay: 0ms;
+}
+
+.swapping-squares-spinner .square:nth-child(3) {
+    animation-name: swapping-squares-animation-child-3;
+    animation-delay: 500ms;
+}
+
+.swapping-squares-spinner .square:nth-child(4) {
+    animation-name: swapping-squares-animation-child-4;
+    animation-delay: 0ms;
+}
+
+@keyframes swapping-squares-animation-child-1 {
+    50% {
+        transform: translate(150%, 150%) scale(2, 2);
+    }
+}
+
+@keyframes swapping-squares-animation-child-2 {
+    50% {
+        transform: translate(-150%, 150%) scale(2, 2);
+    }
+}
+
+@keyframes swapping-squares-animation-child-3 {
+    50% {
+        transform: translate(-150%, -150%) scale(2, 2);
+    }
+}
+
+@keyframes swapping-squares-animation-child-4 {
+    50% {
+        transform: translate(150%, -150%) scale(2, 2);
+    }
+}
+
+
+/* fulfilling-bouncing-circle */
+
+.fulfilling-bouncing-circle-spinner,
+.fulfilling-bouncing-circle-spinner * {
+    box-sizing: border-box;
+}
+
+.fulfilling-bouncing-circle-spinner {
+    height: 3.75em;
+    width: 3.75em;
+    position: relative;
+    animation: fulfilling-bouncing-circle-spinner-animation infinite 4000ms ease;
+}
+
+@keyframes fulfilling-bouncing-circle-spinner-animation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fulfilling-bouncing-circle-spinner-orbit-animation {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1);
+    }
+    62.5% {
+        transform: scale(0.8);
+    }
+    75% {
+        transform: scale(1);
+    }
+    87.5% {
+        transform: scale(0.8);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes fulfilling-bouncing-circle-spinner-circle-animation {
+    0% {
+        transform: scale(1);
+        border-color: transparent;
+        border-top-color: inherit;
+    }
+    16.7% {
+        border-color: transparent;
+        border-top-color: initial;
+        border-right-color: initial;
+    }
+    33.4% {
+        border-color: transparent;
+        border-top-color: inherit;
+        border-right-color: inherit;
+        border-bottom-color: inherit;
+    }
+    50% {
+        border-color: inherit;
+        transform: scale(1);
+    }
+    62.5% {
+        border-color: inherit;
+        transform: scale(1.4);
+    }
+    75% {
+        border-color: inherit;
+        transform: scale(1);
+        opacity: 1;
+    }
+    87.5% {
+        border-color: inherit;
+        transform: scale(1.4);
+    }
+    100% {
+        border-color: transparent;
+        border-top-color: inherit;
+        transform: scale(1);
+    }
+}
+
+
+/* spring */
+
+.spring-spinner,
+.spring-spinner * {
+    box-sizing: border-box;
+}
+
+.spring-spinner {
+    height: 3.75em;
+    width: 3.75em;
+}
+
+.spring-spinner .spring-spinner-part {
+    overflow: hidden;
+    height: calc(3.75em / 2);
+    width: 3.75em;
+}
+
+.spring-spinner .spring-spinner-part.bottom {
+    transform: rotate(180deg) scale(-1, 1);
+}
+
+.spring-spinner .spring-spinner-rotator {
+    width: 3.75em;
+    height: 3.75em;
+    border: calc(3.75em / 7) solid transparent;
+    border-right-color: currentColor;
+    border-top-color: currentColor;
+    border-radius: 50%;
+    box-sizing: border-box;
+    animation: spring-spinner-animation 3s ease-in-out infinite;
+    transform: rotate(-200deg);
+}
+
+@keyframes spring-spinner-animation {
+    0% {
+        border-width: calc(3.75em / 7);
+    }
+    25% {
+        border-width: calc(3.75em / 23.33);
+    }
+    50% {
+        transform: rotate(115deg);
+        border-width: calc(3.75em / 7);
+    }
+    75% {
+        border-width: calc(3.75em / 23.33);
+    }
+    100% {
+        border-width: calc(3.75em / 7);
+    }
+}
+
+
+/* atom  */
+
+.atom-spinner,
+.atom-spinner * {
+    box-sizing: border-box;
+}
+
+.atom-spinner {
+    height: 3.75em;
+    width: 3.75em;
+    overflow: hidden;
+}
+
+.atom-spinner .spinner-inner {
+    position: relative;
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+.atom-spinner .spinner-circle {
+    display: block;
+    position: absolute;
+    color: currentColor;
+    font-size: calc(3.75em * 0.24);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.atom-spinner .spinner-line {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    animation-duration: 1s;
+    border-left-width: calc(3.75em / 25);
+    border-top-width: calc(3.75em / 25);
+    border-left-color: currentColor;
+    border-left-style: solid;
+    border-top-style: solid;
+    border-top-color: transparent;
+}
+
+.atom-spinner .spinner-line:nth-child(1) {
+    animation: atom-spinner-animation-1 1s linear infinite;
+    transform: rotateZ(120deg) rotateX(66deg) rotateZ(0deg);
+}
+
+.atom-spinner .spinner-line:nth-child(2) {
+    animation: atom-spinner-animation-2 1s linear infinite;
+    transform: rotateZ(240deg) rotateX(66deg) rotateZ(0deg);
+}
+
+.atom-spinner .spinner-line:nth-child(3) {
+    animation: atom-spinner-animation-3 1s linear infinite;
+    transform: rotateZ(360deg) rotateX(66deg) rotateZ(0deg);
+}
+
+@keyframes atom-spinner-animation-1 {
+    100% {
+        transform: rotateZ(120deg) rotateX(66deg) rotateZ(360deg);
+    }
+}
+
+@keyframes atom-spinner-animation-2 {
+    100% {
+        transform: rotateZ(240deg) rotateX(66deg) rotateZ(360deg);
+    }
+}
+
+@keyframes atom-spinner-animation-3 {
+    100% {
+        transform: rotateZ(360deg) rotateX(66deg) rotateZ(360deg);
+    }
+}
+
+
+/* breeding-rhombus */
+
+.breeding-rhombus-spinner {
+    height: 4.0625em;
+    width: 4.0625em;
+    position: relative;
+    transform: rotate(45deg);
+}
+
+.breeding-rhombus-spinner,
+.breeding-rhombus-spinner * {
+    box-sizing: border-box;
+}
+
+.breeding-rhombus-spinner .rhombus:nth-child(2n+0) {
+    margin-right: 0;
+}
+
+.breeding-rhombus-spinner .rhombus.child-1 {
+    animation-name: breeding-rhombus-spinner-animation-child-1;
+    animation-delay: 100ms;
+}
+
+.breeding-rhombus-spinner .rhombus.child-2 {
+    animation-name: breeding-rhombus-spinner-animation-child-2;
+    animation-delay: 200ms;
+}
+
+.breeding-rhombus-spinner .rhombus.child-3 {
+    animation-name: breeding-rhombus-spinner-animation-child-3;
+    animation-delay: 300ms;
+}
+
+.breeding-rhombus-spinner .rhombus.child-4 {
+    animation-name: breeding-rhombus-spinner-animation-child-4;
+    animation-delay: 400ms;
+}
+
+.breeding-rhombus-spinner .rhombus.child-5 {
+    animation-name: breeding-rhombus-spinner-animation-child-5;
+    animation-delay: 500ms;
+}
+
+.breeding-rhombus-spinner .rhombus.child-6 {
+    animation-name: breeding-rhombus-spinner-animation-child-6;
+    animation-delay: 600ms;
+}
+
+.breeding-rhombus-spinner .rhombus.child-7 {
+    animation-name: breeding-rhombus-spinner-animation-child-7;
+    animation-delay: 700ms;
+}
+
+.breeding-rhombus-spinner .rhombus.child-8 {
+    animation-name: breeding-rhombus-spinner-animation-child-8;
+    animation-delay: 800ms;
+}
+
+@keyframes breeding-rhombus-spinner-animation-child-1 {
+    50% {
+        transform: translate(-325%, -325%);
+    }
+}
+
+@keyframes breeding-rhombus-spinner-animation-child-2 {
+    50% {
+        transform: translate(0, -325%);
+    }
+}
+
+@keyframes breeding-rhombus-spinner-animation-child-3 {
+    50% {
+        transform: translate(325%, -325%);
+    }
+}
+
+@keyframes breeding-rhombus-spinner-animation-child-4 {
+    50% {
+        transform: translate(325%, 0);
+    }
+}
+
+@keyframes breeding-rhombus-spinner-animation-child-5 {
+    50% {
+        transform: translate(325%, 325%);
+    }
+}
+
+@keyframes breeding-rhombus-spinner-animation-child-6 {
+    50% {
+        transform: translate(0, 325%);
+    }
+}
+
+@keyframes breeding-rhombus-spinner-animation-child-7 {
+    50% {
+        transform: translate(-325%, 325%);
+    }
+}
+
+@keyframes breeding-rhombus-spinner-animation-child-8 {
+    50% {
+        transform: translate(-325%, 0);
+    }
+}
+
+@keyframes breeding-rhombus-spinner-animation-child-big {
+    50% {
+        transform: scale(0.5);
+    }
+}

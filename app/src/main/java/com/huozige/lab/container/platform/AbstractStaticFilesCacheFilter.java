@@ -9,6 +9,8 @@ public abstract class AbstractStaticFilesCacheFilter {
 
     public abstract CacheHint filter(Uri url);
 
+    public abstract CacheHint filterAll(Uri url);
+
     /**
      * 缓存策略
      */

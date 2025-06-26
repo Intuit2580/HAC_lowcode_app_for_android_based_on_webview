@@ -5,6 +5,8 @@ import android.net.Uri;
 import com.elvishew.xlog.XLog;
 import com.huozige.lab.container.platform.AbstractStaticFilesCacheFilter;
 
+import java.util.Objects;
+
 /**
  * 活字格专用的缓存过滤器
  */
@@ -35,6 +37,44 @@ public class HZGCacheFilter extends AbstractStaticFilesCacheFilter {
 
         // Scripts
         return filterByType(url, "/%s/Resources/Scripts/", "hzg_scripts_cache_%s/");
+    }
+
+    @Override
+    public CacheHint filterAll(Uri url) {
+
+        if (!Objects.requireNonNull(url.getPath()).toLowerCase().contains("resources")) return null;
+
+        // 获取文件名
+        String fileName = url.getLastPathSegment();
+        XLog.v("命中本地缓存，不再从网络获取，Url: " + fileName);
+
+        // 构建返回对象
+        CacheHint result = new CacheHint();
+        result.FileName = fileName;
+        result.LocalFilePath = url.getPath().replace("/Resources", "/Resources11.0.3.0"); // 通过Path进行替换，可以避免Query的影响
+        result.Encoding = "UTF-8";
+
+        if (fileName != null) {
+            if (fileName.toLowerCase().endsWith("css")) {
+                result.MIME = "text/css";
+            } else if (fileName.toLowerCase().endsWith("js")) {
+                result.MIME = "application/x-javascript";
+            } else if (fileName.toLowerCase().endsWith("json")) {
+                result.MIME = "application/json";
+            } else if (fileName.toLowerCase().endsWith("xml")) {
+                result.MIME = "text/xml";
+            } else if (fileName.toLowerCase().endsWith("jpg") || fileName.toLowerCase().endsWith("jpeg")) {
+                result.MIME = "image/jpeg";
+            } else if (fileName.toLowerCase().endsWith("png")) {
+                result.MIME = "image/png";
+            } else if (fileName.toLowerCase().endsWith("svg")) {
+                result.MIME = "image/svg+xml";
+            } else {
+                result.MIME = "text/plain"; // 默认值
+            }
+        }
+
+        return result;
     }
 
     /**
@@ -79,6 +119,8 @@ public class HZGCacheFilter extends AbstractStaticFilesCacheFilter {
                         result.MIME = "image/jpeg";
                     } else if (fileName.toLowerCase().endsWith("png")) {
                         result.MIME = "image/png";
+                    } else if (fileName.toLowerCase().endsWith("svg")) {
+                        result.MIME = "image/svg+xml";
                     } else {
                         result.MIME = "text/plain"; // 默认值
                     }

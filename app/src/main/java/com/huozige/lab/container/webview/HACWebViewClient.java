@@ -23,6 +23,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.huozige.lab.container.BaseActivity;
 import com.huozige.lab.container.platform.AbstractStaticFilesCacheFilter;
 import com.huozige.lab.container.proxy.support.pdf.PDFPreviewActivity;
+import com.huozige.lab.container.utilities.ConfigManager;
 import com.huozige.lab.container.utilities.StringConvertUtility;
 
 import java.io.BufferedReader;
@@ -30,6 +31,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Collections;
+import java.util.Map;
 
 /**
  * 处理页面的事件，实现异常处理等功能
@@ -182,16 +185,6 @@ public class HACWebViewClient extends WebViewClient {
         super.onPageStarted(view, url, favicon);
         _alreadyInjected = false;
         XLog.v("页面加载开始：" + url);
-    }
-
-    /**
-     * 页面加载后的处理
-     * 我们用这个时机来初始化权限，避免过早申请会导致界面“白板”的现象
-     */
-    @Override
-    public void onPageFinished(WebView view, String url) {
-        super.onPageFinished(view, url);
-        XLog.v("页面加载完成：" + url);
 
         try {
             BufferedReader reader = new BufferedReader(
@@ -209,7 +202,16 @@ public class HACWebViewClient extends WebViewClient {
 
             e.printStackTrace();
         }
+    }
 
+    /**
+     * 页面加载后的处理
+     * 我们用这个时机来初始化权限，避免过早申请会导致界面“白板”的现象
+     */
+    @Override
+    public void onPageFinished(WebView view, String url) {
+        super.onPageFinished(view, url);
+        XLog.v("页面加载完成：" + url);
     }
 
     @Override
@@ -231,6 +233,31 @@ public class HACWebViewClient extends WebViewClient {
 
         String path = request.getUrl().getPath();
         String schema = request.getUrl().getScheme();
+
+        String url = request.getUrl().toString();
+
+        if (url.startsWith(ConfigManager.getInstance().getEntry())) {
+            // 打开本地缓存文件，获取流
+            InputStream localCache = null;
+            try {
+                localCache = _context.getAssets().open("Resources_11.0.3.0/Index.html");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+            // 将本地文件返回给浏览器
+            if (url.endsWith(".html")) {
+                return new WebResourceResponse("text/html", "UTF-8", localCache);
+            } else if (url.endsWith(".css")) {
+                return new WebResourceResponse("text/css", "UTF-8", localCache);
+            } else if (url.endsWith(".js")) {
+                return new WebResourceResponse("application/javascript", "UTF-8", localCache);
+            } else if (url.endsWith(".png")) {
+                return new WebResourceResponse("image/png", null, localCache);
+            }
+        }
+
+
         if (!_alreadyInjected && path != null && path.toLowerCase().contains(".js") && _hacJsContent != null && !_hacJsContent.isEmpty()) {
             ((AppCompatActivity) view.getContext()).runOnUiThread(() -> view.evaluateJavascript(_hacJsContent, value -> XLog.v("JS资源文件已注入页面：" + value)));
             _alreadyInjected = true;
@@ -243,14 +270,13 @@ public class HACWebViewClient extends WebViewClient {
             if (schema.equalsIgnoreCase("http") || schema.equalsIgnoreCase("https")) {
                 try {
                     // 调用缓存处理器
-                    AbstractStaticFilesCacheFilter.CacheHint cacheFile = cacheFilter.filter(request.getUrl());
+                    AbstractStaticFilesCacheFilter.CacheHint cacheFile = cacheFilter.filterAll(request.getUrl());
 
                     // 判断是否有可用的缓存
                     if (cacheFile != null) {
 
                         // 打开本地缓存文件，获取流
                         InputStream localCache = _context.getAssets().open(cacheFile.LocalFilePath);
-
                         // 将本地文件返回给浏览器
                         return new WebResourceResponse(cacheFile.MIME, cacheFile.Encoding, localCache);
                     }

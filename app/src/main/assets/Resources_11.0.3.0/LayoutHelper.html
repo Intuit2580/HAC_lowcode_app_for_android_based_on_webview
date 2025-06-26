@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function calcFlexLayout(flexCalcSetting, showBorder) {
+            if (typeof flexCalcSetting == "string") {
+                flexCalcSetting = JSON.parse(flexCalcSetting);
+            }
+            const container = document.getElementById("flexContainer");
+            const {containerSetting, containerWidth, containerHeight} = flexCalcSetting;
+            calcLayoutForDiv(container, containerSetting, containerWidth, containerHeight, showBorder);
+            const rects = [];
+            // 获取父容器的位置和大小
+            const parentRect = container.getBoundingClientRect();
+            for (const child of container.children) {
+                rects.push(getNodePosition(child, parentRect));
+            }
+            return rects;
+        }
+
+        function calcLayoutForDiv(container, containerSetting, containerWidth, containerHeight, showBorder) {
+            container.innerHTML = ''
+            container.style.display = 'flex';
+
+            container.style.boxSizing = 'border-box';
+            container.style.width = containerWidth ? `${containerWidth}px` : undefined;
+            container.style.height = containerHeight ? `${containerHeight}px` : undefined;
+
+            // 设置容器的flex样式
+            Object.assign(container.style, {
+                flexDirection: containerSetting.flexDirection,
+                flexWrap: containerSetting.flexWrap,
+                justifyContent: containerSetting.justifyContent,
+                alignItems: containerSetting.alignItems,
+                alignContent: containerSetting.alignContent,
+                gap: `${containerSetting.rowGap}px ${containerSetting.columnGap}px`,
+                border: showBorder ? "black 1px solid" : null,
+                paddingLeft: `${containerSetting.padding.left}px`,
+                paddingRight: `${containerSetting.padding.right}px`,
+                paddingTop: `${containerSetting.padding.top}px`,
+                paddingBottom: `${containerSetting.padding.bottom}px`,
+            });
+
+            // 创建子div并设置样式
+            for (const item of containerSetting.items) {
+                const child = document.createElement('div');
+                if (item.text) {
+                    child.textContent = item.text;
+                    const fontInfo = item.fontInfo;
+                    if (fontInfo) {
+                        child.style.fontFamily = fontInfo.fontFamily;
+                        child.style.fontSize = fontInfo.fontSize + "px";
+                        child.style.fontWeight = fontInfo.bold ? "bold" : null;
+                        child.style.fontStyle = fontInfo.italic ? "italic" : null;
+                    }
+                }
+                if (item.width !== undefined) {
+                    child.style.width = `${item.width}px`;
+                }
+                if (item.height !== undefined) {
+                    child.style.height = `${item.height}px`;
+                }
+                child.style.flexGrow = item.flexGrow;
+                child.style.flexShrink = item.flexShrink;
+                child.style.alignSelf = item.alignSelf || "auto";
+                child.style.minWidth = "5px";
+                child.style.minHeight = "5px";
+                if (item.subSetting) {
+                    calcLayoutForDiv(child, item.subSetting, item.width, item.height, showBorder);
+                }
+
+                const { top, right, bottom, left } = item.margin;
+                child.style.margin = `${top}px ${right}px ${bottom}px ${left}px`;
+
+                child.style.border = showBorder ? "red 1px solid" : null;
+
+                // 将子div添加到容器中
+                container.appendChild(child);
+            }
+        }
+
+        function getNodePosition(node, parentRect) {
+            // 获取节点相对于视口的位置和大小
+            const rect = node.getBoundingClientRect();
+
+            let subRects = undefined;
+            if (node.children.length) {
+                subRects = [];
+                for (const child of node.children) {
+                    subRects.push(getNodePosition(child, rect));
+                }
+            }
+
+            // 计算节点相对于父容器的位置
+            return {
+                x: rect.left - parentRect.left,
+                y: rect.top - parentRect.top,
+                width: rect.width,
+                height: rect.height,
+                subRects: subRects
+            };
+        }
+
+    </script>
+</head>
+<body>
+<div id="flexContainer">
+
+</div>
+<script>
+    var flexCalcSetting = {
+        "containerSetting": {
+            "flexWrap": "nowrap",
+            "flexDirection": "column",
+            "justifyContent": "flex-start",
+            "alignItems": "stretch",
+            "alignContent": "stretch",
+            "rowGap": 3.0,
+            "columnGap": 8.0,
+            "padding": {
+                "left": 20.0,
+                "top": 30.0,
+                "right": 10.0,
+                "bottom": 11.0
+            },
+            "items": [
+                {
+                    "flexGrow": 0.0,
+                    "flexShrink": 0.0,
+                    "width": null,
+                    "height": 40.0,
+                    "margin": {
+                        "left": 0.0,
+                        "top": 0.0,
+                        "right": 0.0,
+                        "bottom": 0.0
+                    },
+                    "alignSelf": "auto",
+                    "subSetting": null
+                },
+                {
+                    "flexGrow": 0.0,
+                    "flexShrink": 0.0,
+                    "width": null,
+                    "height": 40.0,
+                    "margin": {
+                        "left": 0.0,
+                        "top": 0.0,
+                        "right": 0.0,
+                        "bottom": 0.0
+                    },
+                    "alignSelf": "auto",
+                    "subSetting": null
+                },
+                {
+                    "flexGrow": 0.0,
+                    "flexShrink": 0.0,
+                    "width": null,
+                    "height": 40.0,
+                    "margin": {
+                        "left": 0.0,
+                        "top": 0.0,
+                        "right": 0.0,
+                        "bottom": 0.0
+                    },
+                    "alignSelf": "auto",
+                    "subSetting": null
+                },
+                {
+                    "flexGrow": 0.0,
+                    "flexShrink": 0.0,
+                    "width": null,
+                    "height": 40.0,
+                    "margin": {
+                        "left": 0.0,
+                        "top": 0.0,
+                        "right": 0.0,
+                        "bottom": 0.0
+                    },
+                    "alignSelf": "auto",
+                    "subSetting": null
+                }
+            ]
+        },
+        "items": null,
+        "containerWidth": 199.0,
+        "containerHeight": 199.0
+    };
+
+    let result = calcFlexLayout(flexCalcSetting, true);
+</script>
+</body>
+</html>

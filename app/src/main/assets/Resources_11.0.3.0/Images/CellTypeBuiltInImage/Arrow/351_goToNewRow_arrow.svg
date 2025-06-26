@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    
+    <defs>
+        <filter x="-66.7%" y="-100.0%" width="233.3%" height="300.0%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 1 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <rect id="path-2" x="4" y="1" width="1" height="7"></rect>
+        <filter x="-900.0%" y="-128.6%" width="1900.0%" height="357.1%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="3" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="跳到新行" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <polygon id="Path-5-Copy" fill="#4A81E5" transform="translate(4.500000, 7.500000) rotate(-270.000000) translate(-4.500000, -7.500000) " points="-1 11 10 11 4.5 4"></polygon>
+        <g id="Group-2" transform="translate(7.000000, 3.000000)" filter="url(#filter-1)">
+            <g id="Rectangle-20">
+                <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                <use fill="#FF9832" fill-rule="evenodd" xlink:href="#path-2"></use>
+            </g>
+            <rect id="Rectangle-20" fill="#FF9832" transform="translate(4.500000, 4.500000) rotate(-270.000000) translate(-4.500000, -4.500000) " x="4" y="1" width="1" height="7"></rect>
+            <rect id="Rectangle-20" fill="#FF9832" transform="translate(4.500000, 4.500000) rotate(-225.000000) translate(-4.500000, -4.500000) " x="4" y="2.39808173e-14" width="1" height="9"></rect>
+            <rect id="Rectangle-20" fill="#FF9832" transform="translate(4.500000, 4.500000) rotate(-135.000000) translate(-4.500000, -4.500000) " x="4" y="0" width="1" height="9"></rect>
+            <circle id="Oval-2" fill="#FFFC00" cx="4.5" cy="4.5" r="1.5"></circle>
+        </g>
+    </g>
+</svg>

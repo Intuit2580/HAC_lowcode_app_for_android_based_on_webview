@@ -134,7 +134,6 @@ public class HACWebView extends WebView {
     public void navigateToDefaultPage() {
 
         String target = ConfigManager.getInstance().getEntry();
-        //String target = R.layout.IndexMoblie.html;
         this.loadUrl(target);
     }
 
