@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 
 import com.elvishew.xlog.XLog;
 import com.hjq.permissions.Permission;
+import com.huozige.lab.container.R;
 import com.huozige.lab.container.utilities.ConfigManager;
 import com.huozige.lab.container.utilities.EventUtility;
 import com.huozige.lab.container.utilities.DeviceUtility;
@@ -133,6 +134,7 @@ public class HACWebView extends WebView {
     public void navigateToDefaultPage() {
 
         String target = ConfigManager.getInstance().getEntry();
+        //String target = R.layout.IndexMoblie.html;
         this.loadUrl(target);
     }
 

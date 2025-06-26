@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8" />
+    <link href="#PathBase#/GeneratedResources/favicon.ico?v=635294654301333692" rel="shortcut icon" type="image/x-icon" />
+    <style>
+        ::-webkit-scrollbar {
+            height: 0px;
+            width: 0px;
+        }
+    </style>
+</head>
+<body>
+
+    <div style="position:relative;width:100%;height:100%">
+        <div style="background-image:url('#PathBase#/Resources/Images/SiteBuiltInImages/iphone6.png'); width:456px;height:900px;margin:auto;background-size:cover">
+            <div style="width:375px;height:667px;position:relative;top:106px;left:40px;background:white;border:1px solid;overflow-x:hidden;overflow-y:hidden">
+                <iframe id="fgc-mobile-iframe" style="width: 375px;height: 667px;border: none; overflow-y: auto"></iframe>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById("fgc-mobile-iframe").src = location.origin + location.pathname + "?mobileChild=true";
+    </script>
+</body>
+</html>

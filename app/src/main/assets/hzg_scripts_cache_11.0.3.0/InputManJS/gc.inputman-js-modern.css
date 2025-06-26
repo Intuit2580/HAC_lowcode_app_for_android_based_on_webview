@@ -1,0 +1,3049 @@
+/*!
+ *
+ * InputManJS 5.0.1
+ *
+ * Copyright(c) MESCIUS inc. All rights reserved.
+ *
+ * Licensed under the InputManJS Commercial License.
+ * sales@mescius.com
+ * https://developer.mescius.jp/license/javascript
+ *
+ *
+ */
+
+ .gcim-layout {
+  overflow: visible;
+  display: inline-block;
+  position: relative;
+  outline: none;
+  max-width: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+.gcim {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  display: inline-flex;
+  position: relative;
+  box-sizing: border-box;
+  height: 100%;
+  border-collapse: separate;
+  font-family: -apple-system-font, 'Segoe UI', 'Roboto', sans-serif;
+  font-size: 14px;
+  line-height: 2em;
+  transition-property: border-color;
+  transition-duration: 200ms;
+  width: 100%;
+  background-color: white;
+  padding: 0.5px;
+}
+.gcim.inside-padding {
+  padding-top: 15px;
+}
+.gcim.throughborder-padding {
+  padding-top: 5px;
+}
+.gcim__input {
+  border: none;
+  outline: none;
+  box-shadow: none;
+  width: 100%;
+  font-size: inherit;
+  padding: 1px 0;
+  /*cursor: text;*/
+  box-sizing: border-box;
+  padding: 0 8px;
+  color: inherit;
+  max-height: 100%;
+  border-radius: 4px;
+  height: 2em;
+  background: transparent;
+  transform-origin: left;
+  font-family: -apple-system-font, 'Segoe UI', 'Roboto', sans-serif;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+.gcim__input:disabled {
+  color: gray;
+}
+.gcim__input::-ms-clear {
+  display: none;
+}
+.gcim__textarea {
+  margin: 0px;
+  border: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  /* For IE and modern versions of Chrome */
+  -moz-box-sizing: border-box;
+  /* For Firefox                          */
+  -webkit-box-sizing: border-box;
+  /* For Safari                           */
+  border: none;
+  outline: none;
+  resize: none;
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: inherit;
+  font-family: -apple-system-font, 'Segoe UI', 'Roboto', sans-serif;
+  background: transparent;
+  vertical-align: top;
+}
+.gcim__textarea:disabled {
+  color: gray;
+}
+.gcim__input-wrapper {
+  height: 100%;
+  background-color: transparent;
+  border-radius: 4px;
+  position: relative;
+  flex: auto;
+}
+.gcim__input-wrapper.inside-padding {
+  padding-top: 10px;
+}
+.gcim_hidden {
+  display: none !important;
+}
+.gcim_focused {
+  border-color: #3b99fc;
+}
+.gcim_disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+}
+.gcim_gc-number_negative {
+  color: red;
+}
+/**************ICONS********************/
+.gcim-icon {
+  background-color: transparent;
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: inherit;
+  pointer-events: none;
+  width: 2em;
+  height: 100%;
+  display: block;
+}
+.gcim-icon_back-space {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%20standalone%3D%22no%22%3F%3E%0A%3Csvg%20width%3D%2232px%22%20height%3D%2222px%22%20viewBox%3D%220%200%2032%2022%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20xmlns%3Asketch%3D%22http%3A%2F%2Fwww.bohemiancoding.com%2Fsketch%2Fns%22%3E%0A%20%20%20%20%3C!--%20Generator%3A%20Sketch%20Beta%203.3.2%20(12041)%20-%20http%3A%2F%2Fwww.bohemiancoding.com%2Fsketch%20--%3E%0A%20%20%20%20%3Ctitle%3Edelete%3C%2Ftitle%3E%0A%20%20%20%20%3Cdesc%3ECreated%20with%20Sketch%20Beta.%3C%2Fdesc%3E%0A%20%20%20%20%3Cdefs%3E%3C%2Fdefs%3E%0A%20%20%20%20%3Cg%20id%3D%22Page-1%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%20sketch%3Atype%3D%22MSPage%22%3E%0A%20%20%20%20%20%20%20%20%3Cg%20id%3D%22Icon-Set%22%20sketch%3Atype%3D%22MSLayerGroup%22%20transform%3D%22translate(-516.000000%2C%20-1144.000000)%22%20fill%3D%22%23000000%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M538.708%2C1151.28%20C538.314%2C1150.89%20537.676%2C1150.89%20537.281%2C1151.28%20L534.981%2C1153.58%20L532.742%2C1151.34%20C532.352%2C1150.95%20531.718%2C1150.95%20531.327%2C1151.34%20C530.936%2C1151.73%20530.936%2C1152.37%20531.327%2C1152.76%20L533.566%2C1154.99%20L531.298%2C1157.26%20C530.904%2C1157.65%20530.904%2C1158.29%20531.298%2C1158.69%20C531.692%2C1159.08%20532.331%2C1159.08%20532.725%2C1158.69%20L534.993%2C1156.42%20L537.232%2C1158.66%20C537.623%2C1159.05%20538.257%2C1159.05%20538.647%2C1158.66%20C539.039%2C1158.27%20539.039%2C1157.63%20538.647%2C1157.24%20L536.408%2C1155.01%20L538.708%2C1152.71%20C539.103%2C1152.31%20539.103%2C1151.68%20538.708%2C1151.28%20L538.708%2C1151.28%20Z%20M545.998%2C1162%20C545.998%2C1163.1%20545.102%2C1164%20543.996%2C1164%20L526.467%2C1164%20L518.316%2C1154.98%20L526.438%2C1146%20L543.996%2C1146%20C545.102%2C1146%20545.998%2C1146.9%20545.998%2C1148%20L545.998%2C1162%20L545.998%2C1162%20Z%20M543.996%2C1144%20L526.051%2C1144%20C525.771%2C1143.98%20525.485%2C1144.07%20525.271%2C1144.28%20L516.285%2C1154.22%20C516.074%2C1154.43%20515.983%2C1154.71%20515.998%2C1154.98%20C515.983%2C1155.26%20516.074%2C1155.54%20516.285%2C1155.75%20L525.271%2C1165.69%20C525.467%2C1165.88%20525.723%2C1165.98%20525.979%2C1165.98%20L525.979%2C1166%20L543.996%2C1166%20C546.207%2C1166%20548%2C1164.21%20548%2C1162%20L548%2C1148%20C548%2C1145.79%20546.207%2C1144%20543.996%2C1144%20L543.996%2C1144%20Z%22%20id%3D%22delete%22%20sketch%3Atype%3D%22MSShapeGroup%22%3E%3C%2Fpath%3E%0A%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+  background-size: 1em;
+}
+/**************ICONS END********************/
+.gcim__user-select--none {
+  user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+.gcim_empty_template {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  position: relative;
+  box-sizing: border-box;
+  background-color: white;
+}
+.gcim-floating-label__container {
+  max-width: 100%;
+  user-select: none;
+  line-height: normal;
+  overflow: hidden;
+  transform-origin: left top;
+  text-overflow: ellipsis;
+}
+.gcim-floating-label__container[label-state] {
+  color: rgba(33, 37, 41, 0.65);
+  position: absolute;
+  pointer-events: none;
+  transition: top 0.25s ease-in-out, left 0.25s ease-in-out, transform 0.25s ease-in-out;
+}
+.gcim-floating-label__container[label-state='display'] {
+  top: 50%;
+  transform: translateY(-50%);
+}
+.gcim-floating-label__container[label-state='floating'][label-direction] {
+  top: 0px;
+}
+.gcim-floating-label__container[label-state='floating'][label-direction][label-direction='outside'] {
+  transform: scale(0.7) translateY(-100%);
+}
+.gcim-floating-label__container[label-state='floating'][label-direction][label-direction='throughborder'] {
+  transform: scale(0.7) translateY(-50%);
+}
+.gcim-floating-label__container[label-state='floating'][label-direction][label-direction='throughborder'] label {
+  background: linear-gradient(to bottom, transparent 0%, transparent calc(50% - 3px), white calc(50% - 3px), white calc(50% + 3px), transparent calc(50% + 3px), transparent 100%);
+}
+.gcim-floating-label__container[label-state='floating'][label-direction][label-direction='inside'] {
+  transform: scale(0.7);
+}
+.gcim-floating-label__container label {
+  overflow: hidden;
+  text-align: start;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  pointer-events: none;
+  border: 1px solid transparent;
+  transition: background-color 3s ease-in-out;
+}
+[ctrl-type="GcMultiLineTextBox"] .gcim-floating-label__container[label-state='display'] {
+  top: 0;
+  transform: translateY(0);
+}
+.gcim__scroll-bar-container {
+  width: 100px;
+  height: 100px;
+  overflow: scroll;
+}
+.gcim__scroll-bar-content {
+  width: 1000px;
+  height: 1000px;
+}
+.gcim-dropdown {
+  position: absolute;
+  left: 0;
+  box-sizing: border-box;
+  border-top: 0;
+  z-index: 10000001;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.gcim-dropdown-up {
+  bottom: 100%;
+}
+.gcim-dropdown-down {
+  top: 100%;
+}
+.gcim-dropdown_close {
+  display: none !important;
+}
+.gcim-dropdown .gcim-numeric-pad {
+  display: block;
+}
+.gcim-dropdown .gcim-calendar__outter-container {
+  display: block;
+}
+.gcim-dropdown-animation__expand-open-down {
+  animation: expandOpenDown 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+@keyframes expandOpenDown {
+  0% {
+    transform: scaleY(0.8);
+    transform-origin: 0% 0%;
+    opacity: 0;
+  }
+  100% {
+    transform: scaleY(1);
+    transform-origin: 0% 0%;
+    opacity: 1;
+  }
+}
+.gcim-dropdown-animation__expand-close-down {
+  animation: expandCloseDown 0.2s cubic-bezier(0.755, 0.05, 0.855, 0.06);
+}
+@keyframes expandCloseDown {
+  0% {
+    transform: scaleY(1);
+    transform-origin: 0% 0%;
+    opacity: 1;
+  }
+  100% {
+    transform: scaleY(0.8);
+    transform-origin: 0% 0%;
+    opacity: 0;
+  }
+}
+.gcim-dropdown-animation__expand-open-up {
+  animation: expandOpenUp 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+@keyframes expandOpenUp {
+  0% {
+    transform: scaleY(0.8);
+    transform-origin: 100% 100%;
+    opacity: 0;
+  }
+  100% {
+    transform: scaleY(1);
+    transform-origin: 100% 100%;
+    opacity: 1;
+  }
+}
+.gcim-dropdown-animation__expand-close-up {
+  animation: expandCloseUp 0.2s cubic-bezier(0.755, 0.05, 0.855, 0.06);
+}
+@keyframes expandCloseUp {
+  0% {
+    transform: scaleY(1);
+    transform-origin: 100% 100%;
+    opacity: 1;
+  }
+  100% {
+    transform: scaleY(0.8);
+    transform-origin: 100% 100%;
+    opacity: 0;
+  }
+}
+.gcim-dropdown-animation__popup-open-down,
+.gcim-dropdown-animation__popup-open-up {
+  animation: popupOpen 0.2s ease;
+}
+@keyframes popupOpen {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+    transform-origin: center center;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    transform-origin: center center;
+  }
+}
+.gcim-dropdown-animation__popup-close-down,
+.gcim-dropdown-animation__popup-close-up {
+  animation: popupClose 0.2s ease;
+}
+@keyframes popupClose {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+    transform-origin: center center;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.5);
+    transform-origin: center center;
+  }
+}
+.gcim-dropdown-animation__slideDown-close-down {
+  animation: slideDownCloseDown 0.2s ease;
+}
+.gcim-dropdown-animation__slideDown-open-down {
+  animation: slideDownOpenDown 0.2s ease;
+}
+.gcim-dropdown-animation__slideDown-open-up {
+  animation: slideDownOpenUp 0.2s ease;
+}
+.gcim-dropdown-animation__slideDown-close-up {
+  animation: slideDownCloseUp 0.2s ease;
+}
+@keyframes slideDownCloseDown {
+  0% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+}
+@keyframes slideDownOpenDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+@keyframes slideDownOpenUp {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+@keyframes slideDownCloseUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+.gcim-dropdown-animation__slideUp-close-down {
+  animation: slideUpCloseDown 0.2s ease;
+}
+.gcim-dropdown-animation__slideUp-open-down {
+  animation: slideUpOpenDown 0.2s ease;
+}
+.gcim-dropdown-animation__slideUp-open-up {
+  animation: slideUpOpenUp 0.2s ease;
+}
+.gcim-dropdown-animation__slideUp-close-up {
+  animation: slideUpCloseUp 0.2s ease;
+}
+@keyframes slideUpCloseDown {
+  0% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+@keyframes slideUpOpenDown {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+@keyframes slideUpOpenUp {
+  0% {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+@keyframes slideUpCloseUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+}
+.gcim__side-button {
+  width: 2em;
+  box-sizing: border-box;
+  background: transparent;
+  font-size: inherit;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  border: none;
+  padding: 0;
+  border-radius: 0;
+  background-color: white;
+  z-index: 0;
+}
+.gcim__side-button:focus {
+  outline: none;
+}
+.gcim__side-button:hover {
+  background: #DDDDDD;
+}
+.gcim__side-button:active {
+  background: #BBBBBB;
+}
+.gcim__side-button[disabled] {
+  opacity: 0.5;
+}
+.gcim__side-button[disabled]:hover {
+  background: none;
+}
+.gcim__side-button[name='clear'] {
+  width: 24px;
+  background-color: transparent;
+}
+.gcim__side-button[name='clear']:hover {
+  background: none;
+}
+.gcim__side-button[name='help'] {
+  width: 24px;
+  background-color: transparent;
+}
+.gcim__side-button[name='help']:hover {
+  background: none;
+}
+.gcim__side-button[name='copy'] {
+  width: 24px;
+  background-color: transparent;
+}
+.gcim__side-button[name='copy']:hover {
+  background: none;
+}
+.gcim__buttons_container {
+  display: flex;
+  flex: none;
+}
+.gcim__buttons_container[left] {
+  position: relative;
+  border-radius: inherit;
+}
+.gcim__buttons_container[left] .gcim__button_border-radius {
+  border-top-left-radius: inherit;
+  border-bottom-left-radius: inherit;
+}
+.gcim__buttons_container[left] .gcim__button_border {
+  border-right: 1px solid #CCCCCC;
+}
+.gcim__buttons_container[right] {
+  border-radius: inherit;
+}
+.gcim__buttons_container[right] .gcim__button_border-radius {
+  border-top-right-radius: inherit;
+  border-bottom-right-radius: inherit;
+}
+.gcim__buttons_container[right] .gcim__button_border {
+  border-left: 1px solid #CCCCCC;
+}
+.gcim__buttons_container-multiline {
+  flex-flow: wrap-reverse;
+}
+.gcim__spin-button-wrapper {
+  height: 100%;
+  width: 2em;
+}
+.gcim__spin-button {
+  cursor: pointer;
+  background: white;
+}
+.gcim__spin-button:hover {
+  background: #DDDDDD;
+}
+.gcim__spin-button:active {
+  background: #BBBBBB;
+}
+.gcim__spin-button__up {
+  height: 50%;
+  width: 100%;
+  box-sizing: border-box;
+}
+.gcim__spin-button__down {
+  height: 50%;
+  width: 100%;
+}
+.gcim-icon_spin-down {
+  background-size: 0.5em;
+}
+.gcim-icon_spin-up {
+  background-size: 0.5em;
+}
+.gcim__fish-eye {
+  width: 2em;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.gcim__clear-button {
+  width: 100%;
+  height: 100%;
+  background-size: 65% 65%;
+  background-repeat: no-repeat;
+}
+.gcim__copy-button {
+  width: 100%;
+  height: 100%;
+  background-size: 65% 65%;
+  background-repeat: no-repeat;
+}
+.gcim__help-button {
+  width: 100%;
+  height: 100%;
+  background-size: 65%;
+  background-repeat: no-repeat;
+}
+.gcim__button-multiline {
+  height: 2em;
+}
+.gcim__copy-button_tip {
+  background-color: #5198fb;
+  padding: 5px;
+  font-size: 85%;
+  color: #fff;
+  border-radius: 6px;
+  word-wrap: break-word;
+  max-width: 600px;
+  min-width: 0.7em;
+  min-height: 1em;
+  white-space: pre-wrap;
+}
+.gcim__help-button_tip {
+  background-color: #5198fb;
+  padding: 5px;
+  font-size: 85%;
+  color: #fff;
+  border-radius: 6px;
+  word-wrap: break-word;
+  max-width: 600px;
+  min-width: 0.7em;
+  min-height: 1em;
+  white-space: pre-wrap;
+}
+.gcim__side-button[name='calculator-popup'] .gcim-icon_drop-down {
+  background-size: 80%;
+}
+.gcim__listbox {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  outline: none;
+  width: 100%;
+  border-radius: 0;
+  max-width: 100%;
+}
+.gcim__listbox * {
+  box-sizing: border-box;
+}
+.gcim__listbox[data-multiple-column="false"] .viewport__inner {
+  width: 100%;
+  vertical-align: top;
+}
+.gcim__listbox[data-multiple-column="false"] .column-header__inner {
+  width: 100%;
+}
+.gcim__listbox[safari="true"] {
+  width: auto;
+}
+.gcim__listbox .column-header .column-header__inner {
+  display: none;
+  cursor: pointer;
+  overflow: hidden;
+  background-color: #EAEAEA;
+  white-space: nowrap;
+  font-weight: 600;
+}
+.gcim__listbox .column-header .column-header__inner[show="true"] {
+  display: inline-block;
+}
+.gcim__listbox .column-header .column-header__sort-indicator {
+  display: inline-block;
+}
+.gcim__listbox .column-header .column-header__sort-indicator div {
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+}
+.gcim__listbox .column-header .column-header__sort-indicator[sort-state="asc"] div {
+  transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+}
+.gcim__listbox .viewport {
+  overflow: hidden;
+  cursor: default;
+}
+.gcim__listbox .viewport .viewport__inner {
+  display: inline-block;
+  vertical-align: top;
+}
+.gcim__listbox .viewport[dragover="false"] .list-item:hover {
+  background-color: #f1f1f1;
+}
+.gcim__listbox .viewport[dragover="false"] .list-item[focused="true"] {
+  background-color: #f1f1f1;
+}
+.gcim__listbox .viewport[dragover="false"] .list-item[selected="true"] {
+  background-color: #0085c7;
+  color: white;
+}
+.gcim__listbox .viewport[dragover="true"] {
+  cursor: pointer;
+}
+.gcim__listbox .viewport .list-item {
+  overflow: hidden;
+  width: 100%;
+}
+.gcim__listbox .viewport .list-item[focused="true"] {
+  background-color: #f1f1f1;
+}
+.gcim__listbox .viewport .list-item[selected="true"] {
+  background-color: #0085c7;
+  color: white;
+}
+.gcim__listbox .viewport .list-item__inner {
+  white-space: nowrap;
+  height: 100%;
+}
+.gcim__listbox .viewport .list-item--virtual {
+  position: absolute;
+  top: 0;
+}
+.gcim__listbox .viewport .customize-item {
+  padding: 2px 4px;
+  width: 180px;
+  white-space: pre;
+}
+.gcim__listbox .footer {
+  overflow: hidden;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.gcim__listbox .footer_style {
+  background: #fff;
+  height: 28px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.gcim__listbox .resize-line {
+  top: 0;
+  bottom: 0;
+  border-left: 1px dashed gray;
+  z-index: 10;
+  cursor: col-resize;
+  position: absolute;
+}
+.gcim__listbox .drag-drop-line {
+  height: 2px;
+  border-radius: 1px;
+  left: 0;
+  background-color: #0052cc;
+  position: absolute;
+  pointer-events: none;
+}
+.gcim__listbox .scroll {
+  position: absolute;
+  overflow: auto;
+  height: auto;
+  width: auto;
+}
+.gcim__listbox .scroll--vertical {
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+.gcim__listbox .scroll--horizontal {
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.gcim__listbox .corner {
+  background-color: #f1f1f1;
+  position: absolute;
+  cursor: default;
+}
+.gcim__listbox .corner[resize="true"] {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: transparent;
+  cursor: nwse-resize;
+  background-position: bottom right;
+  background-size: 80%;
+}
+.gcim__listbox .corner[resize="true"][showverticalscrollbar="true"],
+.gcim__listbox .corner[resize="true"][showhorizontalscrollbar="true"] {
+  background-color: #f1f1f1;
+}
+.gcim__listbox .corner--bottom--right {
+  right: 0;
+  bottom: 0;
+}
+.gcim__listbox .grid-line--bottom--right {
+  border-right: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
+}
+.gcim__listbox .cell-content {
+  padding-left: 2px;
+  padding-right: 2px;
+  height: 100%;
+  line-height: 100%;
+  white-space: pre;
+}
+.gcim__listbox .header-content {
+  text-align: center;
+  height: 100%;
+}
+.gcim__listbox .text-content {
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: top;
+}
+.gcim__listbox .text-content[data-align='left'] {
+  text-align: left;
+}
+.gcim__listbox .text-content[data-align='center'] {
+  text-align: center;
+}
+.gcim__listbox .text-content[data-align='right'] {
+  text-align: right;
+}
+.gcim__listbox .content[data-align="top"] {
+  vertical-align: top;
+}
+.gcim__listbox .content[data-align="middle"] {
+  vertical-align: middle;
+}
+.gcim__listbox .content[data-align="bottom"] {
+  vertical-align: bottom;
+}
+.gcim__listbox .content[data-align="baseline"] {
+  vertical-align: baseline;
+}
+.gcim__listbox .text-truncate-style {
+  text-overflow: ellipsis;
+}
+.list_overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.5;
+  background: #fff;
+}
+.listbox_tip {
+  background-color: white;
+  padding: 0px 8px;
+  border: 2px solid gainsboro;
+  font-size: medium;
+  border-radius: 6px;
+  box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.1);
+  word-wrap: break-word;
+  max-width: 600px;
+  white-space: pre-wrap;
+}
+.listbox_drag-drop-container {
+  position: fixed;
+  opacity: 0.9;
+  z-index: 10000009;
+  pointer-events: none;
+}
+.gcim-numeric-pad {
+  border: 1px solid #a9a9a9;
+  font-size: 16px;
+  display: inline-block;
+  user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  padding: 10px;
+  background-color: #ededed;
+  box-sizing: border-box;
+  width: 200px;
+  height: 200px;
+}
+.gcim-numeric-pad__row {
+  position: relative;
+  height: 18%;
+  vertical-align: middle;
+  margin-bottom: 2.5%;
+  font-size: inherit;
+}
+.gcim-numeric-pad__row_last-row {
+  margin-bottom: 0;
+}
+.gcim-numeric-pad__row_col1 {
+  margin-right: 5%;
+}
+.gcim-numeric-pad__row_col2 {
+  margin-right: 5%;
+}
+.gcim-numeric-button {
+  width: 30%;
+  float: left;
+  height: 100%;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid #a9a6a6;
+  background-color: white;
+  border-radius: 4px;
+  outline: none;
+  font-size: inherit;
+  color: #000;
+}
+.gcim-numeric-button:hover {
+  background-color: #e9e9e9;
+}
+.gcim-numeric-button:active {
+  background-color: #d3d3d3;
+  color: black;
+}
+.gcim-numeric-button:active {
+  width: 30%;
+  float: left;
+  height: 100%;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid #7e7e7e;
+}
+.gcim-drop-down_numeric-box {
+  border: 0;
+  background: transparent;
+  overflow: visible;
+}
+.gcim-calendar__outter-container {
+  color: #333;
+  cursor: default;
+  display: inline-block;
+  position: relative;
+  border: solid lightgray 1px;
+  touch-action: manipulation;
+  font-family: -apple-system-font, "Segoe UI", Roboto, sans-serif;
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  font-size: 12px;
+  border-radius: 4px;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.gcim-calendar__outter-container:focus {
+  outline: none;
+}
+.gcim-calendar__disabled {
+  opacity: 0.5;
+}
+.gcim-calendar {
+  margin: 2px 0px 0px 2px;
+  display: inline-table;
+}
+.gcim-calendar__header {
+  width: 100%;
+  height: 22px;
+  position: relative;
+  font-size: 12px;
+}
+.gcim-calendar__header .cell {
+  position: absolute;
+  width: 20px;
+  height: 100%;
+}
+.gcim-calendar__header__left-navigate {
+  left: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.gcim-calendar__header__zoom-out {
+  left: 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.gcim-calendar__header__text {
+  position: absolute;
+  left: 40px;
+  right: 40px;
+  height: 100%;
+  line-height: 22px;
+  text-align: center;
+  font-weight: bold;
+}
+.gcim-calendar__header__right-navigate {
+  right: 0px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.gcim-calendar__header__zoom-in {
+  right: 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.gcim-calendar__month-container {
+  width: 100%;
+}
+.gcim-calendar__month-body {
+  width: 100%;
+  min-width: 140px;
+  height: 100%;
+  border-collapse: collapse;
+}
+.gcim-calendar__month-body__corner-cell {
+  background-color: #EAEAEA;
+}
+.gcim-calendar__month-body__week-number {
+  width: 20px;
+  height: 24px;
+  font-size: 9px;
+  text-align: center;
+  box-sizing: border-box;
+}
+.gcim-calendar__month-body__week-title {
+  width: 20px;
+  height: 24px;
+  line-height: 24px;
+  font-weight: bold;
+  font-size: 12px;
+  box-sizing: border-box;
+  text-align: center;
+  background-color: #EAEAEA;
+}
+.gcim-calendar__month-body__normal-day {
+  width: 28px;
+  height: 24px;
+  overflow: hidden;
+  box-sizing: border-box;
+  position: relative;
+  text-align: center;
+}
+.gcim-calendar__month-body__content-text {
+  top: 0;
+  bottom: 10px;
+  width: 100%;
+  position: absolute;
+  line-height: 14px;
+}
+.gcim-calendar__month-body__selected-day {
+  background-color: #B0E5FF;
+  color: #0085C7;
+}
+.gcim-calendar__month-body__today {
+  font-weight: bold;
+  color: black;
+}
+.gcim-calendar__month-body__focusd-day {
+  color: #0085C7;
+  font-weight: bold;
+}
+.gcim-calendar__month-body__trailing-day {
+  opacity: 0.5;
+}
+.gcim-calendar__month-body__disabled-day {
+  opacity: 0.3;
+}
+.gcim-calendar__month-body__rokuyou {
+  width: 100%;
+  height: 10px;
+  line-height: 10px;
+  font-size: 6px;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+}
+.gcim-calendar__year-container {
+  width: 100%;
+}
+.gcim-calendar__year-view {
+  width: 100%;
+  height: 100%;
+  min-width: 140px;
+  border-collapse: collapse;
+}
+.gcim-calendar__year-view__month {
+  width: 72px;
+  max-width: 72px;
+  height: 42.5px;
+  line-height: calc(42.5px - 2px);
+  text-align: center;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.gcim-calendar__year-view__month .range-year-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+.gcim-calendar__year-view__month .range-year-container .range-year {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  line-height: 1.3em;
+  box-sizing: border-box;
+}
+.gcim-calendar__year-view__selected-month {
+  background-color: #B0E5FF;
+  color: #0085C7;
+}
+.gcim-calendar__year-view__focused-month {
+  color: #0085C7;
+}
+.gcim-calendar__year-view__disabled-month {
+  opacity: 0.3;
+}
+.gcim-calendar__today-button {
+  width: 100%;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+.gcim-calendar__navigator_vertical {
+  width: 20px;
+  background-color: #F1F1F1;
+}
+.gcim-calendar__navigator_vertical .cell {
+  width: 100%;
+  height: 20px;
+  background-size: 20px;
+}
+.gcim-calendar__navigator_vertical .thumb-button {
+  height: 14px;
+  background-color: #AAA;
+}
+.gcim-calendar__navigator_horizontal {
+  height: 20px;
+  background-color: #F1F1F1;
+}
+.gcim-calendar__navigator_horizontal .cell {
+  height: 100%;
+  display: inline-block;
+  width: 20px;
+  background-size: 20px;
+}
+.gcim-calendar__navigator_horizontal .thumb-button {
+  width: 14px;
+  background-color: #AAA;
+}
+.gcim-calendar__tooltip {
+  border: solid 1px lightgray;
+  padding: 5px 10px;
+  color: #333;
+  background-color: white;
+  font-family: -apple-system-font, "Segoe UI", Roboto, sans-serif;
+  font-size: 10px;
+}
+.gcim-calendar__header-popup {
+  z-index: 10000001;
+  position: absolute;
+  border: solid 1px lightgray;
+  cursor: default;
+  color: #333;
+  background-color: white;
+  font-family: -apple-system-font, "Segoe UI", Roboto, sans-serif;
+  font-size: 12px;
+}
+.gcim-calendar__header-popup__cell {
+  padding: 2px 15px;
+  height: 20px;
+}
+.gcim-calendar__header-popup__cell_selected {
+  background-color: #B0E5FF;
+  color: #0085C7;
+}
+.gcim-calendar__holiday-groups-popup {
+  z-index: 10000001;
+  position: absolute;
+  cursor: default;
+  color: #333;
+  background-color: white;
+  font-family: -apple-system-font, "Segoe UI", Roboto, sans-serif;
+  font-size: 12px;
+  box-shadow: 3px 3px 3px 0px gray;
+  padding: 2px;
+  visibility: visible;
+  border: solid 1px lightgray;
+}
+.gcim-calendar__holiday-groups-popup__cell:hover {
+  background-color: #e9e9e9;
+}
+.gcim-calendar__holiday-groups-popup__cell_state {
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 20px;
+  padding: 2px;
+}
+.gcim-calendar_animation-container {
+  overflow: hidden;
+}
+.gcim-calender_animation-scrolling-container {
+  display: flex;
+}
+.gcim-calender_animation-scrolling-container[scroll-direction="0"] {
+  flex-direction: column-reverse;
+}
+.gcim-calender_animation-scrolling-container[scroll-direction="1"] {
+  flex-direction: column;
+}
+.gcim-calender_animation-scrolling-container[scroll-direction="2"] {
+  flex-direction: row-reverse;
+}
+.gcim-calender_animation-scrolling-container[scroll-direction="3"] {
+  flex-direction: row;
+}
+.gcim-calendar-dimension__row[scrolling="true"] {
+  line-height: 0px;
+}
+.gcim-calendar__year-view__adjacent-year {
+  opacity: 0.5;
+}
+.gcim-calendar__navigator_horizontal .gcim-calendar__navigator_scroll_bar {
+  display: inline-block;
+  height: 20px;
+}
+.gcim-calendar__type-switch-animation {
+  animation-name: type-switch;
+  animation-duration: 250ms;
+}
+@keyframes type-switch {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.indicator-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  background-color: white;
+  opacity: 0.8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loading-ring {
+  display: inline-block;
+  position: relative;
+  z-index: 3;
+}
+.loading-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.loading-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.loading-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+.loading-ring div {
+  box-sizing: border-box;
+  position: absolute;
+  display: block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rebeccapurple;
+  border-radius: 50%;
+  animation: loading-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: rebeccapurple transparent transparent transparent;
+}
+.hide {
+  display: none;
+}
+@keyframes loading-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.gcim_checkbox {
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.gcim_checkbox .checkbox-span {
+  display: inline-block;
+  border: 1px solid lightgray;
+  border-radius: 4px;
+  width: 14px;
+  height: 14px;
+  position: relative;
+  background-color: white;
+}
+.gcim_checkbox .checkbox-span::after {
+  transform: rotate(45deg) scale(0);
+  content: '';
+  height: 7px;
+  width: 3px;
+  border-color: #fff;
+  border-width: 2px;
+  border-style: solid;
+  border-top: 0;
+  border-left: 0;
+  top: 1px;
+  left: 4px;
+  position: absolute;
+}
+.gcim_checkbox .checkbox:checked + .checkbox-span {
+  border: 1px solid #2d8cf0;
+  background-color: #2d8cf0;
+}
+.gcim_checkbox .checkbox:checked + .checkbox-span::after {
+  transform: rotate(45deg) scale(1);
+}
+.gcim-date-time-picker__outter {
+  size: auto;
+  user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  width: 228px;
+  background-color: white;
+  -webkit-tap-highlight-color: transparent;
+}
+.gcim-date-time-picker__picker {
+  overflow: hidden;
+  display: inline-block;
+  margin: 25px 24px 32px 24px;
+  position: relative;
+  touch-action: none;
+  -ms-touch-action: none;
+}
+.gcim-date-time-picker__column-item {
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  width: 50px;
+  height: 120px;
+  display: inline-block;
+  position: relative;
+}
+.gcim-date-time-picker__selected-column-line {
+  border-top: 2px solid #0085c7;
+  border-bottom: 2px solid #0085c7;
+  display: inline-block;
+  position: absolute;
+  width: 50px;
+  top: 39px;
+  height: 34px;
+  box-sizing: content-box;
+}
+.gcim-date-time-picker__item {
+  user-select: none;
+  text-align: center;
+  font-size: 14px;
+  color: #4A4A4A;
+  position: absolute;
+  width: 100%;
+}
+.gcim-date-time-picker__item[gc_pickeritem_isdisabled="true"] {
+  pointer-events: none;
+  color: #c1c1c1;
+}
+.gcim-date-time-picker__item[gc_pickeritem_isselected="true"] {
+  font-weight: bold;
+  color: #284D60;
+}
+.gcim-date-time-picker__tab-container {
+  -webkit-touch-callout: none;
+  display: block;
+  user-select: none;
+}
+.gcim-date-time-picker__tab {
+  display: inline-block;
+  cursor: pointer;
+  margin: 0px 2px 0px 0px;
+  padding: 8px 16px 5px 17px;
+  transition: 0.3s;
+  font-size: 14px;
+  color: #333333;
+  user-select: none;
+  border-bottom: 3px solid #f5f5f5;
+  font-weight: bold;
+}
+.gcim-date-time-picker__tab--active {
+  color: #0085c7;
+  border-bottom: 3px solid #0085c7;
+}
+.gcim-date-time-picker__tab-label {
+  display: block;
+  background: #f5f5f5;
+  padding-left: 12px;
+  box-sizing: border-box;
+}
+.gcim-date-time-picker__tab-content {
+  display: block;
+  text-align: center;
+}
+.gcim-date-time-picker__clear {
+  clear: both;
+}
+.gcim-date-time-picker__clear-left {
+  clear: left;
+}
+.gcim-date-time-picker__button--ok {
+  width: 130px;
+  margin: 0px 48px 0px 48px;
+  padding: 8px 0px;
+  background-color: #0085c7;
+  color: #ffffff;
+  font-size: 12px;
+  line-height: 14px;
+  cursor: pointer;
+  border-radius: 4%;
+  text-align: center;
+  display: inline-block;
+}
+.gcim-date-time-picker__button--ok[disabled='disabled'] {
+  opacity: 0.5;
+}
+.gcim-date-time-picker__drop-down-container {
+  border: 1px solid #dfd5d5;
+  background: #ffffff;
+  font-family: -apple-system-font, 'Segoe UI', 'Roboto', sans-serif;
+  display: inline-block;
+  line-height: 16px;
+  padding-bottom: 10px;
+}
+.gcim-date-time-picker__time-format {
+  display: inline-block;
+  font-weight: bold;
+  vertical-align: text-top;
+  width: 15px;
+}
+.gcim-date-time-picker__column {
+  display: inline-block;
+  vertical-align: middle;
+  cursor: default;
+}
+.gcim-date-time-picker__overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.5;
+  background: #fff;
+  z-index: 1;
+}
+[ctrl-type="GcComboBox"] .gcim__combobox {
+  width: 100%;
+  height: 100%;
+}
+[ctrl-type="GcComboBox"] {
+  display: inline-block;
+}
+.gcim__combobox {
+  display: inline-block;
+}
+.gcim__combobox .combobox-editor {
+  display: inline-block;
+}
+.gcim__combobox .combobox-input {
+  width: 100%;
+  height: 100%;
+}
+.gcim__combobox .combobox-dropdown {
+  position: absolute;
+  z-index: 10000001;
+}
+.gcim__combobox .combobox-dropdown_overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.gcim__context_menu {
+  position: absolute;
+  background-color: menu;
+  padding: 4px 2px;
+  border: 1px solid gray;
+  z-index: 10000000;
+  box-shadow: grey 3px 3px 3px 0px;
+  font-size: 10pt;
+  width: 150px;
+  user-select: none;
+}
+.gcim__context_menu[data-edge="true"] {
+  background-color: #F2F2F2;
+  box-shadow: none;
+  font-size: 11pt;
+}
+.gcim__context_menu[data-edge="true"] .gcim__context_menu_item[data-enabled="false"] {
+  display: none;
+}
+.gcim__context_menu .gcim__context_menu_item {
+  padding-left: 20px;
+  height: 23px;
+  border: 1px solid transparent;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.gcim__context_menu .gcim__context_menu_item[name='split'] {
+  height: 7px;
+}
+.gcim__context_menu .gcim__context_menu_item:not([name='split'])[data-enabled="false"] {
+  color: #808080;
+}
+.gcim__context_menu .gcim__context_menu_item:not([name='split'])[data-enabled="false"][hover="true"] {
+  border-color: #aeaeae;
+  background-color: #e1e1e1;
+}
+.gcim__context_menu .gcim__context_menu_item:not([name='split'])[data-enabled="true"][hover="true"] {
+  border-color: #78aee4;
+  background-color: #d1e2f2;
+}
+.gcim__context_menu .context_menu_item__content {
+  height: 23px;
+  border-left: 1px solid #d7d7d7;
+  padding: 3px 0 3px 6px;
+}
+.gcim__context_menu .context_menu_item__split {
+  width: 100%;
+  border-left: 1px solid #d7d7d7;
+  padding: 3px 0 3px 2px;
+}
+.gcim__context_menu .context_menu_item__split > div {
+  height: 0;
+  border-bottom: 1px solid #d7d7d7;
+}
+.gcim__calculator {
+  user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  line-height: initial;
+  cursor: default;
+  border: 1px solid #a9a9a9;
+  background-color: #ededed;
+  width: 200px;
+  height: 200px;
+  vertical-align: top;
+  box-sizing: border-box;
+  display: inline-block;
+}
+.gcim__calculator .calculator-content {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 2.5%;
+}
+.gcim__calculator .calculator-output-panel {
+  border: 1px gray solid;
+  border-radius: 2px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  margin-bottom: 3px;
+}
+.gcim__calculator .calculator-output {
+  flex: 1;
+  text-align: right;
+  white-space: nowrap;
+  word-break: keep-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+  font-size: 16px;
+  color: black;
+}
+.gcim__calculator .calculator-output-panel[data-hidden="true"] {
+  display: none;
+}
+.gcim__calculator .calculator-btn-panel {
+  flex: auto;
+  display: flex;
+  flex-direction: column;
+}
+.gcim__calculator .calculator-btn-panel .calculator-btn-row:first-child {
+  margin-top: 0px;
+}
+.gcim__calculator .calculator-btn-panel .calculator-btn-row:last-child {
+  margin-bottom: 0px;
+}
+.gcim__calculator .calculator-btn-row {
+  flex: 1;
+  display: flex;
+  margin: 2px 0px;
+}
+.gcim__calculator .calculator-btn-row .calculator-btn:first-child {
+  margin-left: 0px;
+}
+.gcim__calculator .calculator-btn-row .calculator-btn:last-child {
+  margin-right: 0px;
+}
+.gcim__calculator .calculator-btn {
+  font-size: 12px;
+  font-weight: 400;
+  border: 1px solid #a9a6a6;
+  border-radius: 4px;
+  color: black;
+  background-color: white;
+  margin: 0px 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+.gcim__calculator .calculator-btn:hover {
+  background-color: #e9e9e9;
+}
+.gcim__calculator .calculator-btn:active {
+  border: 1px solid #7e7e7e;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.gcim__calculator .calculator-btn[data-key-type="Memory"] {
+  color: #4A4A4A;
+  flex: 1.1;
+}
+.gcim__calculator .calculator-btn[data-enable="false"] {
+  opacity: 0.6;
+  pointer-events: none;
+}
+.gcim__calculator .calculator-btn[data-key="MStatus"] {
+  opacity: 1;
+  pointer-events: none;
+  background-color: inherit;
+  border-color: #e8e8e8;
+  border-style: inset;
+}
+.gcim__calculator[calculator-type="dropdown"] .calculator-btn-row--ok {
+  justify-content: center;
+}
+.gcim__calculator[calculator-type="dropdown"] .calculator-btn-row--ok .calculator-btn {
+  flex: none;
+  width: 30%;
+}
+.gcim__calculator[calculator-type="popup"] {
+  width: 380px;
+  height: 380px;
+}
+.gcim__calculator[calculator-type="popup"] .calculator-output-panel {
+  margin-bottom: 5px;
+}
+.gcim__calculator[calculator-type="popup"] .calculator-output-panel .calculator-output {
+  font-size: 28px;
+}
+.gcim__calculator[calculator-type="popup"] .calculator-btn-row > .calculator-btn {
+  font-size: 18px;
+}
+.gcim__calculator[calculator-type="popup"] .calculator-btn-row--ok--cancel {
+  justify-content: center;
+}
+.gcim__calculator[calculator-type="popup"] .calculator-btn-row--ok--cancel .calculator-btn {
+  flex: none;
+  width: 30%;
+}
+.gcim__calculator[data-enable="false"] {
+  pointer-events: none;
+}
+.gcim__calculator[data-enable="false"] .calculator-content {
+  opacity: 0.6;
+}
+.gcim__calculator[data-enable="false"] .calculator-btn[data-enable="false"] {
+  opacity: 1;
+}
+.gcim__calculator:focus {
+  outline: none;
+}
+.gcim__modalbox {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0px;
+  top: 0px;
+  background-color: rgba(189, 189, 189, 0.3);
+  align-items: center;
+  z-index: 10000008;
+}
+.gcim__modalbox > .gcim__modalbox-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.gc_tip {
+  z-index: 10000002;
+  position: fixed;
+}
+.default_tip {
+  background-color: white;
+  padding: 0px 8px;
+  border: 2px solid gainsboro;
+  font-size: medium;
+  border-radius: 6px;
+  box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.1);
+  word-wrap: break-word;
+  max-width: 600px;
+  white-space: pre-wrap;
+}
+.gcim_resize {
+  position: absolute;
+  opacity: 0;
+}
+.gcim_resize[direction="vertical"] {
+  height: 5px;
+  width: calc(100% - 5px * 2);
+  bottom: 0;
+  left: 0;
+  cursor: ns-resize;
+}
+.gcim_resize[direction="horizontal"] {
+  width: 5px;
+  height: calc(100% - 5px * 2);
+  top: 0;
+  right: 0;
+  cursor: ew-resize;
+}
+.gcim_resize[direction="both"] {
+  width: 10px;
+  height: 10px;
+  right: 0;
+  bottom: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: transparent;
+  background-size: 80%;
+}
+.gcim_resize[direction="both"][cursor="both"] {
+  cursor: nwse-resize;
+}
+.gcim_resize[direction="both"][cursor="horizontal"] {
+  cursor: ew-resize;
+}
+.gcim_resize[direction="both"][cursor="vertical"] {
+  cursor: ns-resize;
+}
+.gcim_resize[direction="both"][showIcon="true"] {
+  opacity: 1;
+}
+.gcim__resize-mask {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  opacity: 0;
+  z-index: 1000000000;
+}
+.gcim_resize[direction="both"],
+.gcim__listbox .corner[resize="true"],
+.gcim__tagboxeditor .resize-corner,
+.gcim__treeview .corner[resize='true'] {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%0A%3C!--%20Generator%3A%20Adobe%20Illustrator%2022.1.0%2C%20SVG%20Export%20Plug-In%20.%20SVG%20Version%3A%206.00%20Build%200)%20%20--%3E%0A%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%0A%09%20viewBox%3D%220%200%2016%2016%22%20style%3D%22enable-background%3Anew%200%200%2016%2016%3B%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cstyle%20type%3D%22text%2Fcss%22%3E%0A%09.st0%7Bfill%3A%23666666%3B%7D%0A%3C%2Fstyle%3E%0A%3Crect%20x%3D%22-3.8%22%20y%3D%227.5%22%20transform%3D%22matrix(0.7071%20-0.7071%200.7071%200.7071%20-3.3137%208)%22%20class%3D%22st0%22%20width%3D%2223.6%22%20height%3D%221%22%2F%3E%0A%3Crect%20x%3D%225.8%22%20y%3D%2211.5%22%20transform%3D%22matrix(0.7071%20-0.7071%200.7071%200.7071%20-4.9706%2012)%22%20class%3D%22st0%22%20width%3D%2212.3%22%20height%3D%221%22%2F%3E%0A%3C%2Fsvg%3E%0A");
+}
+.gcim__slider[visible="false"] {
+  display: none!important;
+}
+.gcim-dropdown .gcim__treeview {
+  display: block;
+}
+.gcim__treeview {
+  display: inline-block;
+  outline: none;
+  max-width: 100%;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+  overflow: hidden;
+  width: 200px;
+  font-family: -apple-system-font, 'Segoe UI', 'Roboto', sans-serif;
+  font-size: 14px;
+  background-color: white;
+  box-sizing: border-box;
+  border-radius: 8px;
+  user-select: none;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+.gcim__treeview * {
+  box-sizing: border-box;
+}
+.gcim__treeview .viewport {
+  width: 100%;
+  height: 100%;
+}
+.gcim__treeview .viewport-inner {
+  display: inline-block;
+  min-width: 100%;
+}
+.gcim__treeview .tree-item {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 4px;
+  padding-right: 4px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.gcim__treeview .item-switcher {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 auto;
+  position: relative;
+  border-radius: 6px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 16px;
+}
+.gcim__treeview .item-content {
+  height: 100%;
+  border-radius: 4px;
+  flex-grow: 1;
+}
+.gcim__treeview .item-content:hover {
+  background-color: #f5f5f5;
+}
+.gcim__treeview .normal-content {
+  padding-left: 4px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.gcim__treeview .content-image {
+  width: 20px;
+  height: 20px;
+}
+.gcim__treeview .content-text {
+  white-space: nowrap;
+}
+.gcim__treeview .item-indent {
+  align-self: stretch;
+  white-space: nowrap;
+}
+.gcim__treeview .indent-unit {
+  width: 24px;
+  display: inline-block;
+}
+.gcim__treeview .tree-item[isleaf='false'] > .item-switcher {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2216px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2016%2016%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3E%E5%B1%95%E5%BC%80%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22%E5%B1%95%E5%BC%80%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpolygon%20id%3D%22%E4%B8%89%E8%A7%92%E5%BD%A2%22%20fill%3D%22%23707070%22%20transform%3D%22translate(8.000000%2C%208.500000)%20rotate(-90.000000)%20translate(-8.000000%2C%20-8.500000)%20%22%20points%3D%2210.5%204.5%205.5%208.5%2010.5%2012.5%22%3E%3C%2Fpolygon%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim__treeview .tree-item[isleaf='false'] > .item-switcher:hover {
+  background-color: #f0f0f0;
+}
+.gcim__treeview .tree-item[isleaf='false'][expanded='false'] > .item-switcher {
+  transform: rotate(-90deg);
+}
+.gcim__treeview .tree-item[loading='true'] > .item-switcher {
+  background-image: none !important;
+  pointer-events: none !important;
+}
+.gcim__treeview .tree-item[focused="true"] > .item-content {
+  background-color: #f1f1f1;
+}
+.gcim__treeview .tree-item[selected="true"] > .item-content {
+  background-color: #e6f4ff;
+}
+.gcim__treeview[virtual="true"] .viewport-inner {
+  position: relative;
+  display: block;
+}
+.gcim__treeview[virtual="true"] .tree-item {
+  position: absolute;
+  width: 100%;
+}
+.gcim__treeview[enabled='false']::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.5;
+  background: #fff;
+  z-index: 1;
+}
+.gcim__treeview .corner {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: transparent;
+  background-size: 80%;
+}
+.gcim__treeview .corner[show='false'] {
+  visibility: hidden;
+}
+.gcim__treeview .corner[resize='true'] {
+  cursor: nwse-resize;
+}
+.gcim__treeview .corner[show-scroll-bar='true'] {
+  background-color: white;
+}
+.gcim__treeview .h-scroll-bar,
+.gcim__treeview .v-scroll-bar {
+  position: absolute;
+  height: auto;
+  width: auto;
+}
+.gcim__treeview .h-scroll-bar[show='false'],
+.gcim__treeview .v-scroll-bar[show='false'] {
+  visibility: hidden;
+}
+.gcim__treeview .h-scroll-bar {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 17px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.gcim__treeview .v-scroll-bar {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 17px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.gcim__treeview .h-scroll-bar > div {
+  height: 1px;
+}
+.gcim__treeview .v-scroll-bar > div {
+  width: 1px;
+}
+.gcim__treeview .item-checkbox {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+  margin-right: 5px;
+  position: relative;
+}
+.gcim__treeview .item-checkbox[state='checked'] {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2216px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2016%2016%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3E%E5%A4%8D%E9%80%89%E6%A1%86-%E9%80%89%E4%B8%AD%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22%E5%A4%8D%E9%80%89%E6%A1%86-%E9%80%89%E4%B8%AD%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M13%2C1%20C14.1045695%2C1%2015%2C1.8954305%2015%2C3%20L15%2C13%20C15%2C14.1045695%2014.1045695%2C15%2013%2C15%20L3%2C15%20C1.8954305%2C15%201%2C14.1045695%201%2C13%20L1%2C3%20C1%2C1.8954305%201.8954305%2C1%203%2C1%20L13%2C1%20Z%20M12.1422536%2C4.4171608%20L6.953%2C9.7591608%20L3.8577464%2C6.69249286%20L3%2C7.55023926%20L6.97051719%2C11.4836811%20L7.82826359%2C10.6259347%20L7.815%2C10.6121608%20L13%2C5.2749072%20L12.1422536%2C4.4171608%20Z%22%20id%3D%22%E5%BD%A2%E7%8A%B6%E7%BB%93%E5%90%88%22%20fill%3D%22%231777FF%22%3E%3C%2Fpath%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim__treeview .item-checkbox[state='unchecked'] {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2216px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2016%2016%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3E%E5%A4%8D%E9%80%89%E6%A1%86-%E6%9C%AA%E9%80%89%E4%B8%AD%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22%E5%A4%8D%E9%80%89%E6%A1%86-%E6%9C%AA%E9%80%89%E4%B8%AD%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M13%2C1%20C14.1045695%2C1%2015%2C1.8954305%2015%2C3%20L15%2C13%20C15%2C14.1045695%2014.1045695%2C15%2013%2C15%20L3%2C15%20C1.8954305%2C15%201%2C14.1045695%201%2C13%20L1%2C3%20C1%2C1.8954305%201.8954305%2C1%203%2C1%20L13%2C1%20Z%20M13%2C2%20L3%2C2%20C2.44771525%2C2%202%2C2.44771525%202%2C3%20L2%2C13%20C2%2C13.5522847%202.44771525%2C14%203%2C14%20L13%2C14%20C13.5522847%2C14%2014%2C13.5522847%2014%2C13%20L14%2C3%20C14%2C2.44771525%2013.5522847%2C2%2013%2C2%20Z%22%20id%3D%22%E5%BD%A2%E7%8A%B6%E7%BB%93%E5%90%88%22%20fill%3D%22%23979797%22%3E%3C%2Fpath%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim__treeview .item-checkbox[state='unchecked']:hover {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2216px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2016%2016%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3E%E5%A4%8D%E9%80%89%E6%A1%86-%E6%9C%AA%E9%80%89%E4%B8%AD%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22%E5%A4%8D%E9%80%89%E6%A1%86-%E6%9C%AA%E9%80%89%E4%B8%AD%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M13%2C1%20C14.1045695%2C1%2015%2C1.8954305%2015%2C3%20L15%2C13%20C15%2C14.1045695%2014.1045695%2C15%2013%2C15%20L3%2C15%20C1.8954305%2C15%201%2C14.1045695%201%2C13%20L1%2C3%20C1%2C1.8954305%201.8954305%2C1%203%2C1%20L13%2C1%20Z%20M13%2C2%20L3%2C2%20C2.44771525%2C2%202%2C2.44771525%202%2C3%20L2%2C13%20C2%2C13.5522847%202.44771525%2C14%203%2C14%20L13%2C14%20C13.5522847%2C14%2014%2C13.5522847%2014%2C13%20L14%2C3%20C14%2C2.44771525%2013.5522847%2C2%2013%2C2%20Z%22%20id%3D%22%E5%BD%A2%E7%8A%B6%E7%BB%93%E5%90%88%22%20fill%3D%22%231777FF%22%3E%3C%2Fpath%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim__treeview .item-checkbox[state='indeterminate'] {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2216px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2016%2016%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3E%E5%A4%8D%E9%80%89%E6%A1%86-%E5%8D%8A%E9%80%89%E4%B8%AD%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22%E5%A4%8D%E9%80%89%E6%A1%86-%E5%8D%8A%E9%80%89%E4%B8%AD%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M13%2C1%20C14.1045695%2C1%2015%2C1.8954305%2015%2C3%20L15%2C13%20C15%2C14.1045695%2014.1045695%2C15%2013%2C15%20L3%2C15%20C1.8954305%2C15%201%2C14.1045695%201%2C13%20L1%2C3%20C1%2C1.8954305%201.8954305%2C1%203%2C1%20L13%2C1%20Z%20M13%2C2%20L3%2C2%20C2.44771525%2C2%202%2C2.44771525%202%2C3%20L2%2C13%20C2%2C13.5522847%202.44771525%2C14%203%2C14%20L13%2C14%20C13.5522847%2C14%2014%2C13.5522847%2014%2C13%20L14%2C3%20C14%2C2.44771525%2013.5522847%2C2%2013%2C2%20Z%20M12%2C4%20L12%2C12%20L4%2C12%20L4%2C4%20L12%2C4%20Z%22%20id%3D%22%E5%BD%A2%E7%8A%B6%E7%BB%93%E5%90%88%22%20fill%3D%22%231777FF%22%3E%3C%2Fpath%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim__treeview .tree-item-measure {
+  visibility: hidden !important;
+  width: auto !important;
+}
+.gcim__resize-cursor {
+  cursor: nwse-resize;
+}
+.gcim {
+  border: 1px solid #bbbbbb;
+}
+.gcim_focused {
+  border: 1px solid #1977ff;
+  box-shadow: 0px 0px 4px 0px rgba(153, 153, 153, 0.5);
+}
+.gcim__scroll-bar ::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+  border-radius: 7px;
+  background-color: #eaeaea;
+}
+.gcim__scroll-bar ::-webkit-scrollbar-thumb {
+  background-color: #ffffff;
+  border-radius: 10px;
+  border: 3px solid #eaeaea;
+}
+.gcim__scroll-bar ::-webkit-scrollbar-button {
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.gcim__scroll-bar ::-webkit-scrollbar-button:vertical:decrement {
+  height: 14px;
+  background-image: url("data:image/svg+xml,%EF%BB%BF%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%0A%3Csvg%20version%3D%221.1%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20width%3D%226px%22%20height%3D%223px%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%3Cg%20transform%3D%22matrix(1%200%200%201%20-557%20-3927%20)%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M%200%203%20%20L%203%200%20%20L%206%203%20%20L%200%203%20%20Z%20%22%20fill-rule%3D%22nonzero%22%20fill%3D%22%23979797%22%20stroke%3D%22none%22%20transform%3D%22matrix(1%200%200%201%20557%203927%20)%22%20%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim__scroll-bar ::-webkit-scrollbar-button:vertical:decrement:hover {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%0A%3Csvg%20version%3D%221.1%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20width%3D%226px%22%20height%3D%223px%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%3Cg%20transform%3D%22matrix(1%200%200%201%20-557%20-3927%20)%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M%200%203%20%20L%203%200%20%20L%206%203%20%20L%200%203%20%20Z%20%22%20fill-rule%3D%22nonzero%22%20fill%3D%22%23797979%22%20stroke%3D%22none%22%20transform%3D%22matrix(1%200%200%201%20557%203927%20)%22%20%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim__scroll-bar ::-webkit-scrollbar-button:vertical:increment {
+  height: 14px;
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%226px%22%20height%3D%223px%22%20viewBox%3D%220%200%206%203%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3EVScrollBar_Down%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22VScrollBar_Down%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpolygon%20id%3D%22%E8%B7%AF%E5%BE%84%22%20fill%3D%22%23979797%22%20fill-rule%3D%22nonzero%22%20points%3D%226%20-1.16351373e-13%203%203%207.31859018e-13%20-1.17239551e-13%22%3E%3C%2Fpolygon%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim__scroll-bar ::-webkit-scrollbar-button:vertical:increment:hover {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%226px%22%20height%3D%223px%22%20viewBox%3D%220%200%206%203%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3EVScrollBar_Down%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22VScrollBar_Down%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpolygon%20id%3D%22%E8%B7%AF%E5%BE%84%22%20fill%3D%22%23797979%22%20fill-rule%3D%22nonzero%22%20points%3D%226%20-1.16351373e-13%203%203%207.31859018e-13%20-1.17239551e-13%22%3E%3C%2Fpolygon%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim__scroll-bar ::-webkit-scrollbar-button:horizontal:increment {
+  width: 14px;
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%223px%22%20height%3D%226px%22%20viewBox%3D%220%200%203%206%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3EVScrollBar_Right%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22VScrollBar_Right%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpolygon%20id%3D%22%E8%B7%AF%E5%BE%84%22%20fill%3D%22%23979797%22%20fill-rule%3D%22nonzero%22%20points%3D%22-7.37188088e-14%202.27817765e-12%203%203%20-7.46069873e-14%206%22%3E%3C%2Fpolygon%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim__scroll-bar ::-webkit-scrollbar-button:horizontal:increment:hover {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%223px%22%20height%3D%226px%22%20viewBox%3D%220%200%203%206%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3EVScrollBar_Right%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22VScrollBar_Right%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpolygon%20id%3D%22%E8%B7%AF%E5%BE%84%22%20fill%3D%22%23797979%22%20fill-rule%3D%22nonzero%22%20points%3D%22-7.37188088e-14%202.27817765e-12%203%203%20-7.46069873e-14%206%22%3E%3C%2Fpolygon%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim__scroll-bar ::-webkit-scrollbar-button:horizontal:decrement {
+  width: 14px;
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%223px%22%20height%3D%226px%22%20viewBox%3D%220%200%203%206%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3EVScrollBar_Left%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22VScrollBar_Left%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpolygon%20id%3D%22%E8%B7%AF%E5%BE%84%22%20fill%3D%22%23979797%22%20fill-rule%3D%22nonzero%22%20points%3D%223%206%20-3.83475851e-17%203%203%200%22%3E%3C%2Fpolygon%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim__scroll-bar ::-webkit-scrollbar-button:horizontal:decrement:hover {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%223px%22%20height%3D%226px%22%20viewBox%3D%220%200%203%206%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3EVScrollBar_Left%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22VScrollBar_Left%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpolygon%20id%3D%22%E8%B7%AF%E5%BE%84%22%20fill%3D%22%23797979%22%20fill-rule%3D%22nonzero%22%20points%3D%223%206%20-3.83475851e-17%203%203%200%22%3E%3C%2Fpolygon%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim__scroll-bar[browser="firefox"] * {
+  scrollbar-width: thin;
+  scrollbar-color: #c7c9cc white;
+}
+.gcim-calendar__outter-container {
+  display: inline-block;
+  position: relative;
+  color: #333;
+  background-color: white;
+  border: 1px solid #dadada;
+  border-radius: 8px;
+  box-shadow: 0px 1px 10px 0px rgba(228, 228, 228, 0.5);
+  cursor: default;
+  font-family: -apple-system-font, "Segoe UI", Roboto, sans-serif;
+  font-size: 10px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.gcim-calendar__outter-container td {
+  padding: 0px;
+}
+.gcim-calendar__outter-container * {
+  box-sizing: border-box;
+}
+.gcim-calendar__outter-container:focus {
+  outline: none;
+}
+.gcim-calendar__disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  user-select: none;
+}
+.gcim-calendar {
+  position: relative;
+  margin: 0px;
+  padding: 0 6px;
+  display: inline-table;
+}
+.gcim-calendar__outter-container[calendar-type='monthday'][show-week-number='false'] .gcim-calendar__month-container {
+  padding-left: 11px;
+  padding-right: 11px;
+}
+.gcim-calendar__header {
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  height: 38px;
+  font-size: 12px;
+}
+.gcim-calendar__header .cell {
+  position: absolute;
+  width: 30px;
+  height: 100%;
+}
+.gcim-calendar__header__left-navigate {
+  left: 0px;
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2216px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2016%2016%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3EPrevious%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22Previous%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M4.13119459%2C0.139281472%20C4.30612072%2C-0.0464271573%204.58973201%2C-0.0464271573%204.76465813%2C0.139281472%20L11.8688054%2C7.68133067%20C12.0437315%2C7.8670393%2012.0437315%2C8.16813248%2011.8688054%2C8.35384111%20L4.79778779%2C15.8607185%20C4.62286167%2C16.0464272%204.33925038%2C16.0464272%204.16432425%2C15.8607185%20C3.98939813%2C15.6750099%203.98939813%2C15.3739167%204.16432425%2C15.1882081%20L10.9186706%2C8.0175486%20L4.13119459%2C0.811791908%20C3.9757047%2C0.646717571%203.95842805%2C0.390475196%204.07936463%2C0.205141294%20L4.13119459%2C0.139281472%20Z%22%20id%3D%22Path-2%22%20fill%3D%22%23666666%22%20fill-rule%3D%22nonzero%22%20transform%3D%22translate(8.000000%2C%208.000000)%20scale(-1%2C%201)%20translate(-8.000000%2C%20-8.000000)%20%22%3E%3C%2Fpath%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.gcim-calendar__header__left-navigate:hover {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2216px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2016%2016%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3EPrevious%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22Previous%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M4.13119459%2C0.139281472%20C4.30612072%2C-0.0464271573%204.58973201%2C-0.0464271573%204.76465813%2C0.139281472%20L11.8688054%2C7.68133067%20C12.0437315%2C7.8670393%2012.0437315%2C8.16813248%2011.8688054%2C8.35384111%20L4.79778779%2C15.8607185%20C4.62286167%2C16.0464272%204.33925038%2C16.0464272%204.16432425%2C15.8607185%20C3.98939813%2C15.6750099%203.98939813%2C15.3739167%204.16432425%2C15.1882081%20L10.9186706%2C8.0175486%20L4.13119459%2C0.811791908%20C3.9757047%2C0.646717571%203.95842805%2C0.390475196%204.07936463%2C0.205141294%20L4.13119459%2C0.139281472%20Z%22%20id%3D%22Path-2%22%20fill%3D%22%23333333%22%20fill-rule%3D%22nonzero%22%20transform%3D%22translate(8.000000%2C%208.000000)%20scale(-1%2C%201)%20translate(-8.000000%2C%20-8.000000)%20%22%3E%3C%2Fpath%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim-calendar__header__zoom-out {
+  left: 30px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.gcim-calendar__header__text {
+  position: absolute;
+  left: 60px;
+  right: 60px;
+  height: 100%;
+  line-height: 38px;
+  color: #4A4A4A;
+  text-align: center;
+  font-weight: bold;
+  font-size: 12px;
+}
+.gcim-calendar__outter-container[auto-switch='true'][max-range-view='false'] .gcim-calendar__header__text:hover {
+  color: #1977FF;
+}
+.gcim-calendar__header__right-navigate {
+  right: 0px;
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2216px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2016%2016%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3ENext%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22Next%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M4.13119459%2C0.139281472%20C4.30612072%2C-0.0464271573%204.58973201%2C-0.0464271573%204.76465813%2C0.139281472%20L11.8688054%2C7.68133067%20C12.0437315%2C7.8670393%2012.0437315%2C8.16813248%2011.8688054%2C8.35384111%20L4.79778779%2C15.8607185%20C4.62286167%2C16.0464272%204.33925038%2C16.0464272%204.16432425%2C15.8607185%20C3.98939813%2C15.6750099%203.98939813%2C15.3739167%204.16432425%2C15.1882081%20L10.9186706%2C8.0175486%20L4.13119459%2C0.811791908%20C3.9757047%2C0.646717571%203.95842805%2C0.390475196%204.07936463%2C0.205141294%20L4.13119459%2C0.139281472%20Z%22%20id%3D%22Path-2%22%20fill%3D%22%23666666%22%20fill-rule%3D%22nonzero%22%3E%3C%2Fpath%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.gcim-calendar__header__right-navigate:hover {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2216px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2016%2016%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3ENext%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22Next%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M4.13119459%2C0.139281472%20C4.30612072%2C-0.0464271573%204.58973201%2C-0.0464271573%204.76465813%2C0.139281472%20L11.8688054%2C7.68133067%20C12.0437315%2C7.8670393%2012.0437315%2C8.16813248%2011.8688054%2C8.35384111%20L4.79778779%2C15.8607185%20C4.62286167%2C16.0464272%204.33925038%2C16.0464272%204.16432425%2C15.8607185%20C3.98939813%2C15.6750099%203.98939813%2C15.3739167%204.16432425%2C15.1882081%20L10.9186706%2C8.0175486%20L4.13119459%2C0.811791908%20C3.9757047%2C0.646717571%203.95842805%2C0.390475196%204.07936463%2C0.205141294%20L4.13119459%2C0.139281472%20Z%22%20id%3D%22Path-2%22%20fill%3D%22%23333333%22%20fill-rule%3D%22nonzero%22%3E%3C%2Fpath%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim-calendar__header__zoom-in {
+  right: 30px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.gcim-calendar__month-body__week-title-interaction,
+.gcim-calendar__month-body__normal-day-interaction,
+.gcim-calendar__month-body__week-number-interaction,
+.gcim-calendar__year-view__month-interaction,
+.gcim-calendar__year-view__year-interaction,
+.gcim-calendar__year-view__range-year-interaction {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+}
+.gcim-calendar__month-container {
+  padding-bottom: 5px;
+  width: 100%;
+}
+.gcim-calendar__month-body {
+  width: 100%;
+  min-width: 246px;
+  height: 100%;
+  border-collapse: collapse;
+}
+.gcim-calendar__outter-container[calendar-type='monthday'][show-week-number='false'] .gcim-calendar__month-body {
+  min-width: 224px;
+}
+.gcim-calendar__month-body__corner-cell {
+  background-color: transparent;
+  box-sizing: border-box;
+}
+.calendar-month-table-gap-row {
+  height: 5px;
+  position: relative;
+}
+.gcim-calendar__month-body__week-title {
+  position: relative;
+  box-sizing: border-box;
+  width: 32px;
+  height: 32px;
+  line-height: normal;
+  font-weight: bold;
+  font-size: 12px;
+  text-align: center;
+  color: #333;
+  background-color: transparent;
+}
+.gcim-calendar__month-body__week-title-interaction {
+  width: 28px;
+  height: 28px;
+  border-radius: 14px;
+}
+.gcim-calendar__outter-container[week-title-select='true'] .gcim-calendar__month-body__week-title:hover .gcim-calendar__month-body__week-title-interaction {
+  background-color: #AECFFF;
+}
+.gcim-calendar__month-body__week-number {
+  position: relative;
+  box-sizing: border-box;
+  width: 22px;
+  height: 34px;
+  color: #333;
+  font-size: 9px;
+  font-weight: normal;
+  text-align: center;
+  border-radius: 16px;
+}
+.gcim-calendar__month-body__week-number-interaction {
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  font-size: 9px;
+}
+.gcim-calendar__outter-container[week-number-select='true'] .gcim-calendar__month-body__week-number[empty-week-number="false"]:hover .gcim-calendar__month-body__week-number-interaction {
+  background-color: #AECFFF;
+}
+.gcim-calendar__month-body__normal-day {
+  box-sizing: border-box;
+  position: relative;
+  width: 32px;
+  height: 34px;
+  overflow: hidden;
+  text-align: center;
+}
+.gcim-calendar__month-body__normal-day-interaction {
+  box-sizing: border-box;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+}
+.gcim-calendar__month-body__content-text {
+  position: absolute;
+  top: 1px;
+  bottom: auto;
+  height: 15px;
+  width: 100%;
+  line-height: 15px;
+  font-size: 12px;
+}
+.gcim-calendar__month-body__rokuyou {
+  position: absolute;
+  bottom: 1px;
+  width: 100%;
+  text-align: center;
+  height: 15px;
+  line-height: 15px;
+  font-size: 8px;
+}
+.gcim-calendar__outter-container[english-language='true'] .gcim-calendar__month-body__rokuyou {
+  font-size: 6px;
+}
+.gcim-calendar__month-body__normal-day-interaction[empty-rokuyou-text='true'] .gcim-calendar__month-body__content-text {
+  top: 0px;
+  height: 100%;
+  line-height: 30px;
+}
+.gcim-calendar__month-body__normal-day-interaction[empty-rokuyou-text='true'] .gcim-calendar__month-body__rokuyou {
+  width: 0px;
+  height: 0px;
+}
+.gcim-calendar__month-body__today {
+  font-weight: normal;
+  color: #333;
+}
+.gcim-calendar__month-body__today .gcim-calendar__month-body__normal-day-interaction::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 15px;
+  border: 1px solid #1977ff;
+}
+.gcim-calendar__month-body__trailing-day {
+  opacity: 1;
+  color: #c4cdd5;
+}
+.gcim-calendar__month-body__disabled-day {
+  color: #e3e8eb;
+  opacity: 1;
+}
+.gcim-calendar__month-body__selected-day {
+  background-color: transparent;
+  color: #333;
+}
+.gcim-calendar__month-body__normal-day:not(.gcim-calendar__month-body__disabled-day):not(.gcim-calendar__month-body__empty-day):not(.gcim-calendar__month-body__selected-day[selected-style="single"]):not(.gcim-calendar__month-body__selected-day[selected-style="begin"]):not(.gcim-calendar__month-body__selected-day[selected-style="end"]):hover .gcim-calendar__month-body__normal-day-interaction {
+  background-color: #AECFFF;
+  color: #333;
+}
+.gcim-calendar__month-body__selected-day[selected-style="single"] .gcim-calendar__month-body__normal-day-interaction,
+.gcim-calendar__month-body__selected-day[selected-style="begin"] .gcim-calendar__month-body__normal-day-interaction,
+.gcim-calendar__month-body__selected-day[selected-style="end"] .gcim-calendar__month-body__normal-day-interaction {
+  background-color: #1977ff;
+  color: #ffffff;
+}
+.gcim-calendar__month-body__selected-day[selected-style="begin"]::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 30px;
+  top: 2px;
+  right: 0;
+  background-color: #e7f1ff;
+}
+.gcim-calendar__month-body__selected-day[selected-style="between"]::before {
+  content: "";
+  position: absolute;
+  width: 32px;
+  height: 30px;
+  top: 2px;
+  left: 0;
+  background-color: #e7f1ff;
+}
+.gcim-calendar__month-body__selected-day[selected-style="end"]::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 30px;
+  top: 2px;
+  left: 0;
+  background-color: #e7f1ff;
+}
+.gcim-calendar__month-body__focusd-day {
+  color: #1977ff;
+}
+.gcim-calendar__year-container {
+  width: 100%;
+  padding: 15px 0px;
+}
+.gcim-calendar__year-view {
+  width: 100%;
+  height: 100%;
+  min-width: 246px;
+  border-collapse: collapse;
+}
+.gcim-calendar__year-view__month {
+  position: relative;
+  width: 82px;
+  max-width: 82px;
+  height: 54px;
+  line-height: normal;
+  text-align: center;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.gcim-calendar__year-view__month .range-year-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+.gcim-calendar__year-view__month .range-year-container .range-year {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  line-height: 1.3em;
+  box-sizing: border-box;
+}
+.gcim-calendar__year-view__month-interaction {
+  width: 70px;
+  height: 32px;
+  border-radius: 4px;
+}
+.gcim-calendar__year-view__year-interaction {
+  width: 70px;
+  height: 32px;
+  border-radius: 4px;
+}
+.gcim-calendar__year-view__range-year-interaction {
+  width: 70px;
+  height: 40px;
+  border-radius: 4px;
+}
+.gcim-calendar__year-view__common-month:hover .gcim-calendar__year-view__month-interaction,
+.gcim-calendar__year-view__focused-month:hover .gcim-calendar__year-view__month-interaction,
+.gcim-calendar__year-view__adjacent-year:not([celltype="EmptyYear"]):hover .gcim-calendar__year-view__month-interaction {
+  background-color: #AECFFF;
+  color: #333;
+}
+.gcim-calendar__year-view__common-month:hover .gcim-calendar__year-view__year-interaction,
+.gcim-calendar__year-view__focused-month:hover .gcim-calendar__year-view__year-interaction,
+.gcim-calendar__year-view__adjacent-year:not([celltype="EmptyYear"]):hover .gcim-calendar__year-view__year-interaction {
+  background-color: #AECFFF;
+  color: #333;
+}
+.gcim-calendar__year-view__common-month:hover .gcim-calendar__year-view__range-year-interaction,
+.gcim-calendar__year-view__focused-month:hover .gcim-calendar__year-view__range-year-interaction,
+.gcim-calendar__year-view__adjacent-year:not([celltype="EmptyYear"]):hover .gcim-calendar__year-view__range-year-interaction {
+  background-color: #AECFFF;
+  color: #333;
+}
+.gcim-calendar__year-view__month.gcim-calendar__year-view__selected-month {
+  background-color: transparent;
+  color: #333;
+}
+.gcim-calendar__year-view__month.gcim-calendar__year-view__selected-month .gcim-calendar__year-view__month-interaction {
+  color: #ffffff;
+  background-color: #1977ff;
+}
+.gcim-calendar__year-view__month.gcim-calendar__year-view__selected-month .gcim-calendar__year-view__year-interaction {
+  color: #ffffff;
+  background-color: #1977ff;
+}
+.gcim-calendar__year-view__month.gcim-calendar__year-view__selected-month .gcim-calendar__year-view__range-year-interaction {
+  color: #ffffff;
+  background-color: #1977ff;
+}
+.gcim-calendar__year-view__focused-month {
+  color: #1977ff;
+}
+.gcim-calendar__year-view__disabled-month {
+  opacity: 1;
+  color: #e3e8eb;
+}
+.gcim-calendar__year-view__adjacent-year {
+  opacity: 1;
+  color: #c4cdd5;
+}
+.gcim-calendar__today-button {
+  box-sizing: border-box;
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  color: #1977ff;
+  font-weight: normal;
+  border-top: 1px solid #dadada;
+  font-size: 12px;
+}
+.gcim-calendar__today-button:hover {
+  color: #73ACFF;
+}
+.gcim-calendar__tooltip {
+  border: 1px solid #dadada;
+  border-radius: 4px;
+  padding: 5px 10px;
+  color: #333;
+  background-color: white;
+  box-shadow: 0px 2px 4px 0px rgba(187, 187, 187, 0.5);
+  font-family: -apple-system-font, "Segoe UI", Roboto, sans-serif;
+  font-size: 12px;
+}
+.gcim-calendar__header-popup {
+  z-index: 10000001;
+  position: absolute;
+  border: 1px solid #dadada;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0px 2px 4px 0px rgba(187, 187, 187, 0.5);
+  cursor: default;
+  color: #333;
+  background-color: white;
+  font-family: -apple-system-font, "Segoe UI", Roboto, sans-serif;
+  font-size: 12px;
+}
+.gcim-calendar__header-popup__cell {
+  padding: 0px 15px;
+  height: 22px;
+  line-height: 22px;
+  border-top: 1px solid #dadada;
+}
+.gcim-calendar__header-popup__cell:first-child {
+  border-top: 0px solid #dadada;
+}
+.gcim-calendar__header-popup__cell_selected {
+  background-color: #e7f1ff;
+  color: #333;
+}
+.gcim-calendar__holiday-groups-popup {
+  z-index: 10000001;
+  position: absolute;
+  cursor: default;
+  color: #333;
+  background-color: white;
+  font-family: -apple-system-font, "Segoe UI", Roboto, sans-serif;
+  font-size: 12px;
+  border-radius: 4px;
+  border: 1px solid #dadada;
+  overflow: hidden;
+  box-shadow: 0px 2px 4px 0px rgba(187, 187, 187, 0.5);
+  padding: 0px;
+  visibility: visible;
+}
+.gcim-calendar__holiday-groups-popup__cell:hover {
+  background-color: #f4f4f4;
+}
+.gcim-calendar__holiday-groups-popup__cell {
+  height: 24px;
+  border-bottom: 1px solid #dadada;
+  padding: 0px 10px 0px 5px;
+}
+.gcim-calendar__holiday-groups-popup__cell_state {
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 15px;
+  padding: 0px;
+  background-size: 10px;
+}
+.gcim-calendar__holiday-groups-popup__cell_selected {
+  background-size: 10px;
+}
+.gcim-calendar__outter-container[navigator-orientation="right"] .gcim-calendar__navigator_vertical {
+  border-left: 1px solid #dadada;
+}
+.gcim-calendar__outter-container[navigator-orientation="left"] .gcim-calendar__navigator_vertical {
+  border-right: 1px solid #dadada;
+}
+.gcim-calendar__navigator_vertical {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  width: 25px;
+  padding: 5px 0px 10px 0px;
+  background-color: transparent;
+}
+.gcim-calendar__navigator_vertical .gcim-calendar__navigator_scroll_bar {
+  width: 14px;
+  flex-direction: column;
+}
+.gcim-calendar__navigator_vertical .cell {
+  width: 100%;
+  height: 25px;
+  background-size: 16px;
+}
+.gcim-calendar__navigator_vertical .left-navigator,
+.gcim-calendar__navigator_vertical .right-navigator,
+.gcim-calendar__navigator_vertical .left-most,
+.gcim-calendar__navigator_vertical .right-most,
+.gcim-calendar__navigator_vertical .today {
+  height: 14px;
+}
+.gcim-calendar__navigator_vertical .thumb-button {
+  height: 50px;
+  width: 8px;
+  background-color: #ffffff;
+  border-radius: 4px;
+}
+.gcim-calendar__navigator_vertical .right-navigator {
+  transform: rotate(180deg);
+}
+.gcim-calendar__navigator_vertical .left-most {
+  transform: rotate(180deg);
+}
+.gcim-calendar__navigator_vertical .today {
+  background-size: 4px;
+}
+.gcim-calendar__outter-container[navigator-orientation="top"] .gcim-calendar__navigator_horizontal {
+  border-bottom: 1px solid #dadada;
+}
+.gcim-calendar__outter-container[navigator-orientation="bottom"] .gcim-calendar__navigator_horizontal {
+  border-top: 1px solid #dadada;
+}
+.gcim-calendar__navigator_horizontal {
+  display: inline-flex;
+  align-items: center;
+  height: 25px;
+  padding: 0px 10px 0px 5px;
+  background-color: transparent;
+  box-sizing: border-box;
+}
+.gcim-calendar__navigator_horizontal .gcim-calendar__navigator_scroll_bar {
+  display: flex;
+  height: 14px;
+}
+.gcim-calendar__navigator_horizontal .cell {
+  height: 100%;
+  display: inline-block;
+  width: 25px;
+  background-size: 16px;
+}
+.gcim-calendar__navigator_horizontal .left-navigator,
+.gcim-calendar__navigator_horizontal .right-navigator,
+.gcim-calendar__navigator_horizontal .left-most,
+.gcim-calendar__navigator_horizontal .right-most,
+.gcim-calendar__navigator_horizontal .today {
+  width: 14px;
+}
+.gcim-calendar__navigator_horizontal .left-navigator {
+  transform: rotate(-90deg);
+}
+.gcim-calendar__navigator_horizontal .thumb-button {
+  height: 8px;
+  width: 50px;
+  background-color: #ffffff;
+  border-radius: 4px;
+}
+.gcim-calendar__navigator_horizontal .right-navigator {
+  transform: rotate(90deg);
+}
+.gcim-calendar__navigator_horizontal .left-most {
+  transform: rotate(90deg);
+}
+.gcim-calendar__navigator_horizontal .today {
+  background-size: 4px;
+}
+.gcim-calendar__navigator_horizontal .right-most {
+  transform: rotate(-90deg);
+}
+.gcim-calendar__navigator_vertical .zoom-in,
+.gcim-calendar__navigator_horizontal .zoom-in,
+.gcim-calendar__navigator_vertical .zoom-out,
+.gcim-calendar__navigator_horizontal .zoom-out,
+.gcim-calendar__navigator_vertical .left-navigator,
+.gcim-calendar__navigator_horizontal .left-navigator,
+.gcim-calendar__navigator_vertical .right-navigator,
+.gcim-calendar__navigator_horizontal .right-navigator,
+.gcim-calendar__navigator_vertical .left-most,
+.gcim-calendar__navigator_horizontal .left-most,
+.gcim-calendar__navigator_vertical .right-most,
+.gcim-calendar__navigator_horizontal .right-most,
+.gcim-calendar__navigator_vertical .today,
+.gcim-calendar__navigator_horizontal .today {
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.gcim-calendar__navigator_vertical .left-navigator,
+.gcim-calendar__navigator_horizontal .left-navigator,
+.gcim-calendar__navigator_vertical .right-navigator,
+.gcim-calendar__navigator_horizontal .right-navigator,
+.gcim-calendar__navigator_vertical .left-most,
+.gcim-calendar__navigator_horizontal .left-most,
+.gcim-calendar__navigator_vertical .right-most,
+.gcim-calendar__navigator_horizontal .right-most {
+  background-size: 6px;
+}
+.gcim-calendar__navigator_vertical .left-navigator,
+.gcim-calendar__navigator_horizontal .left-navigator,
+.gcim-calendar__navigator_vertical .right-navigator,
+.gcim-calendar__navigator_horizontal .right-navigator {
+  background-image: url("data:image/svg+xml,%EF%BB%BF%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%0A%3Csvg%20version%3D%221.1%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20width%3D%226px%22%20height%3D%223px%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%3Cg%20transform%3D%22matrix(1%200%200%201%20-557%20-3927%20)%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M%200%203%20%20L%203%200%20%20L%206%203%20%20L%200%203%20%20Z%20%22%20fill-rule%3D%22nonzero%22%20fill%3D%22%23979797%22%20stroke%3D%22none%22%20transform%3D%22matrix(1%200%200%201%20557%203927%20)%22%20%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim-calendar__navigator_vertical .left-navigator:hover,
+.gcim-calendar__navigator_horizontal .left-navigator:hover,
+.gcim-calendar__navigator_vertical .right-navigator:hover,
+.gcim-calendar__navigator_horizontal .right-navigator:hover {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%0A%3Csvg%20version%3D%221.1%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20width%3D%226px%22%20height%3D%223px%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%3Cg%20transform%3D%22matrix(1%200%200%201%20-557%20-3927%20)%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M%200%203%20%20L%203%200%20%20L%206%203%20%20L%200%203%20%20Z%20%22%20fill-rule%3D%22nonzero%22%20fill%3D%22%23797979%22%20stroke%3D%22none%22%20transform%3D%22matrix(1%200%200%201%20557%203927%20)%22%20%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim-calendar__navigator_vertical .left-most:hover,
+.gcim-calendar__navigator_horizontal .left-most:hover,
+.gcim-calendar__navigator_vertical .right-most:hover,
+.gcim-calendar__navigator_horizontal .right-most:hover {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%0A%3Csvg%20version%3D%221.1%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20width%3D%226px%22%20height%3D%226px%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%3Cg%20transform%3D%22matrix(1%200%200%201%20-557%20-4137%20)%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M%200%203%20%20L%206%203%20%20L%203%206%20%20L%200%203%20%20Z%20M%200%200%20%20L%206%200%20%20L%203%203%20%20L%200%200%20%20Z%20%22%20fill-rule%3D%22nonzero%22%20fill%3D%22%23797979%22%20stroke%3D%22none%22%20transform%3D%22matrix(1%200%200%201%20557%204137%20)%22%20%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim-calendar__navigator_vertical .today:hover,
+.gcim-calendar__navigator_horizontal .today:hover {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%0A%3Csvg%20version%3D%221.1%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20width%3D%224px%22%20height%3D%224px%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%3Cg%20transform%3D%22matrix(1%200%200%201%20-558%20-4127%20)%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M%200%202%20%20C%200%203.1045694996%20%200.8954305004%204%20%202%204%20%20C%203.1045694996%204%20%204%203.1045694996%20%204%202%20%20C%204%200.8954305004%20%203.1045694996%200%20%202%200%20%20C%200.8954305004%200%20%200%200.8954305004%20%200%202%20%20Z%20%22%20fill-rule%3D%22nonzero%22%20fill%3D%22%23797979%22%20stroke%3D%22none%22%20transform%3D%22matrix(1%200%200%201%20558%204127%20)%22%20%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim-calendar__navigator_scroll_bar {
+  border-radius: 7px;
+  background-color: #eaeaea;
+  display: flex;
+  align-items: center;
+}
+.gcim-calendar_animation-container {
+  overflow: hidden;
+}
+.gcim-calender_animation-scrolling-container {
+  display: flex;
+}
+.gcim-calender_animation-scrolling-container[scroll-direction="0"] {
+  flex-direction: column-reverse;
+}
+.gcim-calender_animation-scrolling-container[scroll-direction="1"] {
+  flex-direction: column;
+}
+.gcim-calender_animation-scrolling-container[scroll-direction="2"] {
+  flex-direction: row-reverse;
+}
+.gcim-calender_animation-scrolling-container[scroll-direction="3"] {
+  flex-direction: row;
+}
+.gcim-calendar-dimension__row[scrolling="true"] {
+  line-height: 0px;
+}
+.gcim-calendar__type-switch-animation {
+  animation-name: type-switch;
+  animation-duration: 250ms;
+}
+@keyframes type-switch {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.gcim-calendar-dimension__row:not(:first-child) {
+  border-top: 1px solid #dadada;
+}
+.gcim-calendar:not(:first-child)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 1px;
+  background-color: #dadada;
+}
+.gcim-calendar-dimension__row {
+  position: relative;
+}
+.gcim-calendar__outter-container[show-header='true'] .gcim-calendar-dimension__row::before {
+  content: "";
+  position: absolute;
+  top: 38px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: #dadada;
+}
+.gcim-calendar__outter-container[calendar-type='monthday'] .gcim-calendar-dimension__row::after {
+  content: "";
+  position: absolute;
+  top: 32px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: #dadada;
+}
+.gcim-calendar__outter-container[calendar-type='monthday'][show-header='true'] .gcim-calendar-dimension__row::after {
+  content: "";
+  position: absolute;
+  top: 69px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: #dadada;
+}
+.gcim-calendar__header__zoom-out,
+.gcim-calendar__navigator_vertical .zoom-out,
+.gcim-calendar__navigator_horizontal .zoom-out {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2216px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2016%2016%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3EZoomout%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22Zoomout%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M14.1111111%2C7%20C14.6020309%2C7%2015%2C7.39796911%2015%2C7.88888889%20L15%2C14.1111111%20C15%2C14.6020309%2014.6020309%2C15%2014.1111111%2C15%20L7.88888889%2C15%20C7.39796911%2C15%207%2C14.6020309%207%2C14.1111111%20L7%2C7.88888889%20C7%2C7.39796911%207.39796911%2C7%207.88888889%2C7%20L14.1111111%2C7%20Z%20M14%2C8%20L8%2C8%20L8%2C14%20L14%2C14%20L14%2C8%20Z%20M11%2C1%20C11.5522847%2C1%2012%2C1.44771525%2012%2C2%20L12%2C6%20L11%2C6%20L11%2C2%20L2%2C2%20L2%2C11%20L6%2C11%20L6%2C12%20L2%2C12%20C1.44771525%2C12%201%2C11.5522847%201%2C11%20L1%2C2%20C1%2C1.44771525%201.44771525%2C1%202%2C1%20L11%2C1%20Z%22%20id%3D%22%E5%BD%A2%E7%8A%B6%22%20fill%3D%22%23666666%22%20fill-rule%3D%22nonzero%22%3E%3C%2Fpath%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim-calendar__outter-container[max-range-view='false'] .gcim-calendar__header__zoom-out:hover,
+.gcim-calendar__outter-container[max-range-view='false'] .zoom-out:hover {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2216px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2016%2016%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3EZoomout%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22Zoomout%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M14.1111111%2C7%20C14.6020309%2C7%2015%2C7.39796911%2015%2C7.88888889%20L15%2C14.1111111%20C15%2C14.6020309%2014.6020309%2C15%2014.1111111%2C15%20L7.88888889%2C15%20C7.39796911%2C15%207%2C14.6020309%207%2C14.1111111%20L7%2C7.88888889%20C7%2C7.39796911%207.39796911%2C7%207.88888889%2C7%20L14.1111111%2C7%20Z%20M14%2C8%20L8%2C8%20L8%2C14%20L14%2C14%20L14%2C8%20Z%20M11%2C1%20C11.5522847%2C1%2012%2C1.44771525%2012%2C2%20L12%2C6%20L11%2C6%20L11%2C2%20L2%2C2%20L2%2C11%20L6%2C11%20L6%2C12%20L2%2C12%20C1.44771525%2C12%201%2C11.5522847%201%2C11%20L1%2C2%20C1%2C1.44771525%201.44771525%2C1%202%2C1%20L11%2C1%20Z%22%20id%3D%22%E5%BD%A2%E7%8A%B6%22%20fill%3D%22%23333333%22%20fill-rule%3D%22nonzero%22%3E%3C%2Fpath%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim-calendar__header__zoom-in,
+.gcim-calendar__navigator_vertical .zoom-in,
+.gcim-calendar__navigator_horizontal .zoom-in {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2216px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2016%2016%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3EZoomin%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22Zoomin%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M14%2C4%20C14.5522847%2C4%2015%2C4.44771525%2015%2C5%20L15%2C14%20C15%2C14.5522847%2014.5522847%2C15%2014%2C15%20L5%2C15%20C4.44771525%2C15%204%2C14.5522847%204%2C14%20L4%2C5%20C4%2C4.44771525%204.44771525%2C4%205%2C4%20L14%2C4%20Z%20M14%2C5%20L5%2C5%20L5%2C14%20L14%2C14%20L14%2C5%20Z%20M8.11111111%2C1%20C8.60203089%2C1%209%2C1.39796911%209%2C1.88888889%20L9%2C3%20L8%2C3%20L8%2C2%20L2%2C2%20L2%2C8%20L3%2C8%20L3%2C9%20L1.88888889%2C9%20C1.39796911%2C9%201%2C8.60203089%201%2C8.11111111%20L1%2C1.88888889%20C1%2C1.39796911%201.39796911%2C1%201.88888889%2C1%20L8.11111111%2C1%20Z%22%20id%3D%22%E5%BD%A2%E7%8A%B6%22%20fill%3D%22%23666666%22%20fill-rule%3D%22nonzero%22%3E%3C%2Fpath%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim-calendar__outter-container[min-range-view='false'] .gcim-calendar__header__zoom-in:hover,
+.gcim-calendar__outter-container[min-range-view='false'] .zoom-in:hover {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2216px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2016%2016%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3EZoomin%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22Zoomin%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M14%2C4%20C14.5522847%2C4%2015%2C4.44771525%2015%2C5%20L15%2C14%20C15%2C14.5522847%2014.5522847%2C15%2014%2C15%20L5%2C15%20C4.44771525%2C15%204%2C14.5522847%204%2C14%20L4%2C5%20C4%2C4.44771525%204.44771525%2C4%205%2C4%20L14%2C4%20Z%20M14%2C5%20L5%2C5%20L5%2C14%20L14%2C14%20L14%2C5%20Z%20M8.11111111%2C1%20C8.60203089%2C1%209%2C1.39796911%209%2C1.88888889%20L9%2C3%20L8%2C3%20L8%2C2%20L2%2C2%20L2%2C8%20L3%2C8%20L3%2C9%20L1.88888889%2C9%20C1.39796911%2C9%201%2C8.60203089%201%2C8.11111111%20L1%2C1.88888889%20C1%2C1.39796911%201.39796911%2C1%201.88888889%2C1%20L8.11111111%2C1%20Z%22%20id%3D%22%E5%BD%A2%E7%8A%B6%22%20fill%3D%22%23333333%22%20fill-rule%3D%22nonzero%22%3E%3C%2Fpath%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim-calendar__navigator_vertical .left-most,
+.gcim-calendar__navigator_vertical .right-most,
+.gcim-calendar__navigator_horizontal .left-most,
+.gcim-calendar__navigator_horizontal .right-most {
+  background-image: url("data:image/svg+xml,%EF%BB%BF%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%0A%3Csvg%20version%3D%221.1%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20width%3D%226px%22%20height%3D%226px%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%3Cg%20transform%3D%22matrix(1%200%200%201%20-557%20-4137%20)%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M%200%203%20%20L%206%203%20%20L%203%206%20%20L%200%203%20%20Z%20M%200%200%20%20L%206%200%20%20L%203%203%20%20L%200%200%20%20Z%20%22%20fill-rule%3D%22nonzero%22%20fill%3D%22%23979797%22%20stroke%3D%22none%22%20transform%3D%22matrix(1%200%200%201%20557%204137%20)%22%20%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim-calendar__navigator_vertical .today,
+.gcim-calendar__navigator_horizontal .today {
+  background-image: url("data:image/svg+xml,%EF%BB%BF%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%0A%3Csvg%20version%3D%221.1%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20width%3D%224px%22%20height%3D%224px%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%3Cg%20transform%3D%22matrix(1%200%200%201%20-558%20-4127%20)%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M%200%202%20%20C%200%203.1045694996%20%200.8954305004%204%20%202%204%20%20C%203.1045694996%204%20%204%203.1045694996%20%204%202%20%20C%204%200.8954305004%20%203.1045694996%200%20%202%200%20%20C%200.8954305004%200%20%200%200.8954305004%20%200%202%20%20Z%20%22%20fill-rule%3D%22nonzero%22%20fill%3D%22%23979797%22%20stroke%3D%22none%22%20transform%3D%22matrix(1%200%200%201%20558%204127%20)%22%20%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim__listbox {
+  border-radius: 4px;
+}
+.gcim__listbox .column-header .column-header__inner {
+  background-color: #f4f4f4;
+  font-weight: 700;
+}
+.gcim__listbox .column-header .column-header__sort-indicator[sort-state="asc"] div {
+  transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+}
+.gcim__listbox .column-header .column-header__sort-indicator[sort-state="desc"] div {
+  transform: rotate(180deg);
+}
+.gcim__listbox .column-header .column-header__sort-indicator[sort-state="asc"] div,
+.gcim__listbox .column-header .column-header__sort-indicator[sort-state="desc"] div {
+  background-image: url("data:image/svg+xml,%EF%BB%BF%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%0A%3Csvg%20version%3D%221.1%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20width%3D%228px%22%20height%3D%224px%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%3Cg%20transform%3D%22matrix(1%200%200%201%20-315%20-34%20)%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M%200%204%20%20L%204%200%20%20L%208%204%20%20L%200%204%20%20Z%20%22%20fill-rule%3D%22nonzero%22%20fill%3D%22%23333333%22%20stroke%3D%22none%22%20transform%3D%22matrix(1%200%200%201%20315%2034%20)%22%20%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim__listbox .viewport[dragover="false"] .list-item:hover {
+  background-color: #f4f4f4;
+}
+.gcim__listbox .viewport[dragover="false"] .list-item[focused="true"] {
+  background-color: #f4f4f4;
+}
+.gcim__listbox .viewport[dragover="false"] .list-item[selected="true"] {
+  background-color: #e7f1ff;
+  color: black;
+}
+.gcim__listbox .viewport .list-item[focused="true"] {
+  background-color: #f4f4f4;
+}
+.gcim__listbox .viewport .list-item[selected="true"] {
+  background-color: #e7f1ff;
+  color: black;
+}
+.gcim__listbox .footer_style {
+  color: #999999;
+}
+.gcim__listbox .corner[resize="true"] {
+  background-image: url("data:image/svg+xml,%EF%BB%BF%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%0A%3Csvg%20version%3D%221.1%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20width%3D%2210px%22%20height%3D%2210px%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%3Cg%20transform%3D%22matrix(1%200%200%201%20-771%20-1291%20)%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M%209.845606467927837%204.627261040928715%20%20C%209.845606467927837%204.627261040928715%20%204.627261040928715%209.84560646792761%20%204.627261040928715%209.84560646792761%20%20C%204.421402998165831%2010.051464510690494%20%204.087641165548803%2010.051464510690494%20%203.8817831227859187%209.84560646792761%20%20C%203.6759250800230348%209.639748425164726%20%203.6759250800230348%209.305986592547924%20%203.8817831227859187%209.10012854978504%20%20C%203.8817831227859187%209.10012854978504%20%209.10012854978504%203.881783122786146%20%209.10012854978504%203.881783122786146%20%20C%209.305986592547924%203.675925080023262%20%209.639748425164953%203.675925080023262%20%209.845606467927837%203.881783122786146%20%20C%2010.051464510690721%204.08764116554903%20%2010.051464510690721%204.421402998165831%20%209.845606467927837%204.627261040928715%20%20Z%20M%209.10012854978504%200.8998714502149596%20%20C%209.10012854978504%200.8998714502149596%20%200.8998714502149596%209.10012854978504%20%200.8998714502149596%209.10012854978504%20%20C%200.6940134074520756%209.305986592547924%20%200.360251574835047%209.305986592547924%20%200.154393532072163%209.10012854978504%20%20C%20-0.051464510690721%208.894270507022156%20%20-0.051464510690721%208.560508674405355%20%200.154393532072163%208.354650631642471%20%20C%200.154393532072163%208.354650631642471%20%208.354650631642244%200.15439353207239037%20%208.354650631642244%200.15439353207239037%20%20C%208.560508674405128%20-0.051464510690493626%20%208.894270507022156%20-0.051464510690493626%20%209.10012854978504%200.15439353207239037%20%20C%209.305986592547924%200.36025157483527437%20%209.305986592547924%200.6940134074520756%20%209.10012854978504%200.8998714502149596%20%20Z%20%22%20fill-rule%3D%22nonzero%22%20fill%3D%22%23979797%22%20stroke%3D%22none%22%20transform%3D%22matrix(1%200%200%201%20771%201291%20)%22%20%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim__listbox .grid-line--bottom--right {
+  border-right: 1px solid #dadada;
+  border-bottom: 1px solid #dadada;
+}
+.gcim__listbox .gcim_checkbox {
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.gcim__listbox .gcim_checkbox .checkbox-span {
+  display: inline-block;
+  border: 0px solid lightgray;
+  border-radius: 0px;
+  width: 14px;
+  height: 14px;
+  position: relative;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.gcim__listbox .gcim_checkbox .checkbox-span::after {
+  transform: rotate(0deg) scale(1);
+  content: '';
+  height: 0px;
+  width: 0px;
+  border-color: #fff;
+  border-width: 0px;
+  border-style: solid;
+  border-top: 0;
+  border-left: 0;
+  top: 0px;
+  left: 0px;
+  position: absolute;
+}
+.gcim__listbox .gcim_checkbox .checkbox:checked + .checkbox-span {
+  border: 0px solid #2d8cf0;
+  background-color: transparent;
+}
+.gcim__listbox .gcim_checkbox .checkbox:checked + .checkbox-span::after {
+  transform: rotate(0deg) scale(1);
+}
+.gcim__listbox .corner[resize="true"] {
+  background-position: center;
+  background-size: 70%;
+}
+.listbox_tip {
+  border: 1px solid #dadada;
+  border-radius: 4px;
+  box-shadow: 0px 2px 4px 0px rgba(187, 187, 187, 0.5);
+}
+.drag-drop-line {
+  background-color: #1977ff;
+}
+.loading-ring div {
+  border: 2px solid #1977ff;
+  border-color: #1977ff transparent transparent transparent;
+}
+.gcim[browser="firefox"].gcim__listbox .corner[resize="true"] {
+  background-size: 100%;
+}
+.gcim-calendar__holiday-groups-popup__cell_state,
+.gcim__listbox .gcim_checkbox .checkbox-span {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2216px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2016%2016%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3ECheckbox%20off%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22Checkbox-off%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M14%2C1%20C14.5522847%2C1%2015%2C1.44771525%2015%2C2%20L15%2C14%20C15%2C14.5522847%2014.5522847%2C15%2014%2C15%20L2%2C15%20C1.44771525%2C15%201%2C14.5522847%201%2C14%20L1%2C2%20C1%2C1.44771525%201.44771525%2C1%202%2C1%20L14%2C1%20Z%20M14%2C2%20L2%2C2%20L2%2C14%20L14%2C14%20L14%2C2%20Z%22%20id%3D%22%E7%9F%A9%E5%BD%A2%22%20fill%3D%22%231977ff%22%20fill-rule%3D%22nonzero%22%3E%3C%2Fpath%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim-calendar__holiday-groups-popup__cell_selected,
+.gcim__listbox .gcim_checkbox .checkbox:checked + .checkbox-span {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2216px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2016%2016%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3ECheckbox%20on%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22Checkbox-on%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M14%2C1%20C14.5522847%2C1%2015%2C1.44771525%2015%2C2%20L15%2C14%20C15%2C14.5522847%2014.5522847%2C15%2014%2C15%20L2%2C15%20C1.44771525%2C15%201%2C14.5522847%201%2C14%20L1%2C2%20C1%2C1.44771525%201.44771525%2C1%202%2C1%20L14%2C1%20Z%20M14%2C2%20L2%2C2%20L2%2C14%20L14%2C14%20L14%2C2%20Z%20M12.3535534%2C5.64644661%20C12.5488155%2C5.84170876%2012.5488155%2C6.15829124%2012.3535534%2C6.35355339%20L7.35355339%2C11.3535534%20C7.15830275%2C11.548804%206.84174299%2C11.5488172%206.64647608%2C11.3535829%20L3.64647608%2C8.35408285%20C3.45119766%2C8.15883698%203.45117127%2C7.84225449%203.64641715%2C7.64697608%20C3.84166302%2C7.45169766%204.15824551%2C7.45167127%204.35352392%2C7.64691715%20L7%2C10.293%20L11.6464466%2C5.64644661%20C11.8417088%2C5.45118446%2012.1582912%2C5.45118446%2012.3535534%2C5.64644661%20Z%22%20id%3D%22%E5%BD%A2%E7%8A%B6%E7%BB%93%E5%90%88%22%20fill%3D%22%231977ff%22%20fill-rule%3D%22nonzero%22%3E%3C%2Fpath%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim__buttons_container[left] .gcim__button_border {
+  border-right: 1px solid #bbbbbb;
+}
+.gcim__buttons_container[right] .gcim__button_border {
+  border-left: 1px solid #bbbbbb;
+}
+.gcim__textarea {
+  cursor: auto;
+}
+.gcim__side-button:hover {
+  background: transparent;
+}
+.gcim__side-button:active {
+  background: transparent;
+}
+.gcim__fish-eye {
+  background-size: 16px;
+}
+.gcim__fish-eye,
+.gcim__side-button[disabled]:hover .gcim__fish-eye {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2216px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2016%2016%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3EHidePassword%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22HidePassword%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M15.7831275%2C4.08792398%20C15.5607263%2C3.92620508%2015.2607247%2C3.99452483%2015.1143239%2C4.23580597%20C13.5695157%2C6.76363668%2010.9799018%2C8.27272481%208.1862869%2C8.27272481%20C5.39267196%2C8.27272481%202.80305812%2C6.76363668%201.25824986%2C4.23580597%20C1.11104908%2C3.99452483%200.811047474%2C3.92620508%200.589446289%2C4.08792398%20C0.366245096%2C4.24791326%200.305444771%2C4.57048626%200.452645558%2C4.81090259%20C0.769447251%2C5.33065156%201.13824922%2C5.79678251%201.52865131%2C6.23523963%20L0.188644147%2C7.34997579%20C-0.0225569821%2C7.52726122%20-0.0625571959%2C7.85415824%200.0998436721%2C8.08246728%20C0.195044181%2C8.21651236%200.338244946%2C8.28656172%200.48304572%2C8.28656172%20C0.585446268%2C8.28656172%200.689446824%2C8.25110463%200.777447294%2C8.17846085%20L2.24225512%2C6.95994786%20C2.85345839%2C7.51601873%203.52626199%2C7.97955525%204.24546583%2C8.3462334%20L3.2662606%2C9.9141284%20C3.1166598%2C10.1536799%203.17586011%2C10.4779825%203.3974613%2C10.6388366%20C3.48066174%2C10.7002379%203.57346224%2C10.7287765%203.66706274%2C10.7287765%20C3.82146356%2C10.7287765%203.97426438%2C10.6483495%204.06706488%2C10.4978731%20L5.15747071%2C8.75096305%20C5.97027505%2C9.0553751%206.82467962%2C9.23439014%207.70308431%2C9.28454894%20L7.70308431%2C11.4785642%20C7.70308431%2C11.7665449%207.91908547%2C12.0000428%208.1862869%2C12.0000428%20C8.45348832%2C12.0000428%208.66948948%2C11.7665449%208.66948948%2C11.4785642%20L8.66948948%2C9.28454894%20C9.41909349%2C9.2421734%2010.1494974%2C9.1055339%2010.8535012%2C8.87549525%20L11.9191068%2C10.7728817%20C12.0111073%2C10.9346006%2012.1695082%2C11.0245405%2012.3327091%2C11.0245405%20C12.4183095%2C11.0245405%2012.50551%2C10.9994611%2012.5839104%2C10.9493023%20C12.8111116%2C10.7988259%2012.883912%2C10.4779825%2012.7463113%2C10.2315125%20L11.7839061%2C8.51746517%20C12.4671098%2C8.20613467%2013.1135132%2C7.80745867%2013.7095164%2C7.326626%20L14.9831232%2C8.50362826%20C15.0743237%2C8.58837934%2015.1855243%2C8.62989008%2015.2975249%2C8.62989008%20C15.4335256%2C8.62989008%2015.5687264%2C8.56762398%2015.6639269%2C8.44655101%20C15.8375278%2C8.22775485%2015.8143277%2C7.8982634%2015.6111266%2C7.71060029%20L14.4687205%2C6.654671%20C15.0119234%2C6.11070743%2015.501526%2C5.49582969%2015.9199282%2C4.81090259%20C16.067129%2C4.57048626%2016.0055287%2C4.24791326%2015.7831275%2C4.08792398%22%20id%3D%22Fill-1%22%20fill%3D%22%23666666%22%3E%3C%2Fpath%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim__side-button:hover .gcim__fish-eye {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2216px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2016%2016%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3EHidePassword%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22HidePassword%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M15.7831275%2C4.08792398%20C15.5607263%2C3.92620508%2015.2607247%2C3.99452483%2015.1143239%2C4.23580597%20C13.5695157%2C6.76363668%2010.9799018%2C8.27272481%208.1862869%2C8.27272481%20C5.39267196%2C8.27272481%202.80305812%2C6.76363668%201.25824986%2C4.23580597%20C1.11104908%2C3.99452483%200.811047474%2C3.92620508%200.589446289%2C4.08792398%20C0.366245096%2C4.24791326%200.305444771%2C4.57048626%200.452645558%2C4.81090259%20C0.769447251%2C5.33065156%201.13824922%2C5.79678251%201.52865131%2C6.23523963%20L0.188644147%2C7.34997579%20C-0.0225569821%2C7.52726122%20-0.0625571959%2C7.85415824%200.0998436721%2C8.08246728%20C0.195044181%2C8.21651236%200.338244946%2C8.28656172%200.48304572%2C8.28656172%20C0.585446268%2C8.28656172%200.689446824%2C8.25110463%200.777447294%2C8.17846085%20L2.24225512%2C6.95994786%20C2.85345839%2C7.51601873%203.52626199%2C7.97955525%204.24546583%2C8.3462334%20L3.2662606%2C9.9141284%20C3.1166598%2C10.1536799%203.17586011%2C10.4779825%203.3974613%2C10.6388366%20C3.48066174%2C10.7002379%203.57346224%2C10.7287765%203.66706274%2C10.7287765%20C3.82146356%2C10.7287765%203.97426438%2C10.6483495%204.06706488%2C10.4978731%20L5.15747071%2C8.75096305%20C5.97027505%2C9.0553751%206.82467962%2C9.23439014%207.70308431%2C9.28454894%20L7.70308431%2C11.4785642%20C7.70308431%2C11.7665449%207.91908547%2C12.0000428%208.1862869%2C12.0000428%20C8.45348832%2C12.0000428%208.66948948%2C11.7665449%208.66948948%2C11.4785642%20L8.66948948%2C9.28454894%20C9.41909349%2C9.2421734%2010.1494974%2C9.1055339%2010.8535012%2C8.87549525%20L11.9191068%2C10.7728817%20C12.0111073%2C10.9346006%2012.1695082%2C11.0245405%2012.3327091%2C11.0245405%20C12.4183095%2C11.0245405%2012.50551%2C10.9994611%2012.5839104%2C10.9493023%20C12.8111116%2C10.7988259%2012.883912%2C10.4779825%2012.7463113%2C10.2315125%20L11.7839061%2C8.51746517%20C12.4671098%2C8.20613467%2013.1135132%2C7.80745867%2013.7095164%2C7.326626%20L14.9831232%2C8.50362826%20C15.0743237%2C8.58837934%2015.1855243%2C8.62989008%2015.2975249%2C8.62989008%20C15.4335256%2C8.62989008%2015.5687264%2C8.56762398%2015.6639269%2C8.44655101%20C15.8375278%2C8.22775485%2015.8143277%2C7.8982634%2015.6111266%2C7.71060029%20L14.4687205%2C6.654671%20C15.0119234%2C6.11070743%2015.501526%2C5.49582969%2015.9199282%2C4.81090259%20C16.067129%2C4.57048626%2016.0055287%2C4.24791326%2015.7831275%2C4.08792398%22%20id%3D%22Fill-1%22%20fill%3D%22%23333333%22%3E%3C%2Fpath%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim__side-button[active="true"] .gcim__fish-eye {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2216px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2016%2016%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3EShowPassword%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22ShowPassword%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M7.9999%2C3%20C11.1927399%2C3%2014.1535769%2C4.75682819%2015.918399%2C7.69955947%20C16.0272003%2C7.88193833%2016.0272003%2C8.11718062%2015.918399%2C8.29955947%20C14.1535769%2C11.2422907%2011.1927399%2C13%207.9999%2C13%20C4.80706009%2C13%201.84702309%2C11.2422907%200.0822010275%2C8.29955947%20C-0.0274003425%2C8.11718062%20-0.0274003425%2C7.88193833%200.0822010275%2C7.69955947%20C1.84702309%2C4.75682819%204.80706009%2C3%207.9999%2C3%20Z%20M7.9999%2C4.08898678%20C5.25026563%2C4.08898678%202.69263366%2C5.54361233%201.09421368%2C8%20C2.69263366%2C10.4555066%205.25026563%2C11.9101322%207.9999%2C11.9101322%20C10.7495344%2C11.9101322%2013.3071663%2C10.4555066%2014.9055863%2C8%20C13.3071663%2C5.54361233%2010.7495344%2C4.08898678%207.9999%2C4.08898678%20Z%20M8%2C5%20C9.65709459%2C5%2011.0007239%2C6.34218147%2011.0007239%2C7.99927606%20C11.0007239%2C9.65564672%209.65709459%2C11%208%2C11%20C6.34362934%2C11%205%2C9.65564672%205%2C7.99927606%20C5%2C6.34218147%206.34362934%2C5%208%2C5%20Z%20M9.38489382%2C6.19232625%20C8.94329151%2C6.19232625%208.58421815%2C6.55067568%208.58421815%2C6.99372587%20C8.58421815%2C7.43532819%208.94329151%2C7.79367761%209.38489382%2C7.79367761%20C9.82649614%2C7.79367761%2010.1855695%2C7.43532819%2010.1855695%2C6.99372587%20C10.1855695%2C6.55067568%209.82649614%2C6.19232625%209.38489382%2C6.19232625%20Z%22%20id%3D%22%E5%BD%A2%E7%8A%B6%22%20fill%3D%22%23666666%22%3E%3C%2Fpath%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim__side-button:hover .gcim__clear-button {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2216px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2016%2016%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3EClear%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22Clear%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M8%2C0%20C12.418278%2C0%2016%2C3.581722%2016%2C8%20C16%2C12.418278%2012.418278%2C16%208%2C16%20C3.581722%2C16%200%2C12.418278%200%2C8%20C0%2C3.581722%203.581722%2C0%208%2C0%20Z%20M8%2C1%20C4.13400675%2C1%201%2C4.13400675%201%2C8%20C1%2C11.8659932%204.13400675%2C15%208%2C15%20C11.8659932%2C15%2015%2C11.8659932%2015%2C8%20C15%2C4.13400675%2011.8659932%2C1%208%2C1%20Z%20M4.85355339%2C4.14644661%20L8.0348268%2C7.32772002%20L11.2175144%2C4.14644661%20C11.4127766%2C3.95118446%2011.7293591%2C3.95118446%2011.9246212%2C4.14644661%20C12.1198833%2C4.34170876%2012.1198833%2C4.65829124%2011.9246212%2C4.85355339%20L8.74193358%2C8.0348268%20L11.9246212%2C11.2175144%20C12.1198833%2C11.4127766%2012.1198833%2C11.7293591%2011.9246212%2C11.9246212%20C11.7293591%2C12.1198833%2011.4127766%2C12.1198833%2011.2175144%2C11.9246212%20L8.0348268%2C8.74193358%20L4.85355339%2C11.9246212%20C4.65829124%2C12.1198833%204.34170876%2C12.1198833%204.14644661%2C11.9246212%20C3.95118446%2C11.7293591%203.95118446%2C11.4127766%204.14644661%2C11.2175144%20L7.32772002%2C8.0348268%20L4.14644661%2C4.85355339%20C3.95118446%2C4.65829124%203.95118446%2C4.34170876%204.14644661%2C4.14644661%20C4.34170876%2C3.95118446%204.65829124%2C3.95118446%204.85355339%2C4.14644661%20Z%22%20id%3D%22%E5%BD%A2%E7%8A%B6%22%20fill%3D%22%23333333%22%20fill-rule%3D%22nonzero%22%3E%3C%2Fpath%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim__clear-button,
+.gcim__side-button[disabled]:hover .gcim__clear-button {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2216px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2016%2016%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3EClear%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22Clear%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M8%2C0%20C12.418278%2C0%2016%2C3.581722%2016%2C8%20C16%2C12.418278%2012.418278%2C16%208%2C16%20C3.581722%2C16%200%2C12.418278%200%2C8%20C0%2C3.581722%203.581722%2C0%208%2C0%20Z%20M8%2C1%20C4.13400675%2C1%201%2C4.13400675%201%2C8%20C1%2C11.8659932%204.13400675%2C15%208%2C15%20C11.8659932%2C15%2015%2C11.8659932%2015%2C8%20C15%2C4.13400675%2011.8659932%2C1%208%2C1%20Z%20M4.85355339%2C4.14644661%20L8.0348268%2C7.32772002%20L11.2175144%2C4.14644661%20C11.4127766%2C3.95118446%2011.7293591%2C3.95118446%2011.9246212%2C4.14644661%20C12.1198833%2C4.34170876%2012.1198833%2C4.65829124%2011.9246212%2C4.85355339%20L8.74193358%2C8.0348268%20L11.9246212%2C11.2175144%20C12.1198833%2C11.4127766%2012.1198833%2C11.7293591%2011.9246212%2C11.9246212%20C11.7293591%2C12.1198833%2011.4127766%2C12.1198833%2011.2175144%2C11.9246212%20L8.0348268%2C8.74193358%20L4.85355339%2C11.9246212%20C4.65829124%2C12.1198833%204.34170876%2C12.1198833%204.14644661%2C11.9246212%20C3.95118446%2C11.7293591%203.95118446%2C11.4127766%204.14644661%2C11.2175144%20L7.32772002%2C8.0348268%20L4.14644661%2C4.85355339%20C3.95118446%2C4.65829124%203.95118446%2C4.34170876%204.14644661%2C4.14644661%20C4.34170876%2C3.95118446%204.65829124%2C3.95118446%204.85355339%2C4.14644661%20Z%22%20id%3D%22%E5%BD%A2%E7%8A%B6%22%20fill%3D%22%23666666%22%20fill-rule%3D%22nonzero%22%3E%3C%2Fpath%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim__side-button:hover .gcim__copy-button {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2216px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2016%2016%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3ECopy%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22Copy%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M10.3345439%2C3.42882682%20C10.9752214%2C3.42882682%2011.5009056%2C3.94368715%2011.5009056%2C4.57117318%20L11.5009056%2C14.8576536%20C11.5009056%2C15.4851397%2010.9770467%2C16%2010.3345439%2C16%20L2.16636166%2C16%20C1.52568413%2C16%201%2C15.4869274%201%2C14.8576536%20L1%2C4.57117318%20C1%2C3.94368715%201.52385884%2C3.42882682%202.16636166%2C3.42882682%20L10.3345439%2C3.42882682%20Z%20M10.3345439%2C4.57117318%20L2.16636166%2C4.57117318%20L2.16636166%2C14.8576536%20L10.3345439%2C14.8576536%20L10.3345439%2C4.57117318%20Z%20M13.8336289%2C0%20C14.4761317%2C0%2015.0018158%2C0.514860335%2015%2C1.14234637%20L15%2C11.4288268%20C15%2C12.0563128%2014.4761317%2C12.5711732%2013.8336289%2C12.5711732%20L12.6672672%2C12.5711732%20L12.6672672%2C11.4288268%20L13.8336289%2C11.4288268%20L13.8336289%2C1.14234637%20L5.66544665%2C1.14234637%20L5.66544665%2C2.28469274%20L4.49908499%2C2.28469274%20L4.49908499%2C1.14234637%20C4.49908499%2C0.514860335%205.02294383%2C0%205.66544665%2C0%20L13.8336289%2C0%20Z%22%20id%3D%22%E5%BD%A2%E7%8A%B6%22%20fill%3D%22%23333333%22%20fill-rule%3D%22nonzero%22%3E%3C%2Fpath%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim__copy-button,
+.gcim__side-button[disabled]:hover .gcim__copy-button {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2216px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2016%2016%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3ECopy%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22Copy%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M10.3345439%2C3.42882682%20C10.9752214%2C3.42882682%2011.5009056%2C3.94368715%2011.5009056%2C4.57117318%20L11.5009056%2C14.8576536%20C11.5009056%2C15.4851397%2010.9770467%2C16%2010.3345439%2C16%20L2.16636166%2C16%20C1.52568413%2C16%201%2C15.4869274%201%2C14.8576536%20L1%2C4.57117318%20C1%2C3.94368715%201.52385884%2C3.42882682%202.16636166%2C3.42882682%20L10.3345439%2C3.42882682%20Z%20M10.3345439%2C4.57117318%20L2.16636166%2C4.57117318%20L2.16636166%2C14.8576536%20L10.3345439%2C14.8576536%20L10.3345439%2C4.57117318%20Z%20M13.8336289%2C0%20C14.4761317%2C0%2015.0018158%2C0.514860335%2015%2C1.14234637%20L15%2C11.4288268%20C15%2C12.0563128%2014.4761317%2C12.5711732%2013.8336289%2C12.5711732%20L12.6672672%2C12.5711732%20L12.6672672%2C11.4288268%20L13.8336289%2C11.4288268%20L13.8336289%2C1.14234637%20L5.66544665%2C1.14234637%20L5.66544665%2C2.28469274%20L4.49908499%2C2.28469274%20L4.49908499%2C1.14234637%20C4.49908499%2C0.514860335%205.02294383%2C0%205.66544665%2C0%20L13.8336289%2C0%20Z%22%20id%3D%22%E5%BD%A2%E7%8A%B6%22%20fill%3D%22%23666666%22%20fill-rule%3D%22nonzero%22%3E%3C%2Fpath%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim__side-button:hover .gcim__help-button {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2216px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2016%2016%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3EHelp%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22Help%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M8%2C0%20C3.58941071%2C0%200%2C3.58941071%200%2C8%20C0%2C12.4105893%203.58941071%2C16%208%2C16%20C12.4105893%2C16%2016%2C12.4105893%2016%2C8%20C16%2C3.58941071%2012.4105893%2C0%208%2C0%20Z%20M8%2C14.8571429%20C4.21983929%2C14.8571429%201.14285714%2C11.7805714%201.14285714%2C8%20C1.14285714%2C4.21983929%204.21983929%2C1.14285714%208%2C1.14285714%20C11.7805714%2C1.14285714%2014.8571429%2C4.21983929%2014.8571429%2C8%20C14.8571429%2C11.7805714%2011.7805714%2C14.8571429%208%2C14.8571429%20Z%20M7.42857143%2C10.8571429%20L8.57142857%2C10.8571429%20L8.57142857%2C12%20L7.42857143%2C12%20L7.42857143%2C10.8571429%20Z%20M8%2C4%20C7.01589286%2C4%206.30857143%2C4.41973214%205.90339286%2C5.134125%20C5.63407143%2C5.60914286%205.52851786%2C6.14108929%205.523125%2C6.66057143%20L6.66598214%2C6.67303571%20C6.67678571%2C5.7625%207.02878571%2C5.14285714%208%2C5.14285714%20C8.849875%2C5.14285714%209.33401786%2C5.568%209.33401786%2C6.28571429%20C9.33401786%2C6.63564286%209.20353571%2C6.85173214%208.78753571%2C7.25196429%20L8.55896429%2C7.46971429%20C7.78598214%2C8.21069643%207.43023214%2C8.84446429%207.43023214%2C9.90503571%20L8.57308929%2C9.90503571%20C8.57308929%2C9.21101786%208.78046429%2C8.84114286%209.35023214%2C8.29464286%20C9.38555357%2C8.26057143%209.53933929%2C8.11428571%209.58046429%2C8.076875%20C10.1996964%2C7.48217857%2010.4785714%2C7.01964286%2010.4785714%2C6.287375%20C10.476875%2C4.90182143%209.45205357%2C4%208%2C4%20Z%22%20id%3D%22%E5%BD%A2%E7%8A%B6%22%20fill%3D%22%23333333%22%20fill-rule%3D%22nonzero%22%3E%3C%2Fpath%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim__help-button,
+.gcim__side-button[disabled]:hover .gcim__help-button {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2216px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2016%2016%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3EHelp%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22Help%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M8%2C0%20C3.58941071%2C0%200%2C3.58941071%200%2C8%20C0%2C12.4105893%203.58941071%2C16%208%2C16%20C12.4105893%2C16%2016%2C12.4105893%2016%2C8%20C16%2C3.58941071%2012.4105893%2C0%208%2C0%20Z%20M8%2C14.8571429%20C4.21983929%2C14.8571429%201.14285714%2C11.7805714%201.14285714%2C8%20C1.14285714%2C4.21983929%204.21983929%2C1.14285714%208%2C1.14285714%20C11.7805714%2C1.14285714%2014.8571429%2C4.21983929%2014.8571429%2C8%20C14.8571429%2C11.7805714%2011.7805714%2C14.8571429%208%2C14.8571429%20Z%20M7.42857143%2C10.8571429%20L8.57142857%2C10.8571429%20L8.57142857%2C12%20L7.42857143%2C12%20L7.42857143%2C10.8571429%20Z%20M8%2C4%20C7.01589286%2C4%206.30857143%2C4.41973214%205.90339286%2C5.134125%20C5.63407143%2C5.60914286%205.52851786%2C6.14108929%205.523125%2C6.66057143%20L6.66598214%2C6.67303571%20C6.67678571%2C5.7625%207.02878571%2C5.14285714%208%2C5.14285714%20C8.849875%2C5.14285714%209.33401786%2C5.568%209.33401786%2C6.28571429%20C9.33401786%2C6.63564286%209.20353571%2C6.85173214%208.78753571%2C7.25196429%20L8.55896429%2C7.46971429%20C7.78598214%2C8.21069643%207.43023214%2C8.84446429%207.43023214%2C9.90503571%20L8.57308929%2C9.90503571%20C8.57308929%2C9.21101786%208.78046429%2C8.84114286%209.35023214%2C8.29464286%20C9.38555357%2C8.26057143%209.53933929%2C8.11428571%209.58046429%2C8.076875%20C10.1996964%2C7.48217857%2010.4785714%2C7.01964286%2010.4785714%2C6.287375%20C10.476875%2C4.90182143%209.45205357%2C4%208%2C4%20Z%22%20id%3D%22%E5%BD%A2%E7%8A%B6%22%20fill%3D%22%23666666%22%20fill-rule%3D%22nonzero%22%3E%3C%2Fpath%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim__copy-button_tip {
+  color: #333333;
+  background-color: #ffffff;
+  border-radius: 4px;
+  border: 1px solid #dadada;
+  box-shadow: 0px 2px 4px 0px rgba(187, 187, 187, 0.5);
+}
+.gcim__help-button_tip {
+  color: #333333;
+  background-color: #ffffff;
+  border-radius: 4px;
+  border: 1px solid #dadada;
+  box-shadow: 0px 2px 4px 0px rgba(187, 187, 187, 0.5);
+}
+.gcim-icon_drop-down {
+  background-size: 16px;
+  transition: transform 0.3s;
+}
+.gcim__side-button[state='open'] .gcim-icon_drop-down {
+  transform: rotate(180deg);
+}
+.gcim__side-button[state='close'] .gcim-icon_drop-down {
+  transform: rotate(0deg);
+}
+.gcim__side-button:hover .gcim-icon_drop-down {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2216px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2016%2016%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3EDropdown%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22Dropdown%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M12.819456%2C5.18516328%20C12.5776437%2C4.93827891%2012.1838906%2C4.93827891%2011.9420783%2C5.18516328%20L7.99939933%2C9.21094976%20L4.05591945%2C5.18516328%20C3.93984726%2C5.06583875%203.78504619%2C5.00042345%203.61943308%2C5.00042345%20C3.45296187%2C5%203.29701668%2C5.06583875%203.18054403%2C5.18475444%20C3.06407139%2C5.30407897%203%2C5.4628863%203%2C5.63238204%20C3%2C5.80234502%203.06407139%2C5.96115236%203.18014359%2C6.08006804%20L7.99939933%2C11%20L12.819456%2C6.08006804%20C12.9359286%2C5.96115236%2013%2C5.80234502%2013%2C5.63238204%20C13%2C5.4628863%2012.9359286%2C5.30407897%2012.819456%2C5.18516328%20Z%22%20id%3D%22Fill-1-Copy-2%22%20fill%3D%22%23333333%22%3E%3C%2Fpath%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim-icon_drop-down,
+.gcim__side-button[disabled]:hover .gcim-icon_drop-down {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2216px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2016%2016%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3EDropdown%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22Dropdown%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M12.819456%2C5.18516328%20C12.5776437%2C4.93827891%2012.1838906%2C4.93827891%2011.9420783%2C5.18516328%20L7.99939933%2C9.21094976%20L4.05591945%2C5.18516328%20C3.93984726%2C5.06583875%203.78504619%2C5.00042345%203.61943308%2C5.00042345%20C3.45296187%2C5%203.29701668%2C5.06583875%203.18054403%2C5.18475444%20C3.06407139%2C5.30407897%203%2C5.4628863%203%2C5.63238204%20C3%2C5.80234502%203.06407139%2C5.96115236%203.18014359%2C6.08006804%20L7.99939933%2C11%20L12.819456%2C6.08006804%20C12.9359286%2C5.96115236%2013%2C5.80234502%2013%2C5.63238204%20C13%2C5.4628863%2012.9359286%2C5.30407897%2012.819456%2C5.18516328%20Z%22%20id%3D%22Fill-1-Copy-2%22%20fill%3D%22%23666666%22%3E%3C%2Fpath%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim__side-button[name='calculator-popup'] .gcim-icon_drop-down {
+  background-size: 16px;
+}
+.gcim__side-button[name='calculator-popup']:hover .gcim-icon_drop-down {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2216px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2016%2016%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3ECalculato%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22Calculato%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M3.5%2C-3.67705866e-13%20C3.77614237%2C-3.67705866e-13%204%2C0.223857625%204%2C0.5%20L3.999%2C3%20L6.5%2C3%20C6.77614237%2C3%207%2C3.22385763%207%2C3.5%20C7%2C3.77614237%206.77614237%2C4%206.5%2C4%20L3.999%2C4%20L4%2C6.5%20C4%2C6.77614237%203.77614237%2C7%203.5%2C7%20C3.22385763%2C7%203%2C6.77614237%203%2C6.5%20L2.999%2C4%20L0.5%2C4%20C0.223857625%2C4%200%2C3.77614237%200%2C3.5%20C0%2C3.22385763%200.223857625%2C3%200.5%2C3%20L2.999%2C3%20L3%2C0.5%20C3%2C0.223857625%203.22385763%2C-3.67705866e-13%203.5%2C-3.67705866e-13%20Z%20M9.5%2C3%20L15.5%2C3%20C15.7761424%2C3%2016%2C3.22385763%2016%2C3.5%20C16%2C3.77614237%2015.7761424%2C4%2015.5%2C4%20L9.5%2C4%20C9.22385763%2C4%209%2C3.77614237%209%2C3.5%20C9%2C3.22385763%209.22385763%2C3%209.5%2C3%20Z%20M9.5%2C11%20L15.5%2C11%20C15.7761424%2C11%2016%2C11.2238576%2016%2C11.5%20C16%2C11.7761424%2015.7761424%2C12%2015.5%2C12%20L9.5%2C12%20C9.22385763%2C12%209%2C11.7761424%209%2C11.5%20C9%2C11.2238576%209.22385763%2C11%209.5%2C11%20Z%20M9.5%2C15%20L15.5%2C15%20C15.7761424%2C15%2016%2C15.2238576%2016%2C15.5%20C16%2C15.7761424%2015.7761424%2C16%2015.5%2C16%20L9.5%2C16%20C9.22385763%2C16%209%2C15.7761424%209%2C15.5%20C9%2C15.2238576%209.22385763%2C15%209.5%2C15%20Z%20M1.35777647%2C10.1446974%20L3.5%2C12.287%20L5.64222353%2C10.1446974%20C5.83748567%2C9.94943521%206.15406816%2C9.94943521%206.34933031%2C10.1446974%20C6.55056479%2C10.3459318%206.55056479%2C10.6625143%206.35530265%2C10.8577765%20L4.213%2C13%20L6.35530265%2C15.1422235%20C6.55056479%2C15.3374857%206.55056479%2C15.6540682%206.35530265%2C15.8493303%20C6.15406816%2C16.0505648%205.83748567%2C16.0505648%205.64222353%2C15.8553026%20L3.5%2C13.713%20L1.35777647%2C15.8553026%20C1.16251433%2C16.0505648%200.845931836%2C16.0505648%200.65066969%2C15.8553026%20C0.449435206%2C15.6540682%200.449435206%2C15.3374857%200.644697352%2C15.1422235%20L2.787%2C13%20L0.644697352%2C10.8577765%20C0.449435206%2C10.6625143%200.449435206%2C10.3459318%200.644697352%2C10.1506697%20C0.845931836%2C9.94943521%201.16251433%2C9.94943521%201.35777647%2C10.1446974%20Z%22%20id%3D%22%E5%BD%A2%E7%8A%B6%22%20fill%3D%22%23333333%22%3E%3C%2Fpath%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim__side-button[name='calculator-popup'] .gcim-icon_drop-down,
+.gcim__side-button[name='calculator-popup'][disabled]:hover .gcim-icon_drop-down {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2216px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2016%2016%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3ECalculato%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22Calculato%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M3.5%2C-3.67705866e-13%20C3.77614237%2C-3.67705866e-13%204%2C0.223857625%204%2C0.5%20L3.999%2C3%20L6.5%2C3%20C6.77614237%2C3%207%2C3.22385763%207%2C3.5%20C7%2C3.77614237%206.77614237%2C4%206.5%2C4%20L3.999%2C4%20L4%2C6.5%20C4%2C6.77614237%203.77614237%2C7%203.5%2C7%20C3.22385763%2C7%203%2C6.77614237%203%2C6.5%20L2.999%2C4%20L0.5%2C4%20C0.223857625%2C4%200%2C3.77614237%200%2C3.5%20C0%2C3.22385763%200.223857625%2C3%200.5%2C3%20L2.999%2C3%20L3%2C0.5%20C3%2C0.223857625%203.22385763%2C-3.67705866e-13%203.5%2C-3.67705866e-13%20Z%20M9.5%2C3%20L15.5%2C3%20C15.7761424%2C3%2016%2C3.22385763%2016%2C3.5%20C16%2C3.77614237%2015.7761424%2C4%2015.5%2C4%20L9.5%2C4%20C9.22385763%2C4%209%2C3.77614237%209%2C3.5%20C9%2C3.22385763%209.22385763%2C3%209.5%2C3%20Z%20M9.5%2C11%20L15.5%2C11%20C15.7761424%2C11%2016%2C11.2238576%2016%2C11.5%20C16%2C11.7761424%2015.7761424%2C12%2015.5%2C12%20L9.5%2C12%20C9.22385763%2C12%209%2C11.7761424%209%2C11.5%20C9%2C11.2238576%209.22385763%2C11%209.5%2C11%20Z%20M9.5%2C15%20L15.5%2C15%20C15.7761424%2C15%2016%2C15.2238576%2016%2C15.5%20C16%2C15.7761424%2015.7761424%2C16%2015.5%2C16%20L9.5%2C16%20C9.22385763%2C16%209%2C15.7761424%209%2C15.5%20C9%2C15.2238576%209.22385763%2C15%209.5%2C15%20Z%20M1.35777647%2C10.1446974%20L3.5%2C12.287%20L5.64222353%2C10.1446974%20C5.83748567%2C9.94943521%206.15406816%2C9.94943521%206.34933031%2C10.1446974%20C6.55056479%2C10.3459318%206.55056479%2C10.6625143%206.35530265%2C10.8577765%20L4.213%2C13%20L6.35530265%2C15.1422235%20C6.55056479%2C15.3374857%206.55056479%2C15.6540682%206.35530265%2C15.8493303%20C6.15406816%2C16.0505648%205.83748567%2C16.0505648%205.64222353%2C15.8553026%20L3.5%2C13.713%20L1.35777647%2C15.8553026%20C1.16251433%2C16.0505648%200.845931836%2C16.0505648%200.65066969%2C15.8553026%20C0.449435206%2C15.6540682%200.449435206%2C15.3374857%200.644697352%2C15.1422235%20L2.787%2C13%20L0.644697352%2C10.8577765%20C0.449435206%2C10.6625143%200.449435206%2C10.3459318%200.644697352%2C10.1506697%20C0.845931836%2C9.94943521%201.16251433%2C9.94943521%201.35777647%2C10.1446974%20Z%22%20id%3D%22%E5%BD%A2%E7%8A%B6%22%20fill%3D%22%23666666%22%3E%3C%2Fpath%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim__side-button[name='calculator-dropdown']:hover .gcim-icon_drop-down {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2216px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2016%2016%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3ECalculato-DropdownBox%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22Calculato-DropdownBox%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M13.5%2C0%20C14.3284271%2C0%2015%2C0.671572875%2015%2C1.5%20L15%2C14.5%20C15%2C15.3284271%2014.3284271%2C16%2013.5%2C16%20L2.5%2C16%20C1.67157288%2C16%201%2C15.3284271%201%2C14.5%20L1%2C1.5%20C1%2C0.671572875%201.67157288%2C0%202.5%2C0%20L13.5%2C0%20Z%20M13.5%2C1%20L2.5%2C1%20C2.22385763%2C1%202%2C1.22385763%202%2C1.5%20L2%2C14.5%20C2%2C14.7761424%202.22385763%2C15%202.5%2C15%20L13.5%2C15%20C13.7761424%2C15%2014%2C14.7761424%2014%2C14.5%20L14%2C1.5%20C14%2C1.22385763%2013.7761424%2C1%2013.5%2C1%20Z%20M11.5%2C2%20C12.3284271%2C2%2013%2C2.67157288%2013%2C3.5%20L13%2C5.5%20C13%2C6.32842712%2012.3284271%2C7%2011.5%2C7%20L4.5%2C7%20C3.67157288%2C7%203%2C6.32842712%203%2C5.5%20L3%2C3.5%20C3%2C2.67157288%203.67157288%2C2%204.5%2C2%20L11.5%2C2%20Z%20M11.5%2C3%20L4.5%2C3%20C4.22385763%2C3%204%2C3.22385763%204%2C3.5%20L4%2C5.5%20C4%2C5.77614237%204.22385763%2C6%204.5%2C6%20L11.5%2C6%20C11.7761424%2C6%2012%2C5.77614237%2012%2C5.5%20L12%2C3.5%20C12%2C3.22385763%2011.7761424%2C3%2011.5%2C3%20Z%20M5.5%2C9%20C5.77614237%2C9%206%2C9.22385763%206%2C9.5%20L6%2C10.999%20L7.5%2C11%20C7.77614237%2C11%208%2C11.2238576%208%2C11.5%20C8%2C11.7761424%207.77614237%2C12%207.5%2C12%20L6%2C11.999%20L6%2C13.5%20C6%2C13.7761424%205.77614237%2C14%205.5%2C14%20C5.22385763%2C14%205%2C13.7761424%205%2C13.5%20L5%2C11.999%20L3.5%2C12%20C3.22385763%2C12%203%2C11.7761424%203%2C11.5%20C3%2C11.2238576%203.22385763%2C11%203.5%2C11%20L5%2C10.999%20L5%2C9.5%20C5%2C9.22385763%205.22385763%2C9%205.5%2C9%20Z%20M12.8547007%2C9.39529926%20C13.0484331%2C9.58903162%2013.0484331%2C9.90313382%2012.8547007%2C10.0968662%20L11.4522685%2C11.4992984%20L12.8547007%2C12.9031338%20C13.0484331%2C13.0968662%2013.0484331%2C13.4109684%2012.8547007%2C13.6047007%20C12.6609684%2C13.7984331%2012.3468662%2C13.7984331%2012.1531338%2C13.6047007%20L10.7507016%2C12.2008653%20L9.34686618%2C13.6047007%20C9.15313382%2C13.7984331%208.83903162%2C13.7984331%208.64529926%2C13.6047007%20C8.45156691%2C13.4109684%208.45156691%2C13.0968662%208.64529926%2C12.9031338%20L10.0491347%2C11.4992984%20L8.64529926%2C10.0968662%20C8.45156691%2C9.90313382%208.45156691%2C9.58903162%208.64529926%2C9.39529926%20C8.83903162%2C9.20156691%209.15313382%2C9.20156691%209.34686618%2C9.39529926%20L10.7507016%2C10.7977315%20L12.1531338%2C9.39529926%20C12.3468662%2C9.20156691%2012.6609684%2C9.20156691%2012.8547007%2C9.39529926%20Z%22%20id%3D%22%E5%BD%A2%E7%8A%B6%22%20fill%3D%22%23333333%22%20fill-rule%3D%22nonzero%22%3E%3C%2Fpath%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim__side-button[name='calculator-dropdown'] .gcim-icon_drop-down,
+.gcim__side-button[name='calculator-dropdown'][disabled]:hover .gcim-icon_drop-down {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2216px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2016%2016%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3ECalculato-DropdownBox%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22Calculato-DropdownBox%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M13.5%2C0%20C14.3284271%2C0%2015%2C0.671572875%2015%2C1.5%20L15%2C14.5%20C15%2C15.3284271%2014.3284271%2C16%2013.5%2C16%20L2.5%2C16%20C1.67157288%2C16%201%2C15.3284271%201%2C14.5%20L1%2C1.5%20C1%2C0.671572875%201.67157288%2C0%202.5%2C0%20L13.5%2C0%20Z%20M13.5%2C1%20L2.5%2C1%20C2.22385763%2C1%202%2C1.22385763%202%2C1.5%20L2%2C14.5%20C2%2C14.7761424%202.22385763%2C15%202.5%2C15%20L13.5%2C15%20C13.7761424%2C15%2014%2C14.7761424%2014%2C14.5%20L14%2C1.5%20C14%2C1.22385763%2013.7761424%2C1%2013.5%2C1%20Z%20M11.5%2C2%20C12.3284271%2C2%2013%2C2.67157288%2013%2C3.5%20L13%2C5.5%20C13%2C6.32842712%2012.3284271%2C7%2011.5%2C7%20L4.5%2C7%20C3.67157288%2C7%203%2C6.32842712%203%2C5.5%20L3%2C3.5%20C3%2C2.67157288%203.67157288%2C2%204.5%2C2%20L11.5%2C2%20Z%20M11.5%2C3%20L4.5%2C3%20C4.22385763%2C3%204%2C3.22385763%204%2C3.5%20L4%2C5.5%20C4%2C5.77614237%204.22385763%2C6%204.5%2C6%20L11.5%2C6%20C11.7761424%2C6%2012%2C5.77614237%2012%2C5.5%20L12%2C3.5%20C12%2C3.22385763%2011.7761424%2C3%2011.5%2C3%20Z%20M5.5%2C9%20C5.77614237%2C9%206%2C9.22385763%206%2C9.5%20L6%2C10.999%20L7.5%2C11%20C7.77614237%2C11%208%2C11.2238576%208%2C11.5%20C8%2C11.7761424%207.77614237%2C12%207.5%2C12%20L6%2C11.999%20L6%2C13.5%20C6%2C13.7761424%205.77614237%2C14%205.5%2C14%20C5.22385763%2C14%205%2C13.7761424%205%2C13.5%20L5%2C11.999%20L3.5%2C12%20C3.22385763%2C12%203%2C11.7761424%203%2C11.5%20C3%2C11.2238576%203.22385763%2C11%203.5%2C11%20L5%2C10.999%20L5%2C9.5%20C5%2C9.22385763%205.22385763%2C9%205.5%2C9%20Z%20M12.8547007%2C9.39529926%20C13.0484331%2C9.58903162%2013.0484331%2C9.90313382%2012.8547007%2C10.0968662%20L11.4522685%2C11.4992984%20L12.8547007%2C12.9031338%20C13.0484331%2C13.0968662%2013.0484331%2C13.4109684%2012.8547007%2C13.6047007%20C12.6609684%2C13.7984331%2012.3468662%2C13.7984331%2012.1531338%2C13.6047007%20L10.7507016%2C12.2008653%20L9.34686618%2C13.6047007%20C9.15313382%2C13.7984331%208.83903162%2C13.7984331%208.64529926%2C13.6047007%20C8.45156691%2C13.4109684%208.45156691%2C13.0968662%208.64529926%2C12.9031338%20L10.0491347%2C11.4992984%20L8.64529926%2C10.0968662%20C8.45156691%2C9.90313382%208.45156691%2C9.58903162%208.64529926%2C9.39529926%20C8.83903162%2C9.20156691%209.15313382%2C9.20156691%209.34686618%2C9.39529926%20L10.7507016%2C10.7977315%20L12.1531338%2C9.39529926%20C12.3468662%2C9.20156691%2012.6609684%2C9.20156691%2012.8547007%2C9.39529926%20Z%22%20id%3D%22%E5%BD%A2%E7%8A%B6%22%20fill%3D%22%23666666%22%20fill-rule%3D%22nonzero%22%3E%3C%2Fpath%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim__side-button[name='Numeric_DropDown_Button']:hover .gcim-icon_drop-down {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2216px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2016%2016%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3ECalculato-Number%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22Calculato-Number%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M13.5%2C0%20C14.3284271%2C0%2015%2C0.671572875%2015%2C1.5%20L15%2C14.5%20C15%2C15.3284271%2014.3284271%2C16%2013.5%2C16%20L2.5%2C16%20C1.67157288%2C16%201%2C15.3284271%201%2C14.5%20L1%2C1.5%20C1%2C0.671572875%201.67157288%2C0%202.5%2C0%20L13.5%2C0%20Z%20M13.5%2C1%20L2.5%2C1%20C2.22385763%2C1%202%2C1.22385763%202%2C1.5%20L2%2C14.5%20C2%2C14.7761424%202.22385763%2C15%202.5%2C15%20L13.5%2C15%20C13.7761424%2C15%2014%2C14.7761424%2014%2C14.5%20L14%2C1.5%20C14%2C1.22385763%2013.7761424%2C1%2013.5%2C1%20Z%20M5%2C12%20C5.55228475%2C12%206%2C12.4477153%206%2C13%20C6%2C13.5522847%205.55228475%2C14%205%2C14%20C4.44771525%2C14%204%2C13.5522847%204%2C13%20C4%2C12.4477153%204.44771525%2C12%205%2C12%20Z%20M8%2C12%20C8.55228475%2C12%209%2C12.4477153%209%2C13%20C9%2C13.5522847%208.55228475%2C14%208%2C14%20C7.44771525%2C14%207%2C13.5522847%207%2C13%20C7%2C12.4477153%207.44771525%2C12%208%2C12%20Z%20M11%2C12%20C11.5522847%2C12%2012%2C12.4477153%2012%2C13%20C12%2C13.5522847%2011.5522847%2C14%2011%2C14%20C10.4477153%2C14%2010%2C13.5522847%2010%2C13%20C10%2C12.4477153%2010.4477153%2C12%2011%2C12%20Z%20M5%2C9%20C5.55228475%2C9%206%2C9.44771525%206%2C10%20C6%2C10.5522847%205.55228475%2C11%205%2C11%20C4.44771525%2C11%204%2C10.5522847%204%2C10%20C4%2C9.44771525%204.44771525%2C9%205%2C9%20Z%20M8%2C9%20C8.55228475%2C9%209%2C9.44771525%209%2C10%20C9%2C10.5522847%208.55228475%2C11%208%2C11%20C7.44771525%2C11%207%2C10.5522847%207%2C10%20C7%2C9.44771525%207.44771525%2C9%208%2C9%20Z%20M11%2C9%20C11.5522847%2C9%2012%2C9.44771525%2012%2C10%20C12%2C10.5522847%2011.5522847%2C11%2011%2C11%20C10.4477153%2C11%2010%2C10.5522847%2010%2C10%20C10%2C9.44771525%2010.4477153%2C9%2011%2C9%20Z%20M11.5%2C2%20C12.3284271%2C2%2013%2C2.67157288%2013%2C3.5%20L13%2C5.5%20C13%2C6.32842712%2012.3284271%2C7%2011.5%2C7%20L4.5%2C7%20C3.67157288%2C7%203%2C6.32842712%203%2C5.5%20L3%2C3.5%20C3%2C2.67157288%203.67157288%2C2%204.5%2C2%20L11.5%2C2%20Z%20M11.5%2C3%20L4.5%2C3%20C4.22385763%2C3%204%2C3.22385763%204%2C3.5%20L4%2C5.5%20C4%2C5.77614237%204.22385763%2C6%204.5%2C6%20L11.5%2C6%20C11.7761424%2C6%2012%2C5.77614237%2012%2C5.5%20L12%2C3.5%20C12%2C3.22385763%2011.7761424%2C3%2011.5%2C3%20Z%22%20id%3D%22%E5%BD%A2%E7%8A%B6%22%20fill%3D%22%23333333%22%20fill-rule%3D%22nonzero%22%3E%3C%2Fpath%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim__side-button[name='Numeric_DropDown_Button'] .gcim-icon_drop-down,
+.gcim__side-button[name='Numeric_DropDown_Button'][disabled]:hover .gcim-icon_drop-down {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2216px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2016%2016%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3ECalculato-Number%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22Calculato-Number%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M13.5%2C0%20C14.3284271%2C0%2015%2C0.671572875%2015%2C1.5%20L15%2C14.5%20C15%2C15.3284271%2014.3284271%2C16%2013.5%2C16%20L2.5%2C16%20C1.67157288%2C16%201%2C15.3284271%201%2C14.5%20L1%2C1.5%20C1%2C0.671572875%201.67157288%2C0%202.5%2C0%20L13.5%2C0%20Z%20M13.5%2C1%20L2.5%2C1%20C2.22385763%2C1%202%2C1.22385763%202%2C1.5%20L2%2C14.5%20C2%2C14.7761424%202.22385763%2C15%202.5%2C15%20L13.5%2C15%20C13.7761424%2C15%2014%2C14.7761424%2014%2C14.5%20L14%2C1.5%20C14%2C1.22385763%2013.7761424%2C1%2013.5%2C1%20Z%20M5%2C12%20C5.55228475%2C12%206%2C12.4477153%206%2C13%20C6%2C13.5522847%205.55228475%2C14%205%2C14%20C4.44771525%2C14%204%2C13.5522847%204%2C13%20C4%2C12.4477153%204.44771525%2C12%205%2C12%20Z%20M8%2C12%20C8.55228475%2C12%209%2C12.4477153%209%2C13%20C9%2C13.5522847%208.55228475%2C14%208%2C14%20C7.44771525%2C14%207%2C13.5522847%207%2C13%20C7%2C12.4477153%207.44771525%2C12%208%2C12%20Z%20M11%2C12%20C11.5522847%2C12%2012%2C12.4477153%2012%2C13%20C12%2C13.5522847%2011.5522847%2C14%2011%2C14%20C10.4477153%2C14%2010%2C13.5522847%2010%2C13%20C10%2C12.4477153%2010.4477153%2C12%2011%2C12%20Z%20M5%2C9%20C5.55228475%2C9%206%2C9.44771525%206%2C10%20C6%2C10.5522847%205.55228475%2C11%205%2C11%20C4.44771525%2C11%204%2C10.5522847%204%2C10%20C4%2C9.44771525%204.44771525%2C9%205%2C9%20Z%20M8%2C9%20C8.55228475%2C9%209%2C9.44771525%209%2C10%20C9%2C10.5522847%208.55228475%2C11%208%2C11%20C7.44771525%2C11%207%2C10.5522847%207%2C10%20C7%2C9.44771525%207.44771525%2C9%208%2C9%20Z%20M11%2C9%20C11.5522847%2C9%2012%2C9.44771525%2012%2C10%20C12%2C10.5522847%2011.5522847%2C11%2011%2C11%20C10.4477153%2C11%2010%2C10.5522847%2010%2C10%20C10%2C9.44771525%2010.4477153%2C9%2011%2C9%20Z%20M11.5%2C2%20C12.3284271%2C2%2013%2C2.67157288%2013%2C3.5%20L13%2C5.5%20C13%2C6.32842712%2012.3284271%2C7%2011.5%2C7%20L4.5%2C7%20C3.67157288%2C7%203%2C6.32842712%203%2C5.5%20L3%2C3.5%20C3%2C2.67157288%203.67157288%2C2%204.5%2C2%20L11.5%2C2%20Z%20M11.5%2C3%20L4.5%2C3%20C4.22385763%2C3%204%2C3.22385763%204%2C3.5%20L4%2C5.5%20C4%2C5.77614237%204.22385763%2C6%204.5%2C6%20L11.5%2C6%20C11.7761424%2C6%2012%2C5.77614237%2012%2C5.5%20L12%2C3.5%20C12%2C3.22385763%2011.7761424%2C3%2011.5%2C3%20Z%22%20id%3D%22%E5%BD%A2%E7%8A%B6%22%20fill%3D%22%23666666%22%20fill-rule%3D%22nonzero%22%3E%3C%2Fpath%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim__side-button[name='dropdown_calender']:hover .gcim-icon_drop-down {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2216px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2016%2016%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3ECalendar%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22Calendar%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M11.5%2C0%20C11.7761424%2C0%2012%2C0.223857625%2012%2C0.5%20L12%2C2%20L13%2C2%20C14.6568542%2C2%2016%2C3.34314575%2016%2C5%20L16%2C13%20C16%2C14.6568542%2014.6568542%2C16%2013%2C16%20L3%2C16%20C1.34314575%2C16%200%2C14.6568542%200%2C13%20L0%2C5%20C0%2C3.34314575%201.34314575%2C2%203%2C2%20L4%2C2%20L4%2C0.5%20C4%2C0.223857625%204.22385763%2C0%204.5%2C0%20C4.77614237%2C0%205%2C0.223857625%205%2C0.5%20L5%2C2%20L11%2C2%20L11%2C0.5%20C11%2C0.223857625%2011.2238576%2C0%2011.5%2C0%20Z%20M15%2C7%20L1%2C7%20L1%2C13%20C1%2C14.1045695%201.8954305%2C15%203%2C15%20L13%2C15%20C14.1045695%2C15%2015%2C14.1045695%2015%2C13%20L15%2C7%20Z%20M4.5%2C12%20C4.77614237%2C12%205%2C12.2238576%205%2C12.5%20C5%2C12.7761424%204.77614237%2C13%204.5%2C13%20L3.5%2C13%20C3.22385763%2C13%203%2C12.7761424%203%2C12.5%20C3%2C12.2238576%203.22385763%2C12%203.5%2C12%20L4.5%2C12%20Z%20M8.5%2C12%20C8.77614237%2C12%209%2C12.2238576%209%2C12.5%20C9%2C12.7761424%208.77614237%2C13%208.5%2C13%20L7.5%2C13%20C7.22385763%2C13%207%2C12.7761424%207%2C12.5%20C7%2C12.2238576%207.22385763%2C12%207.5%2C12%20L8.5%2C12%20Z%20M12.5%2C12%20C12.7761424%2C12%2013%2C12.2238576%2013%2C12.5%20C13%2C12.7761424%2012.7761424%2C13%2012.5%2C13%20L11.5%2C13%20C11.2238576%2C13%2011%2C12.7761424%2011%2C12.5%20C11%2C12.2238576%2011.2238576%2C12%2011.5%2C12%20L12.5%2C12%20Z%20M4.5%2C9%20C4.77614237%2C9%205%2C9.22385763%205%2C9.5%20C5%2C9.77614237%204.77614237%2C10%204.5%2C10%20L3.5%2C10%20C3.22385763%2C10%203%2C9.77614237%203%2C9.5%20C3%2C9.22385763%203.22385763%2C9%203.5%2C9%20L4.5%2C9%20Z%20M8.5%2C9%20C8.77614237%2C9%209%2C9.22385763%209%2C9.5%20C9%2C9.77614237%208.77614237%2C10%208.5%2C10%20L7.5%2C10%20C7.22385763%2C10%207%2C9.77614237%207%2C9.5%20C7%2C9.22385763%207.22385763%2C9%207.5%2C9%20L8.5%2C9%20Z%20M12.5%2C9%20C12.7761424%2C9%2013%2C9.22385763%2013%2C9.5%20C13%2C9.77614237%2012.7761424%2C10%2012.5%2C10%20L11.5%2C10%20C11.2238576%2C10%2011%2C9.77614237%2011%2C9.5%20C11%2C9.22385763%2011.2238576%2C9%2011.5%2C9%20L12.5%2C9%20Z%20M4%2C3%20L3%2C3%20C1.8954305%2C3%201%2C3.8954305%201%2C5%20L1%2C6%20L15%2C6%20L15%2C5%20C15%2C3.8954305%2014.1045695%2C3%2013%2C3%20L12%2C3%20L12%2C4.5%20C12%2C4.77614237%2011.7761424%2C5%2011.5%2C5%20C11.2238576%2C5%2011%2C4.77614237%2011%2C4.5%20L11%2C3%20L5%2C3%20L5%2C4.5%20C5%2C4.77614237%204.77614237%2C5%204.5%2C5%20C4.22385763%2C5%204%2C4.77614237%204%2C4.5%20L4%2C3%20Z%22%20id%3D%22%E5%BD%A2%E7%8A%B6%22%20fill%3D%22%23333333%22%20fill-rule%3D%22nonzero%22%3E%3C%2Fpath%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim__side-button[name='dropdown_calender'] .gcim-icon_drop-down,
+.gcim__side-button[name='dropdown_calender'][disabled]:hover .gcim-icon_drop-down {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2216px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2016%2016%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3ECalendar%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22Calendar%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M11.5%2C0%20C11.7761424%2C0%2012%2C0.223857625%2012%2C0.5%20L12%2C2%20L13%2C2%20C14.6568542%2C2%2016%2C3.34314575%2016%2C5%20L16%2C13%20C16%2C14.6568542%2014.6568542%2C16%2013%2C16%20L3%2C16%20C1.34314575%2C16%200%2C14.6568542%200%2C13%20L0%2C5%20C0%2C3.34314575%201.34314575%2C2%203%2C2%20L4%2C2%20L4%2C0.5%20C4%2C0.223857625%204.22385763%2C0%204.5%2C0%20C4.77614237%2C0%205%2C0.223857625%205%2C0.5%20L5%2C2%20L11%2C2%20L11%2C0.5%20C11%2C0.223857625%2011.2238576%2C0%2011.5%2C0%20Z%20M15%2C7%20L1%2C7%20L1%2C13%20C1%2C14.1045695%201.8954305%2C15%203%2C15%20L13%2C15%20C14.1045695%2C15%2015%2C14.1045695%2015%2C13%20L15%2C7%20Z%20M4.5%2C12%20C4.77614237%2C12%205%2C12.2238576%205%2C12.5%20C5%2C12.7761424%204.77614237%2C13%204.5%2C13%20L3.5%2C13%20C3.22385763%2C13%203%2C12.7761424%203%2C12.5%20C3%2C12.2238576%203.22385763%2C12%203.5%2C12%20L4.5%2C12%20Z%20M8.5%2C12%20C8.77614237%2C12%209%2C12.2238576%209%2C12.5%20C9%2C12.7761424%208.77614237%2C13%208.5%2C13%20L7.5%2C13%20C7.22385763%2C13%207%2C12.7761424%207%2C12.5%20C7%2C12.2238576%207.22385763%2C12%207.5%2C12%20L8.5%2C12%20Z%20M12.5%2C12%20C12.7761424%2C12%2013%2C12.2238576%2013%2C12.5%20C13%2C12.7761424%2012.7761424%2C13%2012.5%2C13%20L11.5%2C13%20C11.2238576%2C13%2011%2C12.7761424%2011%2C12.5%20C11%2C12.2238576%2011.2238576%2C12%2011.5%2C12%20L12.5%2C12%20Z%20M4.5%2C9%20C4.77614237%2C9%205%2C9.22385763%205%2C9.5%20C5%2C9.77614237%204.77614237%2C10%204.5%2C10%20L3.5%2C10%20C3.22385763%2C10%203%2C9.77614237%203%2C9.5%20C3%2C9.22385763%203.22385763%2C9%203.5%2C9%20L4.5%2C9%20Z%20M8.5%2C9%20C8.77614237%2C9%209%2C9.22385763%209%2C9.5%20C9%2C9.77614237%208.77614237%2C10%208.5%2C10%20L7.5%2C10%20C7.22385763%2C10%207%2C9.77614237%207%2C9.5%20C7%2C9.22385763%207.22385763%2C9%207.5%2C9%20L8.5%2C9%20Z%20M12.5%2C9%20C12.7761424%2C9%2013%2C9.22385763%2013%2C9.5%20C13%2C9.77614237%2012.7761424%2C10%2012.5%2C10%20L11.5%2C10%20C11.2238576%2C10%2011%2C9.77614237%2011%2C9.5%20C11%2C9.22385763%2011.2238576%2C9%2011.5%2C9%20L12.5%2C9%20Z%20M4%2C3%20L3%2C3%20C1.8954305%2C3%201%2C3.8954305%201%2C5%20L1%2C6%20L15%2C6%20L15%2C5%20C15%2C3.8954305%2014.1045695%2C3%2013%2C3%20L12%2C3%20L12%2C4.5%20C12%2C4.77614237%2011.7761424%2C5%2011.5%2C5%20C11.2238576%2C5%2011%2C4.77614237%2011%2C4.5%20L11%2C3%20L5%2C3%20L5%2C4.5%20C5%2C4.77614237%204.77614237%2C5%204.5%2C5%20C4.22385763%2C5%204%2C4.77614237%204%2C4.5%20L4%2C3%20Z%22%20id%3D%22%E5%BD%A2%E7%8A%B6%22%20fill%3D%22%23666666%22%20fill-rule%3D%22nonzero%22%3E%3C%2Fpath%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim__side-button[name='dropdown_picker']:hover .gcim-icon_drop-down {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2216px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2016%2016%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3EDate-time%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22Date-time%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M11.5%2C7%20C13.9852814%2C7%2016%2C9.01471863%2016%2C11.5%20C16%2C13.9852814%2013.9852814%2C16%2011.5%2C16%20C9.01471863%2C16%207%2C13.9852814%207%2C11.5%20C7%2C9.01471863%209.01471863%2C7%2011.5%2C7%20Z%20M11.5%2C7.8%20C9.45654643%2C7.8%207.8%2C9.45654643%207.8%2C11.5%20C7.8%2C13.5434536%209.45654643%2C15.2%2011.5%2C15.2%20C13.5434536%2C15.2%2015.2%2C13.5434536%2015.2%2C11.5%20C15.2%2C9.45654643%2013.5434536%2C7.8%2011.5%2C7.8%20Z%20M10.0619867%2C0%20C10.303599%2C0%2010.4994644%2C0.195865431%2010.4994644%2C0.437477685%20L10.4994644%2C1.74991074%20L11.3744198%2C1.74991074%20C12.8240933%2C1.74991074%2013.9993781%2C2.92510332%2013.9993781%2C4.37477685%20L13.9993781%2C6.59939174%20C13.7207187%2C6.4569872%2013.4283105%2C6.33765173%2013.1246721%2C6.24390383%20L13.1243305%2C6.12468758%20L12.6637586%2C6.12335803%20C12.2886345%2C6.04254822%2011.8992861%2C6%2011.5%2C6%20C11.1007139%2C6%2010.7113655%2C6.04254822%2010.3362414%2C6.12335803%20L0.874955369%2C6.12468758%20L0.874955369%2C11.3744198%20C0.874955369%2C12.3408688%201.65841709%2C13.1243305%202.62486611%2C13.1243305%20L6.24390383%2C13.1246721%20C6.33765173%2C13.4283105%206.4569872%2C13.7207187%206.59939174%2C13.9993781%20L2.62486611%2C13.9993781%20C1.17519259%2C13.9993781%200%2C12.8240933%200%2C11.3744198%20L0%2C4.37477685%20C0%2C2.92510332%201.17519259%2C1.74991074%202.62486611%2C1.74991074%20L3.49982148%2C1.74991074%20L3.49982148%2C0.437477685%20C3.49982148%2C0.195865431%203.69568691%2C0%203.93729916%2C0%20C4.17891142%2C0%204.37477685%2C0.195865431%204.37477685%2C0.437477685%20L4.37477685%2C1.74991074%20L9.62450906%2C1.74991074%20L9.62450906%2C0.437477685%20C9.62450906%2C0.195865431%209.82037449%2C0%2010.0619867%2C0%20Z%20M11.5%2C8.35%20C11.7209139%2C8.35%2011.9%2C8.5290861%2011.9%2C8.75%20L11.9%2C11.335%20L13.7828427%2C13.2171573%20C13.9195262%2C13.3538408%2013.9366117%2C13.564833%2013.834099%2C13.7200937%20L13.7828427%2C13.7828427%20C13.626633%2C13.9390524%2013.373367%2C13.9390524%2013.2171573%2C13.7828427%20L11.2171573%2C11.7828427%20C11.1421427%2C11.7078282%2011.1%2C11.6060866%2011.1%2C11.5%20L11.1%2C8.75%20C11.1%2C8.5290861%2011.2790861%2C8.35%2011.5%2C8.35%20Z%20M3.93729916%2C10.4994644%20C4.17891142%2C10.4994644%204.37477685%2C10.6953299%204.37477685%2C10.9369421%20C4.37477685%2C11.1785544%204.17891142%2C11.3744198%203.93729916%2C11.3744198%20L3.06234379%2C11.3744198%20C2.82073154%2C11.3744198%202.62486611%2C11.1785544%202.62486611%2C10.9369421%20C2.62486611%2C10.6953299%202.82073154%2C10.4994644%203.06234379%2C10.4994644%20L3.93729916%2C10.4994644%20Z%20M3.93729916%2C7.87459832%20C4.17891142%2C7.87459832%204.37477685%2C8.07046375%204.37477685%2C8.31207601%20C4.37477685%2C8.55368826%204.17891142%2C8.74955369%203.93729916%2C8.74955369%20L3.06234379%2C8.74955369%20C2.82073154%2C8.74955369%202.62486611%2C8.55368826%202.62486611%2C8.31207601%20C2.62486611%2C8.07046375%202.82073154%2C7.87459832%203.06234379%2C7.87459832%20L3.93729916%2C7.87459832%20Z%20M7.36446538%2C7.87396184%20C7.12787096%2C8.14358419%206.91722331%2C8.43653955%206.73642236%2C8.74892798%20L6.56216527%2C8.74955369%20C6.32055302%2C8.74955369%206.12468758%2C8.55368826%206.12468758%2C8.31207601%20C6.12468758%2C8.07046375%206.32055302%2C7.87459832%206.56216527%2C7.87459832%20L7.36446538%2C7.87396184%20Z%20M3.49982148%2C2.62486611%20L2.62486611%2C2.62486611%20C1.65841709%2C2.62486611%200.874955369%2C3.40832783%200.874955369%2C4.37477685%20L0.874955369%2C5.24973222%20L13.1243305%2C5.24973222%20L13.1243305%2C4.37477685%20C13.1243305%2C3.40832783%2012.3408688%2C2.62486611%2011.3744198%2C2.62486611%20L10.4994644%2C2.62486611%20L10.4994644%2C3.93729916%20C10.4994644%2C4.17891142%2010.303599%2C4.37477685%2010.0619867%2C4.37477685%20C9.82037449%2C4.37477685%209.62450906%2C4.17891142%209.62450906%2C3.93729916%20L9.62450906%2C2.62486611%20L4.37477685%2C2.62486611%20L4.37477685%2C3.93729916%20C4.37477685%2C4.17891142%204.17891142%2C4.37477685%203.93729916%2C4.37477685%20C3.69568691%2C4.37477685%203.49982148%2C4.17891142%203.49982148%2C3.93729916%20L3.49982148%2C2.62486611%20Z%22%20id%3D%22%E5%BD%A2%E7%8A%B6%22%20fill%3D%22%23333333%22%20fill-rule%3D%22nonzero%22%3E%3C%2Fpath%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim__side-button[name='dropdown_picker'] .gcim-icon_drop-down,
+.gcim__side-button[name='dropdown_picker'][disabled]:hover .gcim-icon_drop-down {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2216px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2016%2016%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3EDate-time%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22Date-time%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M11.5%2C7%20C13.9852814%2C7%2016%2C9.01471863%2016%2C11.5%20C16%2C13.9852814%2013.9852814%2C16%2011.5%2C16%20C9.01471863%2C16%207%2C13.9852814%207%2C11.5%20C7%2C9.01471863%209.01471863%2C7%2011.5%2C7%20Z%20M11.5%2C7.8%20C9.45654643%2C7.8%207.8%2C9.45654643%207.8%2C11.5%20C7.8%2C13.5434536%209.45654643%2C15.2%2011.5%2C15.2%20C13.5434536%2C15.2%2015.2%2C13.5434536%2015.2%2C11.5%20C15.2%2C9.45654643%2013.5434536%2C7.8%2011.5%2C7.8%20Z%20M10.0619867%2C0%20C10.303599%2C0%2010.4994644%2C0.195865431%2010.4994644%2C0.437477685%20L10.4994644%2C1.74991074%20L11.3744198%2C1.74991074%20C12.8240933%2C1.74991074%2013.9993781%2C2.92510332%2013.9993781%2C4.37477685%20L13.9993781%2C6.59939174%20C13.7207187%2C6.4569872%2013.4283105%2C6.33765173%2013.1246721%2C6.24390383%20L13.1243305%2C6.12468758%20L12.6637586%2C6.12335803%20C12.2886345%2C6.04254822%2011.8992861%2C6%2011.5%2C6%20C11.1007139%2C6%2010.7113655%2C6.04254822%2010.3362414%2C6.12335803%20L0.874955369%2C6.12468758%20L0.874955369%2C11.3744198%20C0.874955369%2C12.3408688%201.65841709%2C13.1243305%202.62486611%2C13.1243305%20L6.24390383%2C13.1246721%20C6.33765173%2C13.4283105%206.4569872%2C13.7207187%206.59939174%2C13.9993781%20L2.62486611%2C13.9993781%20C1.17519259%2C13.9993781%200%2C12.8240933%200%2C11.3744198%20L0%2C4.37477685%20C0%2C2.92510332%201.17519259%2C1.74991074%202.62486611%2C1.74991074%20L3.49982148%2C1.74991074%20L3.49982148%2C0.437477685%20C3.49982148%2C0.195865431%203.69568691%2C0%203.93729916%2C0%20C4.17891142%2C0%204.37477685%2C0.195865431%204.37477685%2C0.437477685%20L4.37477685%2C1.74991074%20L9.62450906%2C1.74991074%20L9.62450906%2C0.437477685%20C9.62450906%2C0.195865431%209.82037449%2C0%2010.0619867%2C0%20Z%20M11.5%2C8.35%20C11.7209139%2C8.35%2011.9%2C8.5290861%2011.9%2C8.75%20L11.9%2C11.335%20L13.7828427%2C13.2171573%20C13.9195262%2C13.3538408%2013.9366117%2C13.564833%2013.834099%2C13.7200937%20L13.7828427%2C13.7828427%20C13.626633%2C13.9390524%2013.373367%2C13.9390524%2013.2171573%2C13.7828427%20L11.2171573%2C11.7828427%20C11.1421427%2C11.7078282%2011.1%2C11.6060866%2011.1%2C11.5%20L11.1%2C8.75%20C11.1%2C8.5290861%2011.2790861%2C8.35%2011.5%2C8.35%20Z%20M3.93729916%2C10.4994644%20C4.17891142%2C10.4994644%204.37477685%2C10.6953299%204.37477685%2C10.9369421%20C4.37477685%2C11.1785544%204.17891142%2C11.3744198%203.93729916%2C11.3744198%20L3.06234379%2C11.3744198%20C2.82073154%2C11.3744198%202.62486611%2C11.1785544%202.62486611%2C10.9369421%20C2.62486611%2C10.6953299%202.82073154%2C10.4994644%203.06234379%2C10.4994644%20L3.93729916%2C10.4994644%20Z%20M3.93729916%2C7.87459832%20C4.17891142%2C7.87459832%204.37477685%2C8.07046375%204.37477685%2C8.31207601%20C4.37477685%2C8.55368826%204.17891142%2C8.74955369%203.93729916%2C8.74955369%20L3.06234379%2C8.74955369%20C2.82073154%2C8.74955369%202.62486611%2C8.55368826%202.62486611%2C8.31207601%20C2.62486611%2C8.07046375%202.82073154%2C7.87459832%203.06234379%2C7.87459832%20L3.93729916%2C7.87459832%20Z%20M7.36446538%2C7.87396184%20C7.12787096%2C8.14358419%206.91722331%2C8.43653955%206.73642236%2C8.74892798%20L6.56216527%2C8.74955369%20C6.32055302%2C8.74955369%206.12468758%2C8.55368826%206.12468758%2C8.31207601%20C6.12468758%2C8.07046375%206.32055302%2C7.87459832%206.56216527%2C7.87459832%20L7.36446538%2C7.87396184%20Z%20M3.49982148%2C2.62486611%20L2.62486611%2C2.62486611%20C1.65841709%2C2.62486611%200.874955369%2C3.40832783%200.874955369%2C4.37477685%20L0.874955369%2C5.24973222%20L13.1243305%2C5.24973222%20L13.1243305%2C4.37477685%20C13.1243305%2C3.40832783%2012.3408688%2C2.62486611%2011.3744198%2C2.62486611%20L10.4994644%2C2.62486611%20L10.4994644%2C3.93729916%20C10.4994644%2C4.17891142%2010.303599%2C4.37477685%2010.0619867%2C4.37477685%20C9.82037449%2C4.37477685%209.62450906%2C4.17891142%209.62450906%2C3.93729916%20L9.62450906%2C2.62486611%20L4.37477685%2C2.62486611%20L4.37477685%2C3.93729916%20C4.37477685%2C4.17891142%204.17891142%2C4.37477685%203.93729916%2C4.37477685%20C3.69568691%2C4.37477685%203.49982148%2C4.17891142%203.49982148%2C3.93729916%20L3.49982148%2C2.62486611%20Z%22%20id%3D%22%E5%BD%A2%E7%8A%B6%22%20fill%3D%22%23666666%22%20fill-rule%3D%22nonzero%22%3E%3C%2Fpath%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim__spin-button-wrapper {
+  position: relative;
+}
+.gcim__spin-button-wrapper::before {
+  content: "";
+  position: absolute;
+  height: 1px;
+  background-color: #bbbbbb;
+  top: calc(50% - 0.5px);
+  left: 0;
+  right: 0;
+}
+.gcim__spin-button:hover {
+  background: transparent;
+}
+.gcim__spin-button:active {
+  background: transparent;
+}
+.gcim__spin-button:hover .gcim-icon_spin-up {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%228px%22%20height%3D%225px%22%20viewBox%3D%220%200%208%205%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3ESpin1%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22Spin1%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M0.144435228%2C4.84569726%20C0.337885072%2C5.05143425%200.652887503%2C5.05143425%200.846337347%2C4.84569726%20L4.00048054%2C1.4908752%20L7.15526444%2C4.84569726%20C7.24812219%2C4.94513437%207.37196304%2C4.99964713%207.50445353%2C4.99964713%20C7.6376305%2C5%207.76238666%2C4.94513437%207.85556477%2C4.84603797%20C7.94874288%2C4.74660086%208%2C4.61426141%208%2C4.47301497%20C8%2C4.33137915%207.94874288%2C4.1990397%207.85588513%2C4.0999433%20L4.00048054%2C3.55271368e-15%20L0.144435228%2C4.0999433%20C0.0512571151%2C4.1990397%200%2C4.33137915%200%2C4.47301497%20C0%2C4.61426141%200.0512571151%2C4.74660086%200.144435228%2C4.84569726%20Z%22%20id%3D%22%E5%BD%A2%E7%8A%B6%22%20fill%3D%22%23333333%22%3E%3C%2Fpath%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim__spin-button:hover .gcim-icon_spin-down {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%228px%22%20height%3D%225px%22%20viewBox%3D%220%200%208%205%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3ESpin2%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22Spin2%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M7.85556477%2C0.154302736%20C7.66211493%2C-0.0514342452%207.3471125%2C-0.0514342452%207.15366265%2C0.154302736%20L3.99951946%2C3.5091248%20L0.844735562%2C0.154302736%20C0.751877807%2C0.0548656285%200.628036955%2C0.000352872749%200.495546466%2C0.000352872749%20C0.362369497%2C0%200.237613341%2C0.0548656285%200.144435228%2C0.153962031%20C0.0512571151%2C0.253399138%200%2C0.385738587%200%2C0.526985031%20C0%2C0.668620852%200.0512571151%2C0.800960301%200.144114871%2C0.900056703%20L3.99951946%2C5%20L7.85556477%2C0.900056703%20C7.94874288%2C0.800960301%208%2C0.668620852%208%2C0.526985031%20C8%2C0.385738587%207.94874288%2C0.253399138%207.85556477%2C0.154302736%20Z%22%20id%3D%22%E5%BD%A2%E7%8A%B6%22%20fill%3D%22%23333333%22%3E%3C%2Fpath%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim__side-button .gcim-icon_spin-up,
+.gcim__side-button[disabled]:hover .gcim-icon_spin-up {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%228px%22%20height%3D%225px%22%20viewBox%3D%220%200%208%205%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3ESpin1%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22Spin1%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M0.144435228%2C4.84569726%20C0.337885072%2C5.05143425%200.652887503%2C5.05143425%200.846337347%2C4.84569726%20L4.00048054%2C1.4908752%20L7.15526444%2C4.84569726%20C7.24812219%2C4.94513437%207.37196304%2C4.99964713%207.50445353%2C4.99964713%20C7.6376305%2C5%207.76238666%2C4.94513437%207.85556477%2C4.84603797%20C7.94874288%2C4.74660086%208%2C4.61426141%208%2C4.47301497%20C8%2C4.33137915%207.94874288%2C4.1990397%207.85588513%2C4.0999433%20L4.00048054%2C3.55271368e-15%20L0.144435228%2C4.0999433%20C0.0512571151%2C4.1990397%200%2C4.33137915%200%2C4.47301497%20C0%2C4.61426141%200.0512571151%2C4.74660086%200.144435228%2C4.84569726%20Z%22%20id%3D%22%E5%BD%A2%E7%8A%B6%22%20fill%3D%22%23666666%22%3E%3C%2Fpath%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim__side-button .gcim-icon_spin-down,
+.gcim__side-button[disabled]:hover .gcim-icon_spin-down {
+  background-image: url("data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%228px%22%20height%3D%225px%22%20viewBox%3D%220%200%208%205%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Ctitle%3ESpin2%3C%2Ftitle%3E%0A%20%20%20%20%3Cg%20id%3D%22Spin2%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M7.85556477%2C0.154302736%20C7.66211493%2C-0.0514342452%207.3471125%2C-0.0514342452%207.15366265%2C0.154302736%20L3.99951946%2C3.5091248%20L0.844735562%2C0.154302736%20C0.751877807%2C0.0548656285%200.628036955%2C0.000352872749%200.495546466%2C0.000352872749%20C0.362369497%2C0%200.237613341%2C0.0548656285%200.144435228%2C0.153962031%20C0.0512571151%2C0.253399138%200%2C0.385738587%200%2C0.526985031%20C0%2C0.668620852%200.0512571151%2C0.800960301%200.144114871%2C0.900056703%20L3.99951946%2C5%20L7.85556477%2C0.900056703%20C7.94874288%2C0.800960301%208%2C0.668620852%208%2C0.526985031%20C8%2C0.385738587%207.94874288%2C0.253399138%207.85556477%2C0.154302736%20Z%22%20id%3D%22%E5%BD%A2%E7%8A%B6%22%20fill%3D%22%23666666%22%3E%3C%2Fpath%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+}
+.gcim-date-time-picker__selected-column-line {
+  border-top: 2px solid #1977ff;
+  border-bottom: 2px solid #1977ff;
+}
+.gcim-date-time-picker__item {
+  color: #333333;
+}
+.gcim-date-time-picker__item[gc_pickeritem_isselected="true"] {
+  color: #333333;
+}
+.gcim-date-time-picker__tab {
+  border-bottom: 3px solid #f4f4f4;
+}
+.gcim-date-time-picker__tab--active {
+  color: #1977ff;
+  border-bottom: 3px solid #1977ff;
+}
+.gcim-date-time-picker__tab-label {
+  background: #f4f4f4;
+}
+.gcim-date-time-picker__button--ok {
+  background-color: #1977ff;
+}
+.gcim-date-time-picker__drop-down-container {
+  border: 1px solid #bbbbbb;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.gcim__calculator {
+  background-color: #ffffff;
+}
+.gcim__calculator .calculator-output-panel {
+  border: 1px #d4d4d4 solid;
+}
+.gcim__calculator .calculator-btn {
+  border: 1px solid #d4d4d4;
+  border-radius: 2px;
+}
+.gcim__calculator .calculator-btn:hover {
+  background-color: #f4f4f4;
+}
+.gcim__calculator .calculator-btn:active {
+  border: 1px solid #d4d4d4;
+  background-color: #e7f1ff;
+}
+.gcim__calculator .calculator-btn[data-key="MStatus"] {
+  border-color: #d4d4d46b;
+  border-style: inset;
+}
+.gcim-numeric-pad {
+  border: 1px solid #bbbbbb;
+  border-radius: 4px;
+  font-size: 12px;
+  background-color: #ffffff;
+}
+.gcim-numeric-pad .gcim-icon_back-space {
+  background-size: 14px;
+  width: auto;
+}
+.gcim-numeric-button {
+  border: 1px solid #d4d4d4;
+  border-radius: 2px;
+}
+.gcim-numeric-button:hover {
+  background-color: #f4f4f4;
+}
+.gcim-numeric-button:active {
+  background-color: #e7f1ff;
+}
+.gcim-numeric-button:active {
+  border: 1px solid #d4d4d4;
+}
+.gcim__context_menu {
+  border-radius: 4px;
+  background-color: #fff;
+  border: 1px solid transparent;
+  box-shadow: 0px 0px 4px 0px rgba(153, 153, 153, 0.5);
+  font-family: -apple-system-font, 'Segoe UI', 'Roboto', sans-serif;
+}
+.gcim__context_menu[data-edge="true"] {
+  background-color: #fff;
+  box-shadow: 0px 0px 4px 0px rgba(153, 153, 153, 0.5);
+}
+.gcim__context_menu .gcim__context_menu_item {
+  border-radius: 4px;
+}
+.gcim__context_menu .gcim__context_menu_item:not([name='split'])[data-enabled="false"] {
+  color: gray;
+}
+.gcim__context_menu .gcim__context_menu_item:not([name='split'])[data-enabled="false"][hover="true"] {
+  border-color: transparent;
+  background-color: #f4f4f4;
+}
+.gcim__context_menu .gcim__context_menu_item:not([name='split'])[data-enabled="true"][hover="true"] {
+  border-color: transparent;
+  background-color: #e7f1ff;
+}
+.gcim__context_menu .context_menu_item__content {
+  border-left: 1px solid #bbbbbb;
+}
+.gcim__context_menu .context_menu_item__split {
+  border-left: 1px solid #bbbbbb;
+}
+.gcim__context_menu .context_menu_item__split > div {
+  border-bottom: 1px solid #bbbbbb;
+}

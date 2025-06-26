@@ -69,6 +69,8 @@ public class ProxyRegister {
 
         this._proxies.add(new OnKeyDownListenProxy()); //监听物理按键
 
+        this._proxies.add(new SubUserProxy());
+
         __instance = this;
     }
 }

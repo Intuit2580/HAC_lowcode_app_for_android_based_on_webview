@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8" />
+    <link href="#PathBase#/GeneratedResources/favicon.ico?v=#IconVersion#" rel="shortcut icon" type="image/x-icon" />
+    <link href="#PathBase#/Resources/forguncycss-loader.css" rel="stylesheet" />
+    <!--Debug-->
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
+    <!--/Debug-->
+
+    <!--CustomMetaTagDom/-->
+
+    <style type="text/css">
+        /*LoadingIndicatorStyle*/
+        /*ListviewLoadingIndicatorStyle*/
+    </style>
+</head>
+<body>
+    <script>
+        //#Autotest:
+        //#Designer: window.onerror = function () { return true; }
+        //#Export: window.onerror = function () { return true; }
+        window.ForguncyErrors = [];
+        window.addEventListener("error", function (e) {
+            var errorTarget = e.error ? e.error.stack : e.message;
+            window.ForguncyErrors.push(errorTarget);
+            return true;
+        })
+        window.onload = function () {
+            //<!--Debug-->
+            //注意这里不宜使用JQuery或Forguncy，因为在IE8下JS.js抛异常，这些都不能正常构建
+            //<!--/Debug-->
+
+            var ms_ie = false;
+            var ua = window.navigator.userAgent;
+            var old_ie = ua.indexOf('MSIE ');
+            var new_ie = ua.indexOf('Trident/');
+
+            if ((old_ie > -1) || (new_ie > -1)) {
+                var div = document.getElementById('fgc-judgeBrowserDiv');
+                div.style.display = 'block';
+                //<!--English-->
+                var message = "The website you visit does not support the browser you are currently using. Please use Microsoft Edge or Google Chrome.";
+                //<!--English-->
+                //<!--Chinese-->
+                var message = "访问的网站不支持您当前使用的浏览器。请使用Microsoft Edge或者谷歌浏览器。";
+                //<!--/Chinese-->
+                //<!--Korean-->
+                var message = "Forguncy로 작성된 응용 프로그램은 현재 웹 브라우저에서 지원되지 않습니다. Internet Explorer 11, Microsoft Edge 또는 Google 크롬을 사용하십시오.";
+                //<!--/Korean-->
+                //<!--Japanese-->
+                var message = "現在ご利用中のWebブラウザーでは、Forguncyで作成されたアプリケーションの一部の機能がサポートされません。Internet Explorer 11やMicrosoft Edge、もしくはGoogle Chromeを使用してください。";
+                //<!--/Japanese-->
+                div.innerHTML = message;
+            }
+        }
+    </script>
+
+    <div id="fgc-judgeBrowserDiv" style="display:none;text-align:center;color:red;"></div>
+
+    <div id="fgc-page-measure-container" style="position:absolute;left:0;top:0;width:100%;height:100%;opacity:0;overflow:hidden"></div>
+    <div id="simpleBarContainer" style="position:relative;width:100%;height:100%">
+        <div id="pagesContainer" style="position:relative;width:100%;height:100%"></div>
+    </div>
+
+
+
+    <!--LoadingIndicatorDom/-->
+
+
+    <div id="pageCover" style="display:none; position: absolute;width: 100%; height: 100%; z-index: 999; top:0;"></div>
+
+    <div id="fgc-debug-warning-info-num-container" style="display:none; z-index: 1000;">
+        <img class="warning-info-icon" src="#PathBase#/Resources/Images/ConfirmDialog/Warning.png"></img>
+        <span class="warning-info-num"></span>
+    </div>
+
+    <div id="confirmContainer" style="display:none; position: absolute;width: 100%; height: 100%; z-index: 2147483647; top:0;"></div>
+
+    <script src="#PathBase#/Resources/Scripts/Postscribe/postscribe.min.js?v=#JSVersion#"></script>
+    <script src="#PathBase#/Resources/Scripts/JQuery/jquery-3.6.0.min.js?v=#JSVersion#"></script>
+    <script src="#PathBase#/Resources/Scripts/TraceContextHelper/trace-context-helper.min.js?v=#JSVersion#"></script>
+    <script src="#PathBase#/Cdn/cdnConfig.js?v=#JSVersion#"></script>
+    <script src="#PathBase#/Resources/MetadataLoader.js?v=#JSVersion#"></script>
+    <script src="#PathBase#/Resources/Resource.js?v=#JSVersion#"></script>
+    <script>
+        Forguncy.TraceContextHelper.instance.ajaxSetup().fetchSetup();
+
+        var staticData = {};
+        window.Forguncy.StaticData = staticData;
+        staticData.GlobalSettingVersion = "#GlobalSettingVersion#";
+        staticData.CloudAttachCdnDomain = "#CloudAttachCdnDomainKey#";
+        staticData.MetaDataVersion = "#MetadataVersion#";
+        staticData.ShareCommandVersion = "#ShareCommandVersion#";
+        staticData.JSVersion = "#JSVersion#";
+        staticData.IsDebugMode = "#IsDebugMode#";
+        staticData.UseBundle = "#UseBundle#";
+        staticData.ForguncyRoot = "#PathBase#/";
+        staticData.Lang = "#Lang#";
+        staticData.UseInputManModernStyle = "#UseInputManModernStyle#";
+        //#Designer: staticData.IsDesignerPreview = true;
+        //#Designer: window.isPageLoaded = function(){ return window.pageLoaded; }
+        //#Designer: staticData.DesignerPreviewData = {DesignerPath:"#DesignerPath#",DesignerHttpServerRoot:"#DesignerHttpServerRoot#"};
+        //#Export: staticData.IsCellTypeExporting = true;
+        //#Export: staticData.ThemeData = #ThemeDataString#;
+        //#Export: staticData.CellTypeStyleTemplates = #CellTypeStyleTemplates#;
+        //#Export: staticData.ForguncyRoot = "#ForguncyRoot#";
+        //#Export: staticData.WebsiteBase = "#WebsiteBase#";
+        //#Export: window.isPageLoaded = function(){ return window.pageLoaded; }
+
+        window.Forguncy.ForguncyData = { ForguncyRoot: "#PathBase#/" };
+
+        window.Forguncy.ModuleLoader.addUserCustomizeModules();
+        window.Forguncy.ModuleLoader.addPluginModules();
+
+        if (!Forguncy.StaticData.IsDesignerPreview && !Forguncy.StaticData.IsCellTypeExporting) {
+            window.Forguncy.MetadataLoader.PreloadMetadata();
+        }
+        else {
+            window.Forguncy.MetadataLoader.PreloadForPreview();
+        }
+    </script>
+    <script src="#PathBase#/GeneratedResources/Scripts/Forguncyjs/runJavaScriptCommandFunctions.js?v=#MetadataVersion#"></script>
+    <script>
+                    //#Designer: $(document.body).append($("<div id='chart'></div>"));
+                    //#Designer: $(document.body).append($("<div id='listview'></div>"));
+    </script>
+</body>
+<!--Some credit information below:-->
+<!--Background pattern from Toptal Subtle Patterns-->
+</html>
