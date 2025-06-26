@@ -15,7 +15,7 @@ const baseUrl = "http://10.158.15.75:99/Proxy/";
 
         console.log(newUrl)
 
-        return origOpen.call(this, method, url, async);
+        return origOpen.call(this, method, newUrl, async);
     };
 
     // 拦截 setRequestHeader（用于统一添加 header）
