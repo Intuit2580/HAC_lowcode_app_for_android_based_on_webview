@@ -5,6 +5,7 @@ import android.net.Uri;
 import com.elvishew.xlog.XLog;
 import com.huozige.lab.container.platform.AbstractStaticFilesCacheFilter;
 
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -42,7 +43,23 @@ public class HZGCacheFilter extends AbstractStaticFilesCacheFilter {
     @Override
     public CacheHint filterAll(Uri url) {
 
-        if (!Objects.requireNonNull(url.getPath()).toLowerCase().contains("resources")) return null;
+        if (url == null || url.getPath() == null) return null;
+        String name = url.getPathSegments().isEmpty() ? "" : "/" + url.getPathSegments().get(0);
+
+        String path = url.getPath();
+        String local = "";
+        if (path.startsWith(name + "/Resources/")) {
+            local = path.replace(name + "/Resources", "Resources_11.0.3.0");
+        } else if (path.startsWith("/" + name + "/GeneratedResources/")) {
+            local = "Resources_11.0.3.0" + "/cdnConfig.js";
+        } else if (path.startsWith("/" + name + "/Plugins/")) {
+            local = "Resources_11.0.3.0" + "/cdnConfig.js";
+        } else if (path.contains("js")){
+            local = "Resources_11.0.3.0" + "/cdnConfig.js";
+        } else {
+            return null;
+        }
+
 
         // 获取文件名
         String fileName = url.getLastPathSegment();
@@ -51,7 +68,7 @@ public class HZGCacheFilter extends AbstractStaticFilesCacheFilter {
         // 构建返回对象
         CacheHint result = new CacheHint();
         result.FileName = fileName;
-        result.LocalFilePath = url.getPath().replace("/Resources", "/Resources11.0.3.0"); // 通过Path进行替换，可以避免Query的影响
+        result.LocalFilePath = local; // 通过Path进行替换，可以避免Query的影响
         result.Encoding = "UTF-8";
 
         if (fileName != null) {

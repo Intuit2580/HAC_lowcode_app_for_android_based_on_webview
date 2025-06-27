@@ -27,11 +27,18 @@ import com.huozige.lab.container.utilities.ConfigManager;
 import com.huozige.lab.container.utilities.StringConvertUtility;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -231,16 +238,33 @@ public class HACWebViewClient extends WebViewClient {
     @Override
     public WebResourceResponse shouldInterceptRequest(WebView view, final WebResourceRequest request) {
 
+        String appName = "demo";
+
         String path = request.getUrl().getPath();
         String schema = request.getUrl().getScheme();
 
         String url = request.getUrl().toString();
 
-        if (url.startsWith(ConfigManager.getInstance().getEntry())) {
-            // 打开本地缓存文件，获取流
+        if (path.equals("/favicon.ico")) {
             InputStream localCache = null;
             try {
-                localCache = _context.getAssets().open("Resources_11.0.3.0/Index.html");
+                localCache = _context.getAssets().open("Resources_11.0.3.0/favicon.ico");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            return new WebResourceResponse("image/x-icon", null, localCache);
+        }
+
+        if (url.equals(ConfigManager.getInstance().getEntry())) {
+            // 打开本地缓存文件，获取流
+            InputStream localCache = null;
+            InputStream stream = null;
+            try {
+
+                stream = _context.getAssets().open("Resources_11.0.3.0/Index.html");
+
+                localCache = getReplacedStream(stream, "#PathBase#", appName);
+
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -254,6 +278,11 @@ public class HACWebViewClient extends WebViewClient {
                 return new WebResourceResponse("application/javascript", "UTF-8", localCache);
             } else if (url.endsWith(".png")) {
                 return new WebResourceResponse("image/png", null, localCache);
+            } else if (url.equals(ConfigManager.getInstance().getEntry())){
+                Map<String, String> map = new HashMap<String, String>();
+                map.put("Access-Control-Allow-Origin","*");
+                map.put("Content-Type", "text/html;charset=UTF-8");
+                return new WebResourceResponse("text/html", "utf-8", 200, "OK", map, localCache);
             }
         }
 
@@ -298,5 +327,18 @@ public class HACWebViewClient extends WebViewClient {
 
     private void injectJSFromFile() {
 
+    }
+
+    public static InputStream getReplacedStream(InputStream inputStream, String oldString, String newString) throws IOException {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
+            StringBuilder result = new StringBuilder();
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                result.append(line.replace(oldString, newString)).append(System.lineSeparator());
+            }
+
+            return new ByteArrayInputStream(result.toString().getBytes(StandardCharsets.UTF_8));
+        }
     }
 }
