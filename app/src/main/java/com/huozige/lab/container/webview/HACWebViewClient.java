@@ -8,6 +8,7 @@ import android.net.http.SslError;
 
 import com.elvishew.xlog.XLog;
 
+import android.util.Log;
 import android.webkit.HttpAuthHandler;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebResourceError;
@@ -238,14 +239,15 @@ public class HACWebViewClient extends WebViewClient {
     @Override
     public WebResourceResponse shouldInterceptRequest(WebView view, final WebResourceRequest request) {
 
-        String appName = "demo";
+        String appName = "app_test2";
 
         String path = request.getUrl().getPath();
         String schema = request.getUrl().getScheme();
 
         String url = request.getUrl().toString();
 
-        if (path.equals("/favicon.ico")) {
+        Log.v("info", url);
+        if (path != null &&path.contains("/favicon.ico")) {
             InputStream localCache = null;
             try {
                 localCache = _context.getAssets().open("Resources_11.0.3.0/favicon.ico");
@@ -270,20 +272,10 @@ public class HACWebViewClient extends WebViewClient {
             }
 
             // 将本地文件返回给浏览器
-            if (url.endsWith(".html")) {
-                return new WebResourceResponse("text/html", "UTF-8", localCache);
-            } else if (url.endsWith(".css")) {
-                return new WebResourceResponse("text/css", "UTF-8", localCache);
-            } else if (url.endsWith(".js")) {
-                return new WebResourceResponse("application/javascript", "UTF-8", localCache);
-            } else if (url.endsWith(".png")) {
-                return new WebResourceResponse("image/png", null, localCache);
-            } else if (url.equals(ConfigManager.getInstance().getEntry())){
-                Map<String, String> map = new HashMap<String, String>();
-                map.put("Access-Control-Allow-Origin","*");
-                map.put("Content-Type", "text/html;charset=UTF-8");
-                return new WebResourceResponse("text/html", "utf-8", 200, "OK", map, localCache);
-            }
+            Map<String, String> map = new HashMap<String, String>();
+            map.put("Access-Control-Allow-Origin","*");
+            map.put("Content-Type", "text/html;charset=UTF-8");
+            return new WebResourceResponse("text/html", "utf-8", 200, "OK", map, localCache);
         }
 
 
@@ -323,10 +315,6 @@ public class HACWebViewClient extends WebViewClient {
 
     public void setStaticFilesCacheFilter(AbstractStaticFilesCacheFilter cacheFilter) {
         this.cacheFilter = cacheFilter;
-    }
-
-    private void injectJSFromFile() {
-
     }
 
     public static InputStream getReplacedStream(InputStream inputStream, String oldString, String newString) throws IOException {
