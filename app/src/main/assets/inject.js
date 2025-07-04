@@ -14,14 +14,12 @@ const appName = "app_test2/";
 
         console.log(url);
 
-        url = url.replace(appName, "app_test/");
-
-      //  url = url.replace(/\&/g, '%26');
+        var urlT = url.replace(appName, "app_test/");
 
         var newUrl = baseUrl + postUrl + url
 
         if(method.toLowerCase() == "get") {
-            newUrl = baseUrl + getUrl + url
+            newUrl = baseUrl + getUrl + url.replace(/\&/g, '%26');
         }
 
         if(newUrl.search("GetMetadata2") != -1) {
@@ -34,31 +32,45 @@ const appName = "app_test2/";
         newUrl = newUrl.replace(appName, "");
         console.log(newUrl)
 
-        return origOpen.call(this, method, url, async);
+        return origOpen.call(this, method, urlT, async);
     };
 
     // 拦截 setRequestHeader（用于统一添加 header）
-      XMLHttpRequest.prototype.setRequestHeader = function(header, value) {
+     XMLHttpRequest.prototype.setRequestHeader = function(header, value) {
 
         if (header.toLowerCase() === "content-type") {
             value = "application/json; charset=UTF-8";
         }
 
-        // 调用原始 setRequestHeader
+     // 调用原始 setRequestHeader
         return origSetRequestHeader.call(this, header, value);
-      };
+    };
 
-       XMLHttpRequest.prototype.send = function(body) {
+    XMLHttpRequest.prototype.send = function(body) {
+        var self = this;
 
-               this.addEventListener('load', function() {
+        // 如果 body 是 form-data 格式（包含 '=' 字符），尝试转换为 JSON
+        if (body && typeof body === 'string' && body.indexOf('=') !== -1) {
+            try {
+                // 解析 form 数据
+                var formData = new URLSearchParams(body);
+                var jsonBody = {};
 
-                           alert(`Request Body:`, body);
-                           alert(`Response:`, this.responseText || this.response);
+                // 构造 JSON 对象
+                for (var [key, value] of formData.entries()) {
+                    jsonBody[key] = value;
+                }
 
-                       });
 
-               // 调用原始 setRequestHeader
-               return origSend.call(this, body);
-         };
+                // 使用 JSON.stringify 后发送
+                return origSend.call(this, JSON.stringify(jsonBody));
+            } catch (e) {
+                console.error("Form to JSON 转换失败:", e);
+            }
+        }
+
+        // 默认行为：原样发送
+        return origSend.call(this, body);
+    };
 
 })();

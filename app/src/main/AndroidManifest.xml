@@ -46,6 +46,7 @@
         <!-- &lt;!&ndash; QQ &ndash;&gt; -->
         <!-- <package android:name="com.tencent.mobileqq" /> -->
 
+        <package android:name="com.huozige.HAC" />
 
         <!-- 判断相机是否 可以使用 如果不加以下配置 那么captureIntent.resolveActivity(context.getPackageManager())==null -->
         <intent>

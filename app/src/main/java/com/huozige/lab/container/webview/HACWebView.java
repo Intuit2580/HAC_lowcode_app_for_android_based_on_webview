@@ -2,6 +2,7 @@ package com.huozige.lab.container.webview;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -104,10 +105,10 @@ public class HACWebView extends WebView {
         // 渲染方式
         if (ConfigManager.getInstance().getHA()) {
             this.setLayerType(View.LAYER_TYPE_HARDWARE, null); // 硬件加速，性能更好，有兼容性风险
-            XLog.v("WebView组件初始化完成，采用硬件加速");
+            Log.v("info", "WebView组件初始化完成，采用硬件加速");
         } else {
             this.setLayerType(View.LAYER_TYPE_SOFTWARE, null); // 软件加速，兼容性更好
-            XLog.v("WebView组件初始化完成，采用软件加速");
+            Log.v("info", "WebView组件初始化完成，采用软件加速");
         }
 
         EventUtility.logEvent("web_view_init", Integer.toString(DeviceUtility.getWebViewMajorVersion()));
@@ -147,7 +148,7 @@ public class HACWebView extends WebView {
     public void loadUrl(@NonNull String url) {
         super.loadUrl(url);
 
-        XLog.v("导航到页面或执行脚本：" + url);
+        Log.v("info", "导航到页面或执行脚本：" + url);
     }
 
 }

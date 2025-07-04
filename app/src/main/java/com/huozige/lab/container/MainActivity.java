@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -77,7 +78,7 @@ public class MainActivity extends BaseActivity {
 
         // 2. 检查是否已经完成配置
         if (!ConfigManager.getInstance().isAppReady()) {
-            XLog.v("APP尚未完成配置，即将跳转到初始化界面");
+            Log.v("info","APP尚未完成配置，即将跳转到初始化界面");
             // 跳转到设置页面
             startActivity(new Intent(this, QuickConfigActivity.class));
         } else {
@@ -116,14 +117,14 @@ public class MainActivity extends BaseActivity {
                 // 10. 初始化ChromeClient的启动器
                 _webChromeClient.registryLaunchersOnCreated(); // ChromeClient的初始化
 
-                XLog.v("WebView初始化完成");
+                Log.v("info","WebView初始化完成");
 
                 // 11. 加载页面
                 _webView.navigateToDefaultPage();
             } catch (Exception ex) {
 
                 // 统一处理各种异常
-                XLog.e("WebView组件初始化失败。\r\n%s", ex);
+                Log.e("main","WebView组件初始化失败。\r\n%s", ex);
 
                 String message = "应用初始化失败，这通常是操作系统和运行环境不兼容导致的，请按照下方提示操作。如果遇到困难，可拍摄本界面或截屏后，与技术支持人员联系。";
                 message += "\r\n\n";
