@@ -1,0 +1,36 @@
+{
+  "FontFamily": "@FontFamily",
+  "ThemeColors": {
+    "Name": "Blue",
+    "Colors": {
+      "Name": "",
+      "ColorList": [
+        "#FFFFFF",
+        "#EAEBDE",
+        "#000000",
+        "#042531",
+        "#F86500",
+        "#8BB73D",
+        "#EBC54B",
+        "#1890FF",
+        "#D03736",
+        "#904DA0",
+        "#00FFFFFF",
+        "#00FFFFFF"
+      ],
+      "BackgroundColor1": "#FFFFFF",
+      "BackgroundColor2": "#EAEBDE",
+      "TextColor1": "#000000",
+      "TextColor2": "#042531",
+      "Accent1": "#F86500",
+      "Accent2": "#8BB73D",
+      "Accent3": "#EBC54B",
+      "Accent4": "#1890FF",
+      "Accent5": "#D03736",
+      "Accent6": "#904DA0",
+      "Hyperlink": "#00FFFFFF",
+      "FollowedHyperlink": "#00FFFFFF"
+    },
+    "Category": "内建"
+  }
+}

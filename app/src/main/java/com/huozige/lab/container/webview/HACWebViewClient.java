@@ -28,19 +28,15 @@ import com.huozige.lab.container.utilities.ConfigManager;
 import com.huozige.lab.container.utilities.StringConvertUtility;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * 处理页面的事件，实现异常处理等功能
@@ -194,22 +190,7 @@ public class HACWebViewClient extends WebViewClient {
         _alreadyInjected = false;
         XLog.v("页面加载开始：" + url);
 
-        try {
-            BufferedReader reader = new BufferedReader(
-                    new InputStreamReader(this._context.getAssets().open("inject.js")));
-            StringBuilder sb = new StringBuilder();
-            String line;
-            while ((line = reader.readLine()) != null) {
-                sb.append(line).append("\n");
-            }
-            reader.close();
-
-            String jsCode = sb.toString();
-            view.post(() -> view.evaluateJavascript(jsCode, null));
-        } catch (IOException e) {
-
-            e.printStackTrace();
-        }
+        // doRedirectJavascript(view);
     }
 
     /**
@@ -239,16 +220,20 @@ public class HACWebViewClient extends WebViewClient {
     @Override
     public WebResourceResponse shouldInterceptRequest(WebView view, final WebResourceRequest request) {
 
-        String appName = "app_test2";
+        doRedirectJavascript(view);
 
-        String path = request.getUrl().getPath();
-        String schema = request.getUrl().getScheme();
+        Uri uri = request.getUrl();
 
-        String url = request.getUrl().toString();
+        String appName = uri.getPathSegments().isEmpty() ? "" : "/" + uri.getPathSegments().get(0);
+
+        String path = uri.getPath();
+        String schema = uri.getScheme();
+
+        String url = uri.toString();
 
         Log.v("info", url);
         if (path != null &&path.contains("/favicon.ico")) {
-            InputStream localCache = null;
+            InputStream localCache;
             try {
                 localCache = _context.getAssets().open("Resources_11.0.3.0/favicon.ico");
             } catch (IOException e) {
@@ -257,10 +242,15 @@ public class HACWebViewClient extends WebViewClient {
             return new WebResourceResponse("image/x-icon", null, localCache);
         }
 
-        if (url.equals(ConfigManager.getInstance().getEntry())) {
+        Map<String, String> requestHeaders = request.getRequestHeaders();
+
+        String rootPath = ConfigManager.getInstance().getEntry();
+
+        if (url.equals(rootPath) ||
+                (url.startsWith(rootPath) && requestHeaders.containsKey("Accept") && Objects.requireNonNull(requestHeaders.get("Accept")).contains("text/html,application/xhtml+xml,application/xml;"))) {
             // 打开本地缓存文件，获取流
-            InputStream localCache = null;
-            InputStream stream = null;
+            InputStream localCache;
+            InputStream stream;
             try {
 
                 stream = _context.getAssets().open("Resources_11.0.3.0/Index.html");
@@ -284,28 +274,25 @@ public class HACWebViewClient extends WebViewClient {
             _alreadyInjected = true;
         }
 
-        if (request.getUrl() != null) {
+        // 仅处理HTTP和HTTPS
+        schema = (schema == null) ? "" : schema.trim();
+        if (schema.equalsIgnoreCase("http") || schema.equalsIgnoreCase("https")) {
+            try {
+                // 调用缓存处理器
+                AbstractStaticFilesCacheFilter.CacheHint cacheFile = cacheFilter.filterAll(request.getUrl());
 
-            // 仅处理HTTP和HTTPS
-            schema = (schema == null) ? "" : schema.trim();
-            if (schema.equalsIgnoreCase("http") || schema.equalsIgnoreCase("https")) {
-                try {
-                    // 调用缓存处理器
-                    AbstractStaticFilesCacheFilter.CacheHint cacheFile = cacheFilter.filterAll(request.getUrl());
+                // 判断是否有可用的缓存
+                if (cacheFile != null) {
 
-                    // 判断是否有可用的缓存
-                    if (cacheFile != null) {
-
-                        // 打开本地缓存文件，获取流
-                        InputStream localCache = _context.getAssets().open(cacheFile.LocalFilePath);
-                        // 将本地文件返回给浏览器
-                        return new WebResourceResponse(cacheFile.MIME, cacheFile.Encoding, localCache);
-                    }
-                } catch (IOException e) {
-
-                    // 仅记录日志
-                    XLog.e("读取本地缓存文件资源是出错，Url：" + request.getUrl().toString() + " \r\n%s", e);
+                    // 打开本地缓存文件，获取流
+                    InputStream localCache = _context.getAssets().open(cacheFile.LocalFilePath);
+                    // 将本地文件返回给浏览器
+                    return new WebResourceResponse(cacheFile.MIME, cacheFile.Encoding, localCache);
                 }
+            } catch (IOException e) {
+
+                // 仅记录日志
+                XLog.e("读取本地缓存文件资源是出错，Url：" + request.getUrl().toString() + " \r\n%s", e);
             }
         }
 
@@ -327,6 +314,25 @@ public class HACWebViewClient extends WebViewClient {
             }
 
             return new ByteArrayInputStream(result.toString().getBytes(StandardCharsets.UTF_8));
+        }
+    }
+
+    public void doRedirectJavascript(WebView view) {
+        try {
+            BufferedReader reader = new BufferedReader(
+                    new InputStreamReader(this._context.getAssets().open("inject.js")));
+            StringBuilder sb = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                sb.append(line).append("\n");
+            }
+            reader.close();
+
+            String jsCode = sb.toString();
+            view.post(() -> view.evaluateJavascript(jsCode, null));
+        } catch (IOException e) {
+
+            e.printStackTrace();
         }
     }
 }

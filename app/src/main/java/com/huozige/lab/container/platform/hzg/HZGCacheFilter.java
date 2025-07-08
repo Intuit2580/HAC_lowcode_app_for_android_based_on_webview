@@ -5,8 +5,6 @@ import android.net.Uri;
 import com.elvishew.xlog.XLog;
 import com.huozige.lab.container.platform.AbstractStaticFilesCacheFilter;
 
-import java.util.List;
-import java.util.Objects;
 
 /**
  * 活字格专用的缓存过滤器
@@ -47,14 +45,18 @@ public class HZGCacheFilter extends AbstractStaticFilesCacheFilter {
         String name = url.getPathSegments().isEmpty() ? "" : "/" + url.getPathSegments().get(0);
 
         String path = url.getPath();
-        String local = "";
+        String local;
         if (path.startsWith(name + "/Resources/")) {
+            //默认资源
             local = path.replace(name + "/Resources", "Resources_11.0.3.0");
-        } else if (path.startsWith("/" + name + "/GeneratedResources/")) {
+        } else if (path.startsWith(name + "/GeneratedResources/")) {
+            //app资源
+            local = path.replace(name + "/GeneratedResources", "GeneratedResources");
+        } else if (path.startsWith(name + "/Plugins/")) {
+            //插件  需更改逻辑
             local = "Resources_11.0.3.0" + "/cdnConfig.js";
-        } else if (path.startsWith("/" + name + "/Plugins/")) {
-            local = "Resources_11.0.3.0" + "/cdnConfig.js";
-        } else if (path.contains("js")){
+        } else if (path.contains("Cdn/cdnConfig.js")){
+            //cdnConfig
             local = "Resources_11.0.3.0" + "/cdnConfig.js";
         } else {
             return null;
